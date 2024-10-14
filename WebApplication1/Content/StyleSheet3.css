@@ -1,0 +1,580 @@
+﻿body {
+    background: transparent linear-gradient(245deg, #003D82 0%, #0B3058 100%) 0% 0% no-repeat padding-box;
+    opacity: 1;
+    padding-top: 30px;
+    margin-left: 10px;
+    font: normal normal normal 16px/25px Poppins;
+}
+
+a .nav-link.active {
+    color: #fff;
+    background-color: #19508a;
+}
+
+a, a:hover, a:link, a:visited {
+    text-decoration: none;
+}
+
+.hrs {
+    background-color: #255A95;
+}
+
+.block {
+    margin-top: auto;
+    margin-left: auto;
+    width: auto;
+}
+
+.textes {
+    overflow-wrap: break-word;
+    white-space: pre-wrap;
+}
+
+.block {
+    margin-top: 10%;
+    margin-left: 40%;
+    width: 447px;
+    height: 474px;
+    background: #033771 0% 0% no-repeat padding-box;
+    box-shadow: 0px 0px 6px #0000002E;
+    border: 1px solid #255A95;
+    opacity: 1;
+}
+
+.logologin {
+    background: transparent url('images/logo_Blanc_-_pour_fond_sombre.png') 0% 0% no-repeat padding-box;
+    margin-top: 25px;
+    margin-left: 0px;
+    width: 150px;
+    height: 37px;
+}
+
+.hrs {
+    background-color: #255A95;
+}
+
+.menumargin {
+    margin-top: 230px;
+}
+
+.form-row .marge {
+    margin-top: 50px;
+}
+
+.form-group {
+    margin-left: 5px;
+}
+
+.form-control {
+    font-size: large;
+}
+
+.stytexte {
+    text-align: left;
+    font: normal normal 600 27px/36px Poppins;
+    letter-spacing: 0px;
+    color: #F5F5F5;
+    opacity: 1;
+}
+
+.hrheure {
+    width: 1200px;
+    border: 1px solid #255A95;
+}
+
+.vn {
+    font: normal;
+}
+
+.card-margin {
+    margin-top: 50px;
+}
+
+.submit.boutonsave {
+    background: #ED217C 0% 0% no-repeat padding-box;
+    border-radius: 50px;
+    width: 325px;
+    border-color: #ed217c;
+    height: 47px;
+    font: normal normal medium 16px/25px Poppins;
+    letter-spacing: 0px;
+    color: #FFFFFF;
+    text-transform: uppercase;
+}
+
+.btn.btn-primary.boutonsave {
+    margin-left: 350px;
+    background: #ED217C 0% 0% no-repeat padding-box;
+    border-radius: 50px;
+    width: 325px;
+    border-color: #ed217c;
+    height: 47px;
+    font: normal normal medium 16px/25px Poppins;
+    letter-spacing: 0px;
+    color: #FFFFFF;
+    text-transform: uppercase;
+}
+
+.phones {
+    background: transparent url(images/phone.png)0% 0% no-repeat padding-box;
+}
+
+.telephones {
+    background: transparent url('images/Livello_12.png') 0% 0% no-repeat padding-box;
+}
+
+.mails {
+    background: transparent url('images/2203552_email_inbox_letter_send_icon.png') 0% 0% no-repeat padding-box;
+}
+
+.btn.btn-warning {
+    color: #f8f9fa;
+    background-color: #e578e6;
+    border-color: #e578e6;
+}
+
+.boutongauche {
+    float: right;
+}
+
+input[type="checkbox"][id^="NiveauSco"] {
+    display: none;
+}
+
+input[type="checkbox"]#NiveauSco + input[type="hidden"] + label, input[type="checkbox"]#NiveauSco + label {
+    box-sizing: border-box;
+    display: inline-block;
+    width: 108px;
+    height: 47px;
+    opacity: 1;
+    background: #2B5687 0% 0% no-repeat padding-box;
+    border-radius: 6px;
+    opacity: 1;
+}
+
+input[type="checkbox"]#NiveauSco:checked + input[type="hidden"] + label, input[type="checkbox"]#NiveauSco:checked + label {
+    width: 108px;
+    height: 47px;
+    opacity: 1;
+    background: #ED217C url('Tracé 68.png') 0% 0% no-repeat padding-box;
+    /*background:  0% 0% no-repeat padding-box;*/
+    border-radius: 6px;
+    opacity: 1;
+}
+
+input[type="checkbox"]#NiveauSco + input[type="hidden"] + label::before, input[type="checkbox"]#NiveauSco + label::before {
+    box-sizing: border-box;
+    display: block;
+    content: "";
+    margin-top: 5px;
+    width: 50px;
+    height: 37px;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    box-shadow: 0px 2px 8px #0000003D;
+    border-radius: 6px;
+    opacity: 1;
+    transition: all 0.8s;
+}
+
+input[type="checkbox"]#NiveauSco:checked + input[type="hidden"] + label::before, input[type="checkbox"]#NiveauSco:checked + label::before {
+    margin-left: 58px;
+}
+
+/*langenn*/
+input[type="checkbox"][id^="LangGen"] {
+    display: none;
+}
+
+input[type="checkbox"]#LangGen + input[type="hidden"] + label, input[type="checkbox"]#LangGen + label {
+    box-sizing: border-box;
+    display: inline-block;
+    width: 108px;
+    height: 47px;
+    opacity: 1;
+    background: #2B5687 0% 0% no-repeat padding-box;
+    border-radius: 6px;
+    opacity: 1;
+}
+
+input[type="checkbox"]#LangGen:checked + input[type="hidden"] + label, input[type="checkbox"]#LangGen:checked + label {
+    width: 108px;
+    height: 47px;
+    opacity: 1;
+    background: #ED217C url('Tracé 68.png') 0% 0% no-repeat padding-box;
+    /*background:  0% 0% no-repeat padding-box;*/
+    border-radius: 6px;
+    opacity: 1;
+}
+
+input[type="checkbox"]#LangGen + input[type="hidden"] + label::before, input[type="checkbox"]#LangGen + label::before {
+    box-sizing: border-box;
+    display: block;
+    content: "";
+    margin-top: 5px;
+    width: 50px;
+    height: 37px;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    box-shadow: 0px 2px 8px #0000003D;
+    border-radius: 6px;
+    opacity: 1;
+    transition: all 0.8s;
+}
+
+input[type="checkbox"]#LangGen:checked + input[type="hidden"] + label::before, input[type="checkbox"]#LangGen:checked + label::before {
+    margin-left: 58px;
+}
+
+/*langpro*/
+input[type="checkbox"][id^="LangPro"] {
+    display: none;
+}
+
+input[type="checkbox"]#LangPro + input[type="hidden"] + label, input[type="checkbox"]#LangPro + label {
+    box-sizing: border-box;
+    display: inline-block;
+    width: 108px;
+    height: 47px;
+    opacity: 1;
+    background: #2B5687 0% 0% no-repeat padding-box;
+    border-radius: 6px;
+    opacity: 1;
+}
+
+input[type="checkbox"]#LangPro:checked + input[type="hidden"] + label, input[type="checkbox"]#LangPro:checked + label {
+    width: 108px;
+    height: 47px;
+    opacity: 1;
+    background: #ED217C url('Tracé 68.png') 0% 0% no-repeat padding-box;
+    /*background:  0% 0% no-repeat padding-box;*/
+    border-radius: 6px;
+    opacity: 1;
+}
+
+input[type="checkbox"]#LangPro + input[type="hidden"] + label::before, input[type="checkbox"]#LangPro + label::before {
+    box-sizing: border-box;
+    display: block;
+    content: "";
+    margin-top: 5px;
+    width: 50px;
+    height: 37px;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    box-shadow: 0px 2px 8px #0000003D;
+    border-radius: 6px;
+    opacity: 1;
+    transition: all 0.8s;
+}
+
+input[type="checkbox"]#LangPro:checked + input[type="hidden"] + label::before, input[type="checkbox"]#LangPro:checked + label::before {
+    margin-left: 58px;
+}
+
+/*accespro*/
+input[type="checkbox"][id^="accesnetperso"] {
+    display: none;
+}
+
+input[type="checkbox"]#accesnetperso + input[type="hidden"] + label, input[type="checkbox"]#accesnetperso + label {
+    box-sizing: border-box;
+    display: inline-block;
+    width: 108px;
+    height: 47px;
+    opacity: 1;
+    background: #2B5687 0% 0% no-repeat padding-box;
+    border-radius: 6px;
+    opacity: 1;
+}
+
+input[type="checkbox"]#accesnetperso:checked + input[type="hidden"] + label, input[type="checkbox"]#accesnetperso:checked + label {
+    width: 108px;
+    height: 47px;
+    opacity: 1;
+    background: #ED217C url('Tracé 68.png') 0% 0% no-repeat padding-box;
+    /*background:  0% 0% no-repeat padding-box;*/
+    border-radius: 6px;
+    opacity: 1;
+}
+
+input[type="checkbox"]#accesnetperso + input[type="hidden"] + label::before, input[type="checkbox"]#accesnetperso + label::before {
+    box-sizing: border-box;
+    display: block;
+    content: "";
+    margin-top: 5px;
+    width: 50px;
+    height: 37px;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    box-shadow: 0px 2px 8px #0000003D;
+    border-radius: 6px;
+    opacity: 1;
+    transition: all 0.8s;
+}
+
+input[type="checkbox"]#accesnetperso:checked + input[type="hidden"] + label::before, input[type="checkbox"]#accesnetperso:checked + label::before {
+    margin-left: 58px;
+}
+/*accespro*/
+input[type="checkbox"][id^="accesnetpro"] {
+    display: none;
+}
+
+input[type="checkbox"]#accesnetpro + input[type="hidden"] + label, input[type="checkbox"]#accesnetpro + label {
+    box-sizing: border-box;
+    display: inline-block;
+    width: 108px;
+    height: 47px;
+    opacity: 1;
+    background: #2B5687 0% 0% no-repeat padding-box;
+    border-radius: 6px;
+    opacity: 1;
+}
+
+input[type="checkbox"]#accesnetpro:checked + input[type="hidden"] + label, input[type="checkbox"]#accesnetpro:checked + label {
+    width: 108px;
+    height: 47px;
+    opacity: 1;
+    background: #ED217C url('Tracé 68.png') 0% 0% no-repeat padding-box;
+    /*background:  0% 0% no-repeat padding-box;*/
+    border-radius: 6px;
+    opacity: 1;
+}
+
+input[type="checkbox"]#accesnetpro + input[type="hidden"] + label::before, input[type="checkbox"]#accesnetpro + label::before {
+    box-sizing: border-box;
+    display: block;
+    content: "";
+    margin-top: 5px;
+    width: 50px;
+    height: 37px;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    box-shadow: 0px 2px 8px #0000003D;
+    border-radius: 6px;
+    opacity: 1;
+    transition: all 0.8s;
+}
+
+input[type="checkbox"]#accesnetpro:checked + input[type="hidden"] + label::before, input[type="checkbox"]#accesnetpro:checked + label::before {
+    margin-left: 58px;
+}
+
+
+
+ul.personnel {
+    list-style-type: none;
+}
+
+.personnel li {
+    display: inline-block;
+}
+
+input[type="checkbox"][id^="arts"] {
+    display: none;
+}
+
+input[type="checkbox"]#arts + input[type="hidden"] + label, input[type="checkbox"]#arts + label {
+    border: 1px solid #fff;
+    padding: 10px;
+    display: block;
+    position: relative;
+    margin: 10px;
+    cursor: pointer;
+    text-align: center;
+    background-color: white;
+    font: normal normal medium 16px/25px Poppins;
+    letter-spacing: 0px;
+    color: #252525;
+    opacity: 1;
+    width: 190px;
+    height: 175px;
+    border-radius: 4px;
+    opacity: 1;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+input[type="checkbox"]#Cinema_Arts1:checked + input[type="hidden"] + label::before, input[type="checkbox"]#Cinema_Arts1:checked + label::before {
+    background-color: white;
+    width: 25px;
+    height: 25px;
+    box-shadow: 0px 3px 6px #00000029;
+    border: 3px solid #ED217C;
+    opacity: 1;
+    color: white;
+    content: " ";
+    display: block;
+    border-radius: 50%;
+    border: 1px solid white;
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    /* width: 25px;
+  height: 25px;*/
+    text-align: center;
+    line-height: 20px;
+    transition-duration: 0.4s;
+    transform: scale(0);
+}
+
+input[type="checkbox"]#arts + input[type="hidden"] + label img, input[type="checkbox"]#arts + label img {
+    width: 168px;
+    height: 137px;
+    transition-duration: 0.2s;
+    transform-origin: 50% 50%;
+}
+
+input[type="checkbox"]#arts:checked + input[type="hidden"] + label, input[type="checkbox"]#arts:checked + label {
+    border-color: #ddd;
+}
+
+    input[type="checkbox"]#arts:checked + input[type="hidden"] + label::before, input[type="checkbox"]#arts:checked + label::before {
+        content: "✓";
+        background-color: #ED217C;
+        transform: scale(1.5);
+        z-index: 10;
+    }
+
+    input[type="checkbox"]#arts:checked + input[type="hidden"] + label img, input[type="checkbox"]#arts:checked + label img {
+        transform: scale(0.9);
+        box-shadow: 0 0 5px #333;
+        z-index: 1;
+    }
+
+
+input[type="checkbox"][id^="litterature"],
+input[type="checkbox"][id^="sport"],
+input[type="checkbox"][id^="theatre"],
+input[type="checkbox"][id^="bricolage"],
+input[type="checkbox"][id^="cuisine"],
+input[type="checkbox"][id^="sciences"],
+input[type="checkbox"][id^="musique"],
+input[type="checkbox"][id^="jardin"],
+input[type="checkbox"][id^="ConfrLecture"] {
+    display: none;
+}
+
+
+
+input[type="checkbox"]#litterature + input[type="hidden"] + label, input[type="checkbox"]#litterature + label,
+input[type="checkbox"]#sport + input[type="hidden"] + label, input[type="checkbox"]#sport + label,
+input[type="checkbox"]#theatre + input[type="hidden"] + label, input[type="checkbox"]#theatre + label,
+input[type="checkbox"]#bricolage + input[type="hidden"] + label, input[type="checkbox"]#bricolage + label,
+input[type="checkbox"]#cuisine + input[type="hidden"] + label, input[type="checkbox"]#cuisine + label,
+input[type="checkbox"]#sciences + input[type="hidden"] + label, input[type="checkbox"]#sciences + label,
+input[type="checkbox"]#musique + input[type="hidden"] + label, input[type="checkbox"]#musique + label,
+input[type="checkbox"]#jardin + input[type="hidden"] + label, input[type="checkbox"]#jardin + label,
+input[type="checkbox"]#ConfrLecture + input[type="hidden"] + label, input[type="checkbox"]#ConfrLecture + label {
+    border: 1px solid #fff;
+    padding: 10px;
+    display: block;
+    position: relative;
+    margin: 10px;
+    cursor: pointer;
+    text-align: center;
+    background-color: white;
+    font: normal normal medium 16px/25px Poppins;
+    letter-spacing: 0px;
+    color: #252525;
+    opacity: 1;
+    width: 190px;
+    height: 175px;
+    border-radius: 4px;
+    opacity: 1;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+
+input[type="checkbox"]#litterature:checked + input[type="hidden"] + label::before, input[type="checkbox"]#litterature:checked + label::before,
+input[type="checkbox"]#sport:checked + input[type="hidden"] + label::before, input[type="checkbox"]#sport:checked + label::before,
+input[type="checkbox"]#theatre:checked + input[type="hidden"] + label::before, input[type="checkbox"]#theatre:checked + label::before,
+input[type="checkbox"]#bricolage:checked + input[type="hidden"] + label::before, input[type="checkbox"]#bricolage:checked + label::before,
+input[type="checkbox"]#cuisine:checked + input[type="hidden"] + label::before, input[type="checkbox"]#cuisine:checked + label::before,
+input[type="checkbox"]#sciences:checked + input[type="hidden"] + label::before, input[type="checkbox"]#sciences:checked + label::before,
+input[type="checkbox"]#musique:checked + input[type="hidden"] + label::before, input[type="checkbox"]#musique:checked + label::before,
+input[type="checkbox"]#jardin:checked + input[type="hidden"] + label::before, input[type="checkbox"]#jardin:checked + label::before,
+input[type="checkbox"]#ConfrLecture:checked + input[type="hidden"] + label::before, input[type="checkbox"]#ConfrLecture:checked + label::before {
+    background-color: white;
+    width: 25px;
+    height: 25px;
+    box-shadow: 0px 3px 6px #00000029;
+    border: 3px solid #ED217C;
+    opacity: 1;
+    color: white;
+    content: " ";
+    display: block;
+    border-radius: 50%;
+    border: 1px solid white;
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    /* width: 25px;
+  height: 25px;*/
+    text-align: center;
+    line-height: 20px;
+    transition-duration: 0.4s;
+    transform: scale(0);
+}
+
+
+input[type="checkbox"]#litterature + input[type="hidden"] + label img, input[type="checkbox"]#litterature + label img,
+input[type="checkbox"]#sport + input[type="hidden"] + label img, input[type="checkbox"]#sport + label img,
+input[type="checkbox"]#theatre + input[type="hidden"] + label img, input[type="checkbox"]#theatre + label img,
+input[type="checkbox"]#cuisine + input[type="hidden"] + label img, input[type="checkbox"]#cuisine + label img,
+input[type="checkbox"]#sciences + input[type="hidden"] + label img, input[type="checkbox"]#sciences + label img,
+input[type="checkbox"]#bricolage + input[type="hidden"] + label img, input[type="checkbox"]#bricolage + label img,
+input[type="checkbox"]#musique + input[type="hidden"] + label img, input[type="checkbox"]#musique + label img,
+input[type="checkbox"]#jardin + input[type="hidden"] + label img, input[type="checkbox"]#jardin + label img,
+input[type="checkbox"]#ConfrLecture + input[type="hidden"] + label img, input[type="checkbox"]#ConfrLecture + label img {
+    width: 168px;
+    height: 137px;
+    transition-duration: 0.2s;
+    transform-origin: 50% 50%;
+}
+
+
+input[type="checkbox"]#litterature:checked + input[type="hidden"] + label, input[type="checkbox"]#litterature:checked + label,
+input[type="checkbox"]#sport:checked + input[type="hidden"] + label, input[type="checkbox"]#sport:checked + label,
+input[type="checkbox"]#theatre:checked + input[type="hidden"] + label, input[type="checkbox"]#theatre:checked + label,
+input[type="checkbox"]#cuisine:checked + input[type="hidden"] + label, input[type="checkbox"]#cuisine:checked + label,
+input[type="checkbox"]#sciences:checked + input[type="hidden"] + label, input[type="checkbox"]#sciences:checked + label,
+input[type="checkbox"]#bricolage:checked + input[type="hidden"] + label, input[type="checkbox"]#bricolage:checked + label,
+input[type="checkbox"]#musique:checked + input[type="hidden"] + label, input[type="checkbox"]#musique:checked + label,
+input[type="checkbox"]#jardin:checked + input[type="hidden"] + label, input[type="checkbox"]#jardin:checked + label,
+input[type="checkbox"]#ConfrLecture:checked + input[type="hidden"] + label, input[type="checkbox"]#ConfrLecture:checked + label {
+    border-color: #ddd;
+}
+
+
+    input[type="checkbox"]#litterature:checked + input[type="hidden"] + label::before, input[type="checkbox"]#litterature:checked + label::before,
+    input[type="checkbox"]#sport:checked + input[type="hidden"] + label::before, input[type="checkbox"]#sport:checked + label::before,
+    input[type="checkbox"]#theatre:checked + input[type="hidden"] + label::before, input[type="checkbox"]#theatre:checked + label::before,
+    input[type="checkbox"]#cuisine:checked + input[type="hidden"] + label::before, input[type="checkbox"]#cuisine:checked + label::before,
+    input[type="checkbox"]#sciences:checked + input[type="hidden"] + label::before, input[type="checkbox"]#sciences:checked + label::before,
+    input[type="checkbox"]#bricolage:checked + input[type="hidden"] + label::before, input[type="checkbox"]#bricolage:checked + label::before,
+    input[type="checkbox"]#musique:checked + input[type="hidden"] + label::before, input[type="checkbox"]#musique:checked + label::before,
+    input[type="checkbox"]#jardin:checked + input[type="hidden"] + label::before, input[type="checkbox"]#jardin:checked + label::before,
+    input[type="checkbox"]#ConfrLecture:checked + input[type="hidden"] + label::before, input[type="checkbox"]#ConfrLecture:checked + label::before {
+        content: "✓";
+        background-color: #ED217C;
+        transform: scale(1.5);
+        z-index: 10;
+    }
+
+
+    input[type="checkbox"]#litterature:checked + input[type="hidden"] + label img, input[type="checkbox"]#litterature:checked + label img,
+    input[type="checkbox"]#sport:checked + input[type="hidden"] + label img, input[type="checkbox"]#sport:checked + label img,
+    input[type="checkbox"]#theatre:checked + input[type="hidden"] + label img, input[type="checkbox"]#theatre:checked + label img,
+    input[type="checkbox"]#cuisine:checked + input[type="hidden"] + label img, input[type="checkbox"]#cuisine:checked + label img,
+    input[type="checkbox"]#sciences:checked + input[type="hidden"] + label img, input[type="checkbox"]#sciences:checked + label img,
+    input[type="checkbox"]#bricolage:checked + input[type="hidden"] + label img, input[type="checkbox"]#bricolage:checked + label img,
+    input[type="checkbox"]#musique:checked + input[type="hidden"] + label img, input[type="checkbox"]#musique:checked + label img,
+    input[type="checkbox"]#jardin:checked + input[type="hidden"] + label img, input[type="checkbox"]#jardin:checked + label img,
+    input[type="checkbox"]#ConfrLecture:checked + input[type="hidden"] + label img, input[type="checkbox"]#ConfrLecture:checked + label img {
+        transform: scale(0.9);
+        box-shadow: 0 0 5px #333;
+        z-index: 1;
+    }

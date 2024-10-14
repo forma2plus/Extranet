@@ -1,0 +1,60 @@
+﻿
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <link rel="apple-touch-icon" sizes="76x76" href="~/Content/images/favicon.png">
+    <link rel="icon" type="image/png" href="~/Content/images/favicon.png">
+
+    <meta content='width=device-width, initial-scale=1.0' name='viewport' />
+
+    <link rel="stylesheet" href="~/Content/Editer.css">
+    <link rel="stylesheet" href="~/Content/script/StyleSheet7.css">
+
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script type="text/javascript" src="~/Scripts/Editprofil.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery.validate.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery.validate.js"></script>
+
+    <script type="text/javascript" src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <title>Forma2+ - @ViewBag.Title </title>
+
+</head>
+<body style="background-color:#003D82">
+
+
+    @RenderBody()
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }
+    <script > 
+  function suivantes() {
+        let links = document.querySelectorAll('.nav-link');
+       for (let i = 0; i < links.length; i++) {
+            links[i].addEventListener('click', function () {
+             /* for (let j = 0; j < links.length; j++)
+                   links[j].classList.remove('active');
+               this.classList.add('active');
+               /* var current = document.getElementsByClassName("active");
+
+                // If there's no active class
+                if (current.length > 0) {
+                    current[0].className = current[0].className.replace(" active", "");
+                }
+
+                // Add the active class to the current/clicked button
+                this.className += " active";*/
+              links[i].classList.add('active');
+        alert(links[i]);
+            });
+            }
+    </script>
+    <script src="~/Scripts/Editprofil.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+</body>
+</html>

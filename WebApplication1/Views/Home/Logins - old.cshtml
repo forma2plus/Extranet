@@ -1,0 +1,326 @@
+﻿@model WebApplication1.Models.StagiaireModel
+@using WebApplication1.Controllers
+
+@{
+    Layout = "~/Views/Shared/_style_login.cshtml";
+}
+@{
+    ViewBag.Title = "Intro";
+}
+
+<div class="en-page">
+    <div class="en-container py-3">
+        <div class="container">
+            <div hidden>
+                @ViewBag.response
+                @ViewBag.url
+                @ViewBag.responsesPlanifier
+                @ViewBag.urlplan
+                @ViewBag.Reponse
+
+            </div>
+            <div hidden>
+                @ViewBag.Note_globale
+                @ViewBag.permision
+                @Model.type_mail
+            </div>
+            <div class="row mb-5">
+                <div class="col">
+                    <div class="en-title-top text-center mb-3">
+                        <h2>Evaluation langue</h2>
+                    </div>
+                    <div class="stagiaire-name">
+                        <i class='bx bxs-user-circle'></i>
+                        @Html.ValueFor(model => model.Civilite) @Html.ValueFor(model => model.nom) @Html.ValueFor(model => model.prenom)
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-center align-items-center mb-5">
+
+                <div class="col-md-5 col-lg-6 col-xl-4 mb-3 mb-md-0">
+                    <div class="en-brand-container mb-0 text-left">
+                        <a href="" class="en-brand brand-home">
+                            <img src="~/Content/login/images/forma2plus-logo-home.svg" alt="">
+                        </a>
+                        @{
+                            // Générer un token avec les valeurs Id et Az
+                            string q = TokenManager.GenerateToken(Model.Numero);
+                        }
+                        @{
+                            string deuxPremieres = Model.nom.Substring(0, 2);
+                            string nom = Model.nom;
+                            string origin = "https://extranet.forma2plus.com/Profil/logins?t=@q";
+                            var mail = Model.mail;
+                        }
+
+                        @if (!string.IsNullOrEmpty(origin) && !string.IsNullOrEmpty(mail))
+                        {
+
+
+
+                            <a href="@($"https://incident.forma2plus.com/?nom={nom}&origin={origin}&mail={mail}")" class="inc-btn">
+                                <span>Report online event</span>
+                                <img src="~/Content/images/inc-icon.svg" alt="">
+                            </a>
+                        }
+                        else
+                        {
+
+                            <a href="@($"https://incident.forma2plus.com/?nom=&origin=&mail=")" class="inc-btn">
+                                <span>Report online event</span>
+                                <img src="~/Content/images/inc-icon.svg" alt="">
+                            </a>
+                        }
+                    </div>
+                </div>
+
+
+                <div class="col-md-7 col-lg-5">
+                    <div class="en-btn-container">
+                        <div class="en-btn-left">
+                            <a href="@Url.Action("Monprofil", new { q })" class="en-btn-home en-bg-green">
+                                <i class='bx bxs-user-rectangle'></i>
+                                Compléter votre fiche stagiaire
+                            </a>
+                        </div>
+
+                        @{
+                            int p = 1;
+                            if (@Model.type_mail == "B3")
+                            {
+                                p = 3;
+                            }
+                            else if (@Model.type_mail == "C3")
+                            {
+                                p = 3;
+                            }
+
+                            else if (@Model.type_mail == "A1")
+                            {
+                                p = 5;
+                            }
+                            else if (@Model.type_mail == "A2")
+                            {
+                                p = 5;
+                            }
+
+                            else if (@Model.type_mail == "P2")
+                            {
+                                p = 2;
+                            }
+                            else if (@Model.type_mail == "A2")
+                            {
+                                p = 5;
+                            }
+                            else if (@Model.type_mail == "P1")
+                            {
+                                p = 1;
+                            }
+                            else if (@Model.type_mail == "01")
+
+                            {
+                                p = 3;
+                            }
+                            else if (@Model.type_mail == "N9")
+
+                            {
+                                p = 7;
+                            }
+                            else if (@Model.type_mail == "E0")
+
+                            {
+                                p = 1;
+                            }
+                            else
+
+                            {
+                                p = 0;
+                            }// public bool hasprofils(int numero_stage)
+                             // {
+
+
+                            // return hasprofil;
+                            // }
+
+
+                        }
+
+
+
+                        <div class="en-btn-right">
+
+
+
+                            @{
+                                if (@Model.type_mail != "N9")
+                                {
+                                    if (@ViewBag.permision != 0)
+                                    {
+
+                                        if (Model.type_mail == "01")
+
+                                        {
+
+                                            <a href="@ViewBag.urlwebcal" class="en-btn-home en-bg-pink">
+                                                <i class='bx bxs-calendar-check'></i>
+                                                Planifier un rendez-vous pour votre évaluation par téléphone
+                                            </a>
+
+
+
+                                        }
+                                        else
+                                        {
+                                            if (@ViewBag.permision != 0)
+                                            {
+
+                                                if (p != 0)
+                                                {
+                                                    //    if (@ViewBag.Note_globale != 0)
+                                                    //  {
+
+                                                    <a href="@ViewBag.urlwebcal" class="en-btn-home en-bg-pink">
+                                                        <i class='bx bxs-calendar-check'></i>
+                                                        Planifier un rendez-vous pour votre évaluation par téléphone
+                                                    </a>
+
+
+                                                    //}
+                                                }
+                                            }
+
+                                        }
+                                    }
+                                }
+                            }
+
+                            @{
+                                if (@ViewBag.permision != 0)
+                                {
+
+                                    if (@Model.type_mail != "01")
+                                    {
+                                        if (p != 0)
+                                        {
+
+
+                                            <a href="https://qcm.forma2plus.com/#!/en/auth/debut/@Model.Numero/1" class="en-btn-home en-bg-blue">
+                                                <i class='bx bx-list-check'></i>
+                                                Réaliser votre test Questionnaire à Choix Multiples (test grammatical)
+                                            </a>
+
+
+
+                                        }
+                                    }
+
+                                }
+                            }
+                            @{
+                                if (@ViewBag.permision != 0)
+                                {
+
+                                    if (@Model.type_mail == "L1")
+                                    {
+                                        if (p == 0)
+                                        {
+
+
+                                            <a href="https://qcm.forma2plus.com/#!/es/auth/debut/@Model.Numero/1" class="en-btn-home en-bg-blue">
+                                                <i class='bx bx-list-check'></i>
+                                                Réaliser votre test Questionnaire à Choix Multiples (test grammatical)
+                                            </a>
+
+
+
+                                        }
+                                    }
+                                    if (@Model.type_mail == "L2")
+                                    {
+                                        if (p == 0)
+                                        {
+
+
+                                            <a href="https://qcm.forma2plus.com/#!/de/auth/debut/@Model.Numero/1" class="en-btn-home en-bg-blue">
+                                                <i class='bx bx-list-check'></i>
+                                                Réaliser votre test Questionnaire à Choix Multiples (test grammatical)
+                                            </a>
+
+
+
+                                        }
+                                    }
+                                    if (@Model.type_mail == "L3")
+                                    {
+                                        if (p == 0)
+                                        {
+
+
+                                            <a href="https://extranet.forma2plus.com/stagiaires/DOC/Qcm_italien.doc" class="en-btn-home en-bg-blue">
+                                                <i class='bx bx-list-check'></i>
+                                                Télécharger mon test écrit (QCM)
+                                            </a>
+
+
+
+                                        }
+                                    }
+                                    if (@Model.type_mail == "L4")
+                                    {
+                                        if (p == 0)
+                                        {
+
+
+                                            <a href="https://extranet.forma2plus.com/stagiaires/DOC/Qcm_francais.doc" class="en-btn-home en-bg-blue">
+                                                <i class='bx bx-list-check'></i>
+                                                Télécharger mon test écrit (QCM)
+                                            </a>
+
+
+
+                                        }
+                                    }
+
+                                }
+
+
+                            }
+
+
+                        </div>
+                    </div>
+
+
+
+
+                </div>
+            </div>
+
+
+
+        </div>
+
+        <div class="footer mt-auto">
+            <div class="card-margin">
+
+
+                <span>© 2024 Extranet by forma2plus.com</span>
+            </div>
+            <div style="background-color: #333; color: #fff; padding: 10px; position: fixed; bottom: 0; width: 100%;">
+                <p style="margin: 0;">
+                    <span style="font-size:smaller">Les informations recueillies sont enregistrées dans un fichier informatisé par FORMA 2+, Elles sont conservées pendant 10 ans. Vous pouvez accéder aux données vous concernant, les rectifier, demander leur effacement ou exercer votre droit à la limitation du traitement de vos données par mail a informatique@forma2plus.com</span><br />
+
+                      </p>
+            </div>
+        </div>
+       
+    </div>
+
+
+
+
+
+
+
+                  
+         

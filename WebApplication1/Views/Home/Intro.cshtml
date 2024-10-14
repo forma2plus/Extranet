@@ -1,0 +1,236 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_style.cshtml";
+}
+@{
+    ViewBag.Title = "Intro";
+}
+@{ 
+    var typemail = Session["type_mail"];
+        }
+    <div class="container">
+        <div class="row ">
+            <div class="col-md-4 fondbleuciel" style="width:25%;">
+
+                <div id="logoentete">
+                </div>
+                <div class="access">
+                    Accès stagiaire<br>Evaluation langue
+
+                </div>
+                <div class="nom">
+                    <table><tr><td><i class="material-icons">account_circle</i> </td><td>@Session["civilite"] @Session["nom"]  </td></tr><tr><td colspan="2">@Session["prenom"]</td></tr></table>
+                </div>
+                <div>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="titre">
+                    <p class="title"><b>Bienvenue sur la plateforme d'évaluation langue de Forma2+</b></p>
+                    <!-- <p><b> Séléctionnez la tâche que vous voulez faire</b></p>
+        -->
+                    <div class="row" style="margin-top:5%">
+                        <div class="col-md-4">
+                            <div class="card">
+                                <div class="card-body">
+                                    <a href="@Url.Action("Editprofil", new { id = @Session["numero"], datecrea=Session["datecrea"] })">
+
+                                        <div class="card-title sary" style="margin-bottom:40%;">
+                                            <div class="figures">
+
+                                                <img class="image-main" src="~/Content/images/resume.png">
+                                                <img class="image-hover" src="~/Content/images/resume-survol.png">
+
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <p class="card-text">Compléter votre fiche stagiaire</p>
+
+                                </div>
+                            </div>
+                        </div>
+                       
+                            @{
+                                int p = 1;
+                                if (typemail == "B3")
+                                {
+                                    p = 3;
+                                }
+                                else if (Session["type_mail"] == "C3")
+                                {
+                                    p = 3;
+                                }
+
+                                else if (Session["type_mail"] == "A1")
+                                {
+                                    p = 5;
+                                }
+                                else if (Session["type_mail"] == "A2")
+                                {
+                                    p = 5;
+                                }
+
+                                else if (Session["type_mail"] == "P2")
+                                {
+                                    p = 2;
+                                }
+                                else if (Session["type_mail"] == "A2")
+                                {
+                                    p = 5;
+                                }
+                                else if (Session["type_mail"] == "P1")
+                                {
+                                    p = 1;
+                                }
+                                else if (Session["type_mail"] == "01")
+
+                                {
+                                    p = 3;
+                                }
+                                else if (Session["type_mail"] == "N9")
+
+                                {
+                                    p = 7;
+                                }
+                                else
+
+                                {
+                                    p = 0;
+                                }// public bool hasprofils(int numero_stage)
+                                 // {
+
+
+                                // return hasprofil;
+                                // }
+
+
+                            }
+
+
+
+
+
+
+
+                            @{
+                                if (Session["type_mail"] != "N9")
+                                {
+                                    if (@ViewBag.permision != 0)
+                                    {
+
+                                        if (Session["type_mail"] == "01")
+
+                                        {
+                                            <div class="col-md-4" id="btncadre">
+                                                <div class="card">
+                                                    <div class="card-body ">
+                                                        <a style="text-decoration:none;" href="@ViewBag.urlwebcal">
+                                                            <div class="card-title sary" style="margin-bottom:30%;">
+                                                                <div class="figures">
+
+                                                                    <img class="image-main" src="~/Content/images/calendar.png">
+                                                                    <img class="image-hover" src="~/Content/images/calendar-survol.png">
+
+                                                                </div>
+                                                            </div>
+
+                                                            <p class="card-text" style="text-decoration : None ;">Planifier un rendez-vous pour votre évaluation par téléphone</p>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4" id="btncadre">
+                                                <div class="card">
+                                                    <div class="card-body ">
+                                                        <a href="@ViewBag.urlwebcal">
+
+                                                            <div class="card-title sary" style="margin-bottom:42%;">
+                                                                <div class="figures">
+
+                                                                    <img class="image-main" src="~/Content/images/calendar.png">
+                                                                    <img class="image-hover" src="~/Content/images/calendar-survol.png">
+
+                                                                </div>
+                                                            </div>
+
+                                                            <p class="card-text">Planifier un rendez-vous pour votre test TOEIC</p>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        }
+                                        else
+                                        {
+                                            if (@ViewBag.permision != 0)
+                                            {
+
+                                                if (p != 0)
+                                                {
+                                                    //    if (@ViewBag.Note_globale != 0)
+                                                    //  {
+                                                    <div class="col-md-4" id="btncadre">
+                                                        <div class="card">
+                                                            <div class="card-body ">
+                                                                <a style="text-decoration:none;" href="@ViewBag.urlwebcal">
+                                                                    <div class="card-title sary" style="margin-bottom:30%;">
+                                                                        <div class="figures">
+
+                                                                            <img class="image-main" src="~/Content/images/calendar.png">
+                                                                            <img class="image-hover" src="~/Content/images/calendar-survol.png">
+
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <p class="card-text" style="text-decoration : None ;">Planifier un rendez-vous pour votre évaluation par téléphone</p>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    //}
+                                                }
+                                            }
+
+                                        }
+                                    }
+                                }
+                            }
+
+                            @{
+                                if (@ViewBag.permision != 0)
+                                {
+
+                                    if (Session["type_mail"] != "01")
+                                    {
+                                        if (p != 0)
+                                        { <div class="col-md-4" id="btncadre">
+                                                <div class="card">
+
+                                                    <div class="card-body ">
+                                                        <a style="text-decoration:none;" href="https://qcm.forma2plus.com/#!/stagiaire/@Model.Numero/@p">
+                                                            <div class="card-title sary" style="margin-bottom:20%;">
+                                                                <div class="figures">
+
+                                                                    <img class="image-main" src="~/Content/images/XMLID_1203_.png">
+                                                                    <img class="image-hover" src="~/Content/images/XMLID_1203_survol.png">
+
+                                                                </div>
+                                                            </div>
+
+                                                            <p class="card-text" style="text-decoration:none;">Réaliser votre test Questionnaire à Choix Multiples (test grammatical de base)</p>
+                                                        </a>
+                                                    </div>
+
+
+                                                </div>
+                                            </div>
+                                        }
+                                    }
+
+                                }
+                            }
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </div>

@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <link rel="apple-touch-icon" sizes="76x76" href="~/Content/images/favicon.png">
+    <link rel="icon" type="image/png" href="~/Content/images/favicon.png">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+    <meta content='width=device-width, initial-scale=1' name='viewport' />
+    <meta http-equiv="refresh" content="5;url=@Url.Action("Index", "Home")">
+
+    <link rel='stylesheet' href='~/Content/login/css/boxicons.min.css'>
+    <link rel="stylesheet" href="~/Content/login/css/bootstrap.rtl.min.css">
+    <link rel="stylesheet" href="~/Content/login/css/login.css">
+    <link rel="stylesheet" href="~/Content/login/css/style.css">
+    <title>Forma2+ - @ViewBag.Title </title>
+
+</head>
+<body class="font">
+
+
+    @RenderBody()
+    <script>
+    $(document).ready(function () {
+        $('#remember').change(function () {
+            if ($(this).is(':checked')) {
+                // Remplir le champ caché avec la valeur du champ d'adresse e-mail
+                $('#Email').val($('#mail').val());
+            } else {
+                // Réinitialiser le champ caché s'il n'est pas cochée
+                $('#Email').val('');
+            }
+        });
+    });
+    </script>
+</body>
+</html>

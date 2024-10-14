@@ -1,0 +1,142 @@
+﻿
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Extranet</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="~/Content/bootstrap-grid.min.css">
+    <link rel="stylesheet" href="~/Content/style.css">
+    <link rel="stylesheet" href="~/Content/StyleSheet1.css">
+    <script src="https://cdn.tiny.cloud/1/5t4qw6hg9jzm9pcjdoh187jgliy2pironhxknlj5ekytjo2b/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
+</head>
+<body>
+    <div class="content">
+
+        <div class="wrap">
+
+            <!-- sidebar -->
+            <aside class="side-bar">
+                <div class="side-bar-inner">
+
+                    <!-- logo -->
+                    <div class="brand-container">
+                        <a href=""><div class="brand"></div></a>
+                    </div>
+
+                    <!-- user side bar -->
+                    <div class="user-aside-container">
+                        <div class="user-aside">
+                            <div class="avatar-aside">
+                                <img src="~/Content/images/user.png" alt="" class="img-radius">
+                                <span class="status online"></span>
+                            </div>
+                            <span>Admin</span>
+                        </div>
+
+                    </div>
+
+                    <!-- menu de navigation -->
+                    <div class="nav-container mb-3">
+
+                        <ul class="nav-aside">
+                            <li class="nav-item">
+                                <a href="/gestion/Home">
+                                    <i class="fa-solid fa-gauge-high"></i>
+                                    <span>Tableau de bord</span>
+                                </a>
+                            </li>
+                            <li class="nav-item current-page">
+                                <a href="/gestion/Home/Informationstagiaire">
+                                    <i class="fa-solid fa-user-graduate"></i>
+                                    <span>Pré-stagiaire</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/gestion/Home/Evaluation">
+                                    <i class="fa-solid fa-file-circle-check"></i>
+                                    <span>Evaluation stagiaire</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/gestion/Home/Informationstagiaire" class="">
+                                    <i class="fa-solid fa-clipboard-list"></i>
+                                    <span>Suivi</span>
+                                </a>
+                                <ul>
+                                    <li class="sub-nav-item">
+                                        <a href="/gestion/Home/CommandFacture">
+                                            <i class="fa-regular fa-circle"></i>
+                                            <span>Suivi des commandes </span>
+                                        </a>
+                                    </li>
+                                    <li class="sub-nav-item">
+                                        <a href="/gestion/Home/ListeAFacturer">
+                                            <i class="fa-regular fa-circle"></i>
+                                            <span>Facturation</span>
+                                        </a>
+                                    </li>
+                                    <li class="sub-nav-item">
+                                        <a href="">
+                                            <i class="fa-regular fa-circle"></i>
+                                            <span>Reglements</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="nav-item">
+                                <a href="">
+                                    <i class="fa-solid fa-user"></i>
+                                    <span>Fin de stage</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="">
+                                    <i class="fa-solid fa-user-group"></i>
+                                    <span>Listes prof et individu</span>
+                                </a>
+                            </li>
+                        </ul>
+
+                    </div>
+
+                    <!-- proposition commerciale -->
+                    <div class="en-btn">
+                        <div class="nav-item">
+                            <a href="">
+                                <i class="fa-solid fa-bullseye"></i>
+                                <span>Proposition commerciale</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+
+            <div class="main-container">
+
+
+                @RenderBody()
+            </div><!-- /.container-fluid -->
+        </div><!-- /.main -->
+    </div><!-- /.main-container -->
+    </div><!-- /.wrap -->
+    <!-- pied de pages -->
+    <div class="footer">
+        <div class="brand-footer-container">
+            <a href=""><div class="brand-footer"></div></a>
+        </div>
+    </div>
+
+
+    </div><!-- /.content -->
+    <script src="~/Scripts/app.js"></script>
+
+    @Scripts.Render("~/Content/Scripts/Export.js")
+    @Scripts.Render("~/Content/Scripts/SendMail.js")
+</body>
+</html>

@@ -1,0 +1,26 @@
+﻿<div id="cookieConsent" style="background-color: #333; color: #fff; padding: 10px; position: fixed; bottom: 0; width: 100%; display: none;">
+    <p style="margin: 0;">
+        Nous utilisons des cookies pour améliorer votre expérience.
+        <a href="/Home/Privacy" style="color: #FFD700;">En savoir plus</a>
+        <button id="acceptCookies" style="margin-left: 10px; padding: 5px 10px; background-color: #4CAF50; color: #fff; border: none; cursor: pointer;">Accepter</button>
+    </p>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // Vérifier si le cookie existe déjà
+        if (!document.cookie.split('; ').find(row => row.startsWith('CookieConsent='))) {
+            // Si le cookie n'existe pas, afficher la bannière
+            document.getElementById("cookieConsent").style.display = "block";
+        }
+
+        // Gérer le clic sur le bouton "Accepter"
+        document.getElementById("acceptCookies").addEventListener("click", function() {
+            // Créer un cookie pour enregistrer le consentement
+            document.cookie = "CookieConsent=Accepted; path=/; max-age=" + 60*60*24*30; // Expire dans 30 jours
+            // Masquer la bannière après acceptation
+            document.getElementById("cookieConsent").style.display = "none";
+        });
+    });
+</script>
+

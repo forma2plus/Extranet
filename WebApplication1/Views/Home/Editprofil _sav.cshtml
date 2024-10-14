@@ -1,0 +1,983 @@
+﻿@model WebApplication1.Models.StagiaireModel
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha256-3dkvEK0WLHRJ7/Csr0BZjAWxERc5WH7bdeUya2aXxdU= sha512-+L4yy6FRcDGbXJ9mPG8MT/3UCDzwR9gPeyFNMCtInsol++5m3bk2bXWKdZjvybmohrAsn3Ua5x8gfLnbE1YkOg==" crossorigin="anonymous">
+    <!-- Bootstrap Core CSS -->
+    <!--     <link href="css/bootstrap.min.css" rel="stylesheet"> -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha256-7s5uDGW3AHqw6xtJmNNtr+OBRJUlgkNJEo78P4b0yRw= sha512-nNo+yCHEyn0smMxSswnf/OnX6/KwJuZTlNZBjauKhTK0c+zT+q5JOCx0UFhXQ6rJR9jg6Es8gPuD2uZcYDLqSw==" crossorigin="anonymous">
+
+    <!-- Custom CSS -->
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+    @using (Html.BeginForm())
+    {
+@Html.AntiForgeryToken()
+         <div class="container">
+             <div class="myprofil">
+                 <div class="row gutters-sm">
+                     <div class="col-md-4 mb-3 ">
+                         <div class="card bg-transparent">
+                             <div class="card-body position-fixed">
+                                 <div class="d-flex flex-column align-items-center text-center">
+                                     <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="110">
+                                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                                         <ul class="navbar-nav">
+                                             <li class="nav-item">
+                                                 <a class="nav-link js-scroll-trigger" href="#signaletique">Signalétique</a>
+                                             </li>
+                                             <li class="nav-item">
+                                                 <a class="nav-link js-scroll-trigger" href="#Disponibilite">Disponibilité</a>
+                                             </li>
+                                             <li class="nav-item">
+                                                 <a class="nav-link js-scroll-trigger" href="#Outils">Outils internet</a>
+                                             </li>
+                                             <li class="nav-item">
+                                                 <a class="nav-link js-scroll-trigger" href="#profill">Profil linguistique</a>
+                                             </li>
+                                             <li class="nav-item">
+                                                 <a class="nav-link js-scroll-trigger" href="#Personal">Personal interest</a>
+                                             </li>
+                                             <li class="nav-item">
+                                                 <input type="submit" value="Enregistrer la Modification" class="btn btn-default" />
+                                             </li>
+                                         </ul>
+                                     </div>
+                                 </div>
+                             </div>
+                         </div>
+                     </div>
+                     <div class="col-md-8">
+                         <div class="tab-content profile-tab" id="myTabContent">
+                             <div class="card bg-transparent mb-3">
+                                 <h3 class="centre">Dossier Personnel</h3>
+                                 <section class="resume-section d-column" id="signaletique">
+                                     <h3 class="ml-5 pl-5">Signalétique</h3>
+                                     <div class="">
+                                         <ul class="info_card">
+                                             <li class="col-md-10 col-xs-12 ml-5 border-1" ng-if="">
+                                                 <div class="card_outter border-1">
+                                                     <div class="card horizontal">
+                                                         <div class="card-stacked">
+                                                             <div class="card-content card_info_signaletique">
+
+                                                                 <table class="table info-signaletique">
+                                                                     <tr>
+                                                                         <td>
+                                                                             <label class="col-md-12 label-text" for="civilite">Civilité : </label>
+                                                                             @Html.DropDownListFor(model => model.Civilite, new SelectList(new object[] { @Session["civilite"], "Mr", "Mme", "Mlle" }, Model.Civilite))
+
+                                                                         </td>
+                                                                         <td>
+                                                                             <b> <label class="col-md-12 label-text" for="nom">Nom :</label> </b>
+                                                                             @Html.EditorFor(model => model.Nom, new { htmlAttributes = new { @class = "col-md-12" } })
+                                                                         </td>
+                                                                         <td hidden><b> @Html.EditorFor(model => model.Numero, new { htmlAttributes = new { @class = " col-md-8" } })</b></td>
+
+                                                                     </tr>
+                                                                     <tr>
+                                                                         <td>
+                                                                             <b> <label class="col-md-12 label-text" for="prenom ">Prénom : </label></b>
+                                                                             @Html.EditorFor(model => model.Prenom, new { htmlAttributes = new { @class = "col-md-12" } })
+                                                                         </td>
+
+                                                                         <td>
+                                                                             <b><label class="col-md-12 label-text" for="Available Service Area">Departement/service :</label></b>
+                                                                             @Html.EditorFor(model => model.Departement, new { htmlAttributes = new { @class = "col-md-12" } })
+                                                                         </td>
+                                                                     </tr>
+                                                                     <tr>
+                                                                         <td>
+                                                                             <b><label class="col-md-12 label-text" for="societe">Société :</label></b>
+                                                                             @Html.EditorFor(model => model.Societe, new { htmlAttributes = new { @class = "col-md-12" } })
+                                                                         </td>
+
+
+                                                                         <td>
+                                                                             <b> <label class="col-md-4 label-text">Fonction :</label></b>
+                                                                             @Html.EditorFor(model => model.Fonction, new { htmlAttributes = new { @class = "col-md-12" } })
+                                                                         </td>
+                                                                     </tr>
+                                                                     <tr>
+                                                                         <td>
+                                                                             <b> <label class="col-md-6 label-text" for="telephone">Téléphone :</label></b>
+                                                                             @Html.EditorFor(model => model.Telephone, new { htmlAttributes = new { @class = "col-md-12" } })
+                                                                         </td>
+
+                                                                         <td>
+                                                                             <b><label class="col-md-6 label-text" for="Phone number ">Autre : </label></b>
+                                                                             @Html.EditorFor(model => model.Portable, new { htmlAttributes = new { @class = "col-md-12" } })
+                                                                         </td>
+                                                                     </tr>
+
+                                                                     <tr>
+                                                                         <td>
+                                                                             <b><label class="col-md-8 label-text" for="Email Address">Adresse e-mail :</label></b>
+                                                                             @Html.EditorFor(model => model.Mail, new { htmlAttributes = new { @class = "col-md-12" } })
+                                                                         </td>
+                                                                     </tr>
+                                                                 </table>
+                                                             </div>
+                                                         </div>
+
+                                                     </div>
+                                                 </div>
+                                             </li>
+                                         </ul>
+                                     </div>
+                                 </section>
+                             </div>
+
+                         </div>
+                         <div class="tab-content profile-tab" id="myTabContent">
+                             <section class="resume-section d-column" id="Disponibilite">
+                                 <div class="card bg-transparent mb-3">
+                                     <h3 class="ml-5 pl-5">Disponibilité</h3>
+                                     <div class="">
+                                         <ul class="info_card">
+                                             <li class="col-md-10 col-xs-12  ml-5 border-1" ng-if="">
+                                                 <div class="card_outter">
+                                                     <div class="card horizontal">
+                                                         <div class="card-stacked">
+                                                             <div class="card-content card_info_signaletique">
+
+                                                                 <table class="table info-signaletique">
+
+                                                                     <tr>
+                                                                         <td>
+                                                                             <b> <label class="col-md-12 label-text" for="Availability time">Temps personnel (heures) :</label></b>
+                                                                             @Html.EditorFor(model => model.Tempsperso, new { htmlAttributes = new { @class = "col-md-12" } })
+                                                                         </td>
+
+                                                                         <td>
+                                                                             <b> <label class="col-md-12 label-text" for="Availability time">Temps professionnel (heures) :</label></b>
+                                                                             @Html.EditorFor(model => model.Tempsprof, new { htmlAttributes = new { @class = "col-md-12" } })
+                                                                         </td>
+                                                                     </tr>
+
+                                                                     <tr>
+                                                                         <td>
+                                                                             <b><label class="col-md-12 label-text" for="Owns jour">Jours souhaites : </label></b>
+                                                                             @Html.EditorFor(model => model.Joursouhait, new { htmlAttributes = new { @class = "col-md-12" } })
+                                                                         </td>
+
+                                                                         <td>
+                                                                             <b> <label class="col-md-12 label-text" for="Working Experience (time period)">Absence prevues pour les 6 mois à venir :</label></b>
+                                                                             @Html.EditorFor(model => model.Nbabscprevue, new { htmlAttributes = new { @class = "col-md-12" } })
+                                                                         </td>
+                                                                     </tr>
+                                                                 </table>
+                                                             </div>
+                                                         </div>
+
+                                                     </div>
+                                                 </div>
+                                             </li>
+                                         </ul>
+
+                                     </div>
+                                 </div>
+                             </section>
+                         </div>
+                         <div class="tab-content profile-tab" id="myTabContent">
+                             <section class="resume-section d-column" id="Outils">
+                                 <div class="card bg-transparent mb-3">
+                                     <h3 class="ml-5 pl-5">Outils internet</h3>
+                                     <div class="">
+                                         <ul class="info_card">
+                                             <li class="col-md-10 col-xs-12  ml-5 border-1" ng-if="">
+                                                 <div class="card_outter">
+                                                     <div class="card horizontal">
+                                                         <div class="card-stacked">
+                                                             <div class="card-content card_info_signaletique">
+
+                                                                 <h2 class="centrer"> <i class="material-icons">network_wifi</i>Accès à Internet </h2>
+                                                                 <p class="centrer"><b>Vous utilisez un PC avec une connexion</b> </p>
+                                                                 <table class="table info-signaletique">
+
+                                                                     <tr>
+                                                                         <td>
+                                                                             <div class="col-md-4">
+                                                                                 <p>Personnel :</p>
+                                                                                 @if (Model.Accesnetperso == true)
+                                                                                 {<div>
+
+                                                                                         @Html.RadioButtonFor(expression: model => model.Accesnetperso, value: true, htmlAttributes: new { @checked = true }) Oui
+                                                                                         @Html.RadioButtonFor(expression: model => model.Accesnetperso, value: false) Non
+                                                                                     </div> }
+                                                                                 else
+                                                                                 {
+                                                                 <div>
+
+                                                                     @Html.RadioButtonFor(expression: model => model.Accesnetperso, value: true) Oui
+                                                                     @Html.RadioButtonFor(expression: model => model.Accesnetperso, value: false, htmlAttributes: new { @checked = true }) Non
+                                                                 </div>}
+                                                                             </div>
+                                                                         </td>
+
+                                                                         <td>
+                                                                             <div class="col-md-12">
+                                                                                 <p>Professionnel :</p>
+                                                                                 @if (Model.Accesnetpro == true)
+                                                                                 {<div>
+
+                                                                                         @Html.RadioButtonFor(expression: model => model.Accesnetpro, value: true, htmlAttributes: new { @checked = true })Oui
+                                                                                         @Html.RadioButtonFor(expression: model => model.Accesnetpro, value: false) Non
+                                                                                     </div> }
+                                                                                 else
+                                                                                 {
+                                                                 <div>
+
+                                                                     @Html.RadioButtonFor(expression: model => model.Accesnetpro, value: true) Oui
+                                                                     @Html.RadioButtonFor(expression: model => model.Accesnetpro, value: false, htmlAttributes: new { @checked = true }) Non
+                                                                 </div>}
+                                                                             </div>
+                                                                         </td>
+                                                                     </tr>
+
+
+                                                                     <tr>
+                                                                         <td>
+                                                                             <b><label class="col-md-12 label-text" for="E-lerming">Souhaitez vous faire du <b>"E-learning"</b>en complement de vos cours ?</label></b>
+                                                                             @if (Model.E_learning == true)
+                                                                             {<div>
+
+                                                                                     @Html.RadioButtonFor(expression: model => model.E_learning, value: true, htmlAttributes: new { @checked = true }) Oui
+                                                                                     @Html.RadioButtonFor(expression: model => model.E_learning, value: false) Non
+                                                                                 </div> }
+                                                                             else
+                                                                             {
+                                                             <div>
+
+                                                                 @Html.RadioButtonFor(expression: model => model.E_learning, value: true) Oui
+                                                                 @Html.RadioButtonFor(expression: model => model.E_learning, value: false, htmlAttributes: new { @checked = true }) Non
+                                                             </div>}
+                                                                         </td>
+
+                                                                     </tr>
+                                                                 </table>
+                                                             </div>
+                                                         </div>
+
+                                                     </div>
+                                                 </div>
+                                             </li>
+                                             <li class="col-md-10 col-xs-12  ml-5 border-1" ng-if="">
+                                                 <div class="card_outter">
+                                                     <div class="card horizontal">
+                                                         <div class="card-stacked">
+                                                             <div class="card-content card_info_signaletique">
+
+                                                                 <p class="col-md-12"><i class='material-icons '>location_on</i>Lieu du stage</p>
+                                                                 <table class="table info-signaletique">
+
+                                                                     <tr>
+                                                                         <td>
+                                                                             <b><label class="col-md-4 label-text" for="rue">Rue :</label></b>
+                                                                             @Html.EditorFor(model => model.RueDuStage, new { htmlAttributes = new { @class = "col-md-12" } })
+                                                                         </td>
+
+                                                                         <td>
+                                                                             <b><label class="col-md-8 label-text" for="cede postale ">Code Postal : </label></b>
+                                                                             @Html.EditorFor(model => model.CPDuStage, new { htmlAttributes = new { @class = "col-md-12" } })
+                                                                         </td>
+                                                                     </tr>
+                                                                     <tr>
+                                                                         <td>
+                                                                             <b><label class="col-md-4 label-text" for="ville">Ville :</label></b>
+                                                                             @Html.EditorFor(model => model.VilleDuStage, new { htmlAttributes = new { @class = " col-md-12" } })
+                                                                         </td>
+                                                                     </tr>
+                                                                 </table>
+                                                             </div>
+                                                         </div>
+                                                     </div>
+                                                 </div>
+                                             </li>
+                                         </ul>
+                                     </div>
+                                 </div>
+                             </section>
+                         </div>
+                         <div class="tab-content profile-tab" id="myTabContent">
+                             <section class="resume-section d-column" id="profill">
+                                 <div class="card bg-transparent mb-3">
+                                     <h3 class="ml-5 pl-5">VOTRE PROFIL LINGUISTIQUE</h3>
+                                     <div class="">
+                                         <ul class="info_card">
+                                             <li class="col-md-10 col-xs-12  ml-5 border-1" ng-if="">
+                                                 <div class="card_outter">
+                                                     <div class="card horizontal">
+                                                         <div class="card-stacked">
+                                                             <div class="card-content card_info_signaletique">
+
+
+                                                                 <table class="table info-signaletique">
+
+                                                                     <tr>
+                                                                         <td>
+                                                                             <div class="col-md-8 row">
+                                                                                 <b><label class="col-md-12 label-text" for="Niveau scolaire">Niveau scolaire :</label></b>
+                                                                                 @Html.EditorFor(model => model.NiveauSco, new { htmlAttributes = new { @class = "new" } })
+                                                                             </div>
+                                                                         </td>
+
+                                                                         <td>
+                                                                             <b><label class="col-md-12 label-text" for="bac">Bac+ (ans) :</label> </b>
+                                                                             @Html.EditorFor(model => model.Nbansbac, new { htmlAttributes = new { @class = "col-md-4" } })
+                                                                         </td>
+                                                                     </tr>
+
+
+                                                                     <tr>
+                                                                         <td>
+                                                                             <b><label class="col-md-12 label-text" for="langue maternelle ">Langue maternelle :</label></b>
+                                                                             @Html.EditorFor(model => model.Languemat, new { htmlAttributes = new { @class = " col-md-12" } })
+                                                                         </td>
+
+                                                                         <td>
+                                                                             <b><label class="col-md-12 label-text" for="Formation anterieur ">Formation anterieure :</label></b>
+                                                                             @Html.EditorFor(model => model.FonctInterloc, new { htmlAttributes = new { @class = "col-md-12" } })
+                                                                         </td>
+
+                                                                     </tr>
+                                                                     <tr>
+                                                                         <td>
+                                                                             <b><label class="col-md-16 label-text" for="sejour">Sejours dans les pays anglophones </label></b>
+                                                                             @Html.EditorFor(model => model.paysanglo, new { htmlAttributes = new { @class = "col-md-12" } })
+                                                                         </td>
+                                                                     </tr>
+                                                                     <tr>
+                                                                         <td>
+                                                                             <div class="col-md-12">
+                                                                                 <p>General :</p>
+                                                                                 @if (Model.LangGen == true)
+                                                                                 {<div>
+
+                                                                                         @Html.RadioButtonFor(expression: model => model.LangGen, value: true, htmlAttributes: new { @checked = true }) Oui
+                                                                                         @Html.RadioButtonFor(expression: model => model.LangGen, value: false) Non
+                                                                                     </div> }
+                                                                                 else
+                                                                                 {
+                                                                 <div>
+
+                                                                     @Html.RadioButtonFor(expression: model => model.LangGen, value: true) Oui
+                                                                     @Html.RadioButtonFor(expression: model => model.LangGen, value: false, htmlAttributes: new { @checked = true }) Non
+                                                                 </div>}
+                                                                             </div>
+
+                                                                         </td>
+
+
+                                                                         <td>
+                                                                             <div class="col-md-12">
+                                                                                 <p>Profession :</p>
+                                                                                 @if (Model.LangPro == true)
+                                                                                 {<div>
+
+                                                                                         @Html.RadioButtonFor(expression: model => model.LangPro, value: true, htmlAttributes: new { @checked = true }) Oui
+                                                                                         @Html.RadioButtonFor(expression: model => model.LangPro, value: false) Non
+                                                                                     </div> }
+                                                                                 else
+                                                                                 {
+                                                                 <div>
+
+                                                                     @Html.RadioButtonFor(expression: model => model.LangPro, value: true) Oui
+                                                                     @Html.RadioButtonFor(expression: model => model.LangPro, value: false, htmlAttributes: new { @checked = true }) Non
+                                                                 </div>}
+                                                                             </div>
+                                                                         </td>
+                                                                     </tr>
+                                                                 </table>
+                                                                 
+                                                                 <table class="table info-signaletique">
+                                                                     <tr>
+
+                                                                         <td>
+                                                                             <b><label class="col-md-4 label-text" for="domaine">Domaines spécifique :</label></b>
+                                                                             @Html.TextAreaFor(model => model.AttentesSpec, new { cols = 15, @rows = 5, @class = "col" })
+
+                                                                         </td>
+                                                                     </tr>
+                                                                     <tr>
+
+                                                                         <td>
+                                                                             <b><label class="col-md-4 label-text" for="besoinsSpecif">Vos besoins linguistiques :</label></b>
+                                                                             @Html.TextAreaFor(model => model.BesoinsSpecif, new { cols = 15, @rows = 5, @class = "col" })
+
+                                                                         </td>
+                                                                     </tr>
+                                                                 </table>
+                                                             </div>
+                                                         </div>
+
+                                                     </div>
+                                                 </div>
+                                             </li>
+                                         </ul>
+
+                                     </div>
+                                 </div>
+                             </section>
+                         </div>
+                         <div class="tab-content profile-tab" id="myTabContent">
+                             <section class="resume-section d-column" id="Personal">
+                                 <div class="card bg-transparent mb-3">
+                                     <h3 class="ml-5 pl-5">PERSONNAL INTEREST</h3>
+                                     <div class="">
+                                         <ul class="info_card">
+                                             <li class="col-md-10 col-xs-12  ml-5 border-1" ng-if="">
+                                                 <div class="card_outter">
+                                                     <div class="card horizontal">
+                                                         <div class="card-stacked">
+                                                             <div class="card-content card_info_signaletique">
+
+
+                                                                 <p>Cinema Art et Entertainement</p>
+                                                                 <table class="table info-signaletique">
+                                                                     <tr>
+
+                                                                         <td>
+                                                                             <div class="col-md-8 row">
+                                                                                 @Html.EditorFor(model => model.Cinema_Arts1)
+                                                                                 <b><label class="col-md-12 label-text" for="Cinema_Arts1">Arts</label> </b>
+                                                                             </div>
+                                                                         </td>
+                                                                         <td>
+                                                                             <div class="col-md-8 row">
+                                                                                 @Html.EditorFor(model => model.Cinema_Arts2)
+                                                                                 <b><label class="col-md-12 label-text" for="Cinema_Arts2">Music</label> </b>
+                                                                             </div>
+                                                                         </td>
+                                                                         <td>
+                                                                             <div class="col-md-12 row">
+                                                                                 @Html.EditorFor(model => model.Cinema_Arts3, new { htmlAttributes = new { @class = "new" } })
+                                                                                 <b><label class="col-md-12 label-text" for="Cinema_Arts3">Cinema / Movies</label> </b>
+                                                                             </div>
+                                                                         </td>
+                                                                     </tr>
+                                                                     <tr>
+                                                                         <td>
+                                                                             <div class="col-md-8 row">
+                                                                                 @Html.EditorFor(model => model.Cinema_Arts4, new { htmlAttributes = new { @class = "new" } })
+                                                                                 <b><label class="col-md-12 label-text" for="Cinema_Arts4">Comedy Movies</label> </b>
+                                                                             </div>
+                                                                         </td>
+
+                                                                         <td>
+                                                                             <div class="col-md-8 row">
+                                                                                 @Html.EditorFor(model => model.Cinema_Arts5, new { htmlAttributes = new { @class = "new" } })
+                                                                                 <b><label class="col-md-12 label-text" for="Cinema_Arts5">Action Movies</label> </b>
+                                                                             </div>
+                                                                         </td>
+
+                                                                         <td>
+                                                                             <div class="col-md-12 row">
+
+                                                                                 @Html.EditorFor(model => model.Cinema_Arts6, new { htmlAttributes = new { @class = "new" } })
+                                                                                 <b><label class="col-md-12 label-text" for="Cinema_Arts6">Historical Drama Movies</label> </b>
+                                                                             </div>
+                                                                         </td>
+                                                                     </tr>
+                                                                     <tr>
+                                                                         <td>
+                                                                             <div class="col-md-8 row">
+
+                                                                                 @Html.EditorFor(model => model.Cinema_Arts7, new { htmlAttributes = new { @class = "new" } })
+                                                                                 <b><label class="col-md-12 label-text" for="Cinema_Arts7">Horror Movies</label></b>
+                                                                             </div>
+                                                                         </td>
+
+                                                                         <td>
+                                                                             <div class="col-md-8 row">
+
+                                                                                 @Html.EditorFor(model => model.Cinema_Arts8, new { htmlAttributes = new { @class = "new" } })
+                                                                                 <b><label class="col-md-12 label-text" for="Cinema_Arts8">Documentaries</label></b>
+                                                                             </div>
+                                                                         </td>
+                                                                         <td>
+                                                                             <div class="col-md-12 row">
+
+                                                                                 @Html.EditorFor(model => model.Cinema_Arts9, new { htmlAttributes = new { @class = "new" } })
+                                                                                 <b><label class="col-md-12 label-text" for="Cinema_Arts9">Science Fiction</label> </b>
+                                                                             </div>
+                                                                         </td>
+                                                                     </tr>
+                                                                     <tr>
+                                                                         <td>
+                                                                             <div class="col-md-8 row">
+
+                                                                                 @Html.EditorFor(model => model.Cinema_Arts10, new { htmlAttributes = new { @class = "new" } })
+                                                                                 <b><label class="col-md-12 label-text" for="Cinema_Arts10">Humour</label></b>
+                                                                             </div>
+                                                                         </td>
+                                                                         <td>
+                                                                             <div class="col-md-8 row">
+
+                                                                                 @Html.EditorFor(model => model.Cinema_Arts12, new { htmlAttributes = new { @class = "new" } })
+                                                                                 <b><label class="col-md-12 label-text" for="Cinema_Arts12">Theater</label></b>
+                                                                             </div>
+                                                                         </td>
+                                                                    
+                                                                         <td>
+                                                                             <div class="col-md-8 row">
+
+                                                                                 @Html.EditorFor(model => model.Cinema_Arts11, new { htmlAttributes = new { @class = "new" } })
+                                                                                 <b><label class="col-md-12 label-text" for="Cinema_Arts11">Dance</label></b>
+                                                                             </div>
+                                                                         </td>
+                                                                     <tr>
+
+                                                                     <td>
+                                                                         <div class="col-md-12 row">
+
+                                                                             @Html.EditorFor(model => model.Cinema_Arts13, new { htmlAttributes = new { @class = "new" } })
+                                                                             <b><label class="col-md-12 label-text" for="Cinema_Arts13">Drama Movies</label> </b>
+                                                                         </div>
+                                                                     </td>
+                                                                     </tr>
+
+                                                                 </table>
+
+                                                             </div>
+                                                         </div>
+
+                                                     </div>
+                                                 </div>
+                                             </li>
+                                             <li class="col-md-10 col-xs-12  ml-5 border-1" ng-if="">
+                                                 <div class="card_outter">
+                                                     <div class="card horizontal">
+                                                         <div class="card-stacked">
+                                                             <div class="card-content card_info_signaletique">
+
+
+                                                                 <p>Travelling, Lifestyle Culture</p>
+                                                                 <table class="table info-signaletique">
+                                                                     <tr>
+
+                                                                         <td>
+                                                                             <div class="col-md-8 row">
+                                                                                 @Html.EditorFor(model => model.Travelling_Lifestyle1)
+                                                                                 <b><label class="col-md-12 label-text" for="Travelling_Lifestyle1">Cooking</label> </b>
+                                                                             </div>
+                                                                         </td>
+                                                                         <td>
+                                                                             <div class="col-md-8 row">
+                                                                                 @Html.EditorFor(model => model.Travelling_Lifestyle2)
+                                                                                 <b> <label class="col-md-12 label-text" for="Travelling_Lifestyle2">Eating Out</label> </b>
+                                                                             </div>
+                                                                         </td>
+                                                                         <td>
+                                                                             <div class="col-md-12 row">
+                                                                                 @Html.EditorFor(model => model.Travelling_Lifestyle3, new { htmlAttributes = new { @class = "new" } })
+                                                                                 <b><label class="col-md-12 label-text" for="Travelling_Lifestyle3">Christmas and New Year's traditions</label> </b>
+                                                                             </div>
+                                                                         </td>
+                                                                     </tr>
+                                                                     <tr>
+                                                                         <td>
+                                                                             <div class="col-md-8 row">
+                                                                                 @Html.EditorFor(model => model.Travelling_Lifestyle4, new { htmlAttributes = new { @class = "new" } })
+                                                                                 <b><label class="col-md-12 label-text" for="Travelling_Lifestyle4">Lifestyle</label> </b>
+                                                                             </div>
+                                                                         </td>
+
+                                                                         <td>
+                                                                             <div class="col-md-8 row">
+                                                                                 @Html.EditorFor(model => model.Travelling_Lifestyle5, new { htmlAttributes = new { @class = "new" } })
+                                                                                 <b><label class="col-md-12 label-text" for="Travelling_Lifestyle5">Architecture</label> </b>
+                                                                             </div>
+                                                                         </td>
+
+                                                                         <td>
+                                                                             <div class="col-md-12 row">
+
+                                                                                 @Html.EditorFor(model => model.Travelling_Lifestyle6, new { htmlAttributes = new { @class = "new" } })
+                                                                                 <b><label class="col-md-12 label-text" for="Travelling_Lifestyle6">Business Trips </label> </b>
+                                                                             </div>
+                                                                         </td>
+                                                                     </tr>
+                                                                     <tr>
+                                                                         <td>
+                                                                             <div class="col-md-8 row">
+
+                                                                                 @Html.EditorFor(model => model.Travelling_Lifestyle7, new { htmlAttributes = new { @class = "new" } })
+                                                                                 <b><label class="col-md-12 label-text" for="Travelling_Lifestyle7">In a Shop  </label></b>
+                                                                             </div>
+                                                                         </td>
+                                                                         <td>
+                                                                             <div class="col-md-8 row">
+
+                                                                                 @Html.EditorFor(model => model.Travelling_Lifestyle8, new { htmlAttributes = new { @class = "new" } })
+                                                                                 <b><label class="col-md-12 label-text" for="Travelling_Lifestyle8">U.S. States</label></b>
+                                                                             </div>
+                                                                         </td>
+                                                                         <td>
+                                                                             <div class="col-md-8 row">
+
+                                                                                 @Html.EditorFor(model => model.Travelling_Lifestyle9, new { htmlAttributes = new { @class = "new" } })
+                                                                                 <b><label class="col-md-12 label-text" for="Travelling_Lifestyle9">Women's Interest Magazine</label></b>
+                                                                             </div>
+                                                                         </td>
+                                                                         </tr>
+                                                                     <tr>
+                                                                         <td>
+                                                                             <div class="col-md-8 row">
+
+                                                                                 @Html.EditorFor(model => model.Travelling_Lifestyle10, new { htmlAttributes = new { @class = "new" } })
+                                                                                 <b><label class="col-md-12 label-text" for="Travelling_Lifestyle10">Travelling</label></b>
+                                                                             </div>
+                                                                         </td>
+                                                                     </tr>
+                                                                 </table>
+                                                             </div>
+                                                         </div>
+                                                     </div>
+                                                 </div>
+                                             </li>
+                                             <li class="col-md-10 col-xs-12  ml-5 border-1" ng-if="">
+                                                 <div class="card_outter">
+                                                     <div class="card horizontal">
+                                                         <div class="card-stacked">
+                                                             <div class="card-content card_info_signaletique">
+
+
+                                                                 <p>Health , Fitness et Sports</p>
+                                                                 <table class="table info-signaletique">
+                                                                     <tr>
+
+                                                                         <td>
+                                                                             <div class="col-md-8 row">
+                                                                                 @Html.EditorFor(model => model.Health_Fitness_Sport1)
+                                                                                 <b> <label class="col-md-12 label-text" for="Health_Fitness_Sport1">Health / Medicine</label> </b>
+                                                                             </div>
+                                                                         </td>
+                                                                         <td>
+                                                                             <div class="col-md-8 row">
+                                                                                 @Html.EditorFor(model => model.Health_Fitness_Sport2)
+                                                                                 <b> <label class="col-md-12 label-text" for="Health_Fitness_Sport2">Health News</label> </b>
+                                                                             </div>
+                                                                         </td>
+                                                                         <td>
+                                                                             <div class="col-md-12 row">
+                                                                                 @Html.EditorFor(model => model.Health_Fitness_Sport3, new { htmlAttributes = new { @class = "new" } })
+                                                                                 <b><label class="col-md-12 label-text" for="Health_Fitness_Sport3">Olympic Games </label> </b>
+                                                                             </div>
+                                                                         </td>
+                                                                     </tr>
+                                                                     <tr>
+                                                                         <td>
+                                                                             <div class="col-md-8 row">
+                                                                                 @Html.EditorFor(model => model.Health_Fitness_Sport4, new { htmlAttributes = new { @class = "new" } })
+                                                                                 <b><label class="col-md-12 label-text" for="Health_Fitness_Sport4">Sports </label> </b>
+                                                                             </div>
+                                                                         </td>
+                                                                         <td>
+                                                                             <div class="col-md-8 row">
+                                                                                 @Html.EditorFor(model => model.Health_Fitness_Sport5, new { htmlAttributes = new { @class = "new" } })
+                                                                                 <b><label class="col-md-12 label-text" for="Health_Fitness_Sport5">Fruits</label> </b>
+                                                                             </div>
+                                                                         </td>
+
+                                                                     </tr>
+                                                                   
+                                                                 </table>
+
+                                                             </div>
+                                                         </div>
+
+                                                     </div>
+                                                 </div>
+                                             </li>
+                                             <li class="col-md-10 col-xs-12  ml-5 border-1" ng-if="">
+                                                 <div class="card_outter">
+                                                     <div class="card horizontal">
+                                                         <div class="card-stacked">
+                                                             <div class="card-content card_info_signaletique">
+
+
+                                                                 <p>Crafts , Hobbies & Home</p>
+                                                                 <table class="table info-signaletique">
+                                                                     <tr>
+
+                                                                         <td>
+                                                                             <div class="col-md-8 row">
+                                                                                 @Html.EditorFor(model => model.Crafts_Hobbies1)
+                                                                                 <b> <label class="col-md-12 label-text" for="Crafts_Hobbies1">Gardening </label> </b>
+                                                                             </div>
+                                                                         </td>
+                                                                         <td>
+                                                                             <div class="col-md-8 row">
+                                                                                 @Html.EditorFor(model => model.Crafts_Hobbies2)
+                                                                                 <b> <label class="col-md-12 label-text" for="Crafts_Hobbies2">Fashion Design </label> </b>
+                                                                             </div>
+                                                                         </td>
+                                                                         <td>
+                                                                             <div class="col-md-12 row">
+                                                                                 @Html.EditorFor(model => model.Crafts_Hobbies3, new { htmlAttributes = new { @class = "new" } })
+                                                                                 <b><label class="col-md-12 label-text" for="Crafts_Hobbies3">Cosmetics vocabulary</label> </b>
+                                                                             </div>
+                                                                         </td>
+                                                                     </tr>
+                                                                     <tr>
+                                                                         <td>
+                                                                             <div class="col-md-8 row">
+                                                                                 @Html.EditorFor(model => model.Crafts_Hobbies4, new { htmlAttributes = new { @class = "new" } })
+                                                                                 <b><label class="col-md-12 label-text" for="Crafts_Hobbies4">Rooms, Furniture and Objects in the House</label> </b>
+                                                                             </div>
+                                                                         </td>
+
+                                                                         <td>
+                                                                             <div class="col-md-8 row">
+                                                                                 @Html.EditorFor(model => model.Crafts_Hobbies5, new { htmlAttributes = new { @class = "new" } })
+                                                                                 <b><label class="col-md-12 label-text" for="Crafts_Hobbies5">DIY</label> </b>
+                                                                             </div>
+                                                                         </td>
+
+                                                                         <td>
+                                                                             <div class="col-md-12 row">
+
+                                                                                 @Html.EditorFor(model => model.Crafts_Hobbies6, new { htmlAttributes = new { @class = "new" } })
+                                                                                 <b><label class="col-md-12 label-text" for="Crafts_Hobbies6">Stamp collecting </label> </b>
+                                                                             </div>
+                                                                         </td>
+                                                                     </tr>
+                                                                 </table>
+                                                             </div>
+                                                         </div>
+                                                     </div>
+                                                 </div>
+                                             </li>
+                                             <li class="col-md-10 col-xs-12  ml-5 border-1" ng-if="">
+                                                 <div class="card_outter">
+                                                     <div class="card horizontal">
+                                                         <div class="card-stacked">
+                                                             <div class="card-content card_info_signaletique">
+
+
+                                                                 <p>Nature et Outdoors</p>
+                                                                 <table class="table info-signaletique">
+                                                                     <tr>
+
+                                                                         <td>
+                                                                             <div class="col-md-8 row">
+                                                                                 @Html.EditorFor(model => model.Nature_Outdoors1)
+                                                                                 <b> <label class="col-md-12 label-text" for="Nature_Outdoors1">Nature </label> </b>
+                                                                             </div>
+                                                                         </td>
+                                                                         <td>
+                                                                             <div class="col-md-8 row">
+                                                                                 @Html.EditorFor(model => model.Nature_Outdoors2)
+                                                                                 <b> <label class="col-md-12 label-text" for="Nature_Outdoors2">Fishing </label> </b>
+                                                                             </div>
+                                                                         </td>
+                                                                         <td>
+                                                                             <div class="col-md-12 row">
+                                                                                 @Html.EditorFor(model => model.Nature_Outdoors3, new { htmlAttributes = new { @class = "new" } })
+                                                                                 <b><label class="col-md-12 label-text" for="Nature_Outdoors3">Gardening</label> </b>
+                                                                             </div>
+                                                                         </td>
+                                                                     </tr>
+                                                                 </table>
+
+                                                             </div>
+                                                         </div>
+
+                                                     </div>
+                                                 </div>
+                                             </li>
+                                             <li class="col-md-10 col-xs-12  ml-5 border-1" ng-if="">
+                                                 <div class="card_outter">
+                                                     <div class="card horizontal">
+                                                         <div class="card-stacked">
+                                                             <div class="card-content card_info_signaletique">
+
+
+                                                                 <p>Politics & Business & Industry Engineering</p>
+                                                                 <table class="table info-signaletique">
+                                                                     <tr>
+
+                                                                         <td>
+                                                                             <div class="col-md-8 row">
+                                                                                 @Html.EditorFor(model => model.Politics_Business1)
+                                                                                 <b> <label class="col-md-12 label-text" for="Politics_Business1">Banking </label> </b>
+                                                                             </div>
+                                                                         </td>
+                                                                         <td>
+                                                                             <div class="col-md-8 row">
+                                                                                 @Html.EditorFor(model => model.Politics_Business2)
+                                                                                 <b> <label class="col-md-12 label-text" for="Politics_Business2">Business and Industry News</label> </b>
+                                                                             </div>
+                                                                         </td>
+                                                                         <td>
+                                                                             <div class="col-md-12 row">
+                                                                                 @Html.EditorFor(model => model.Politics_Business3, new { htmlAttributes = new { @class = "new" } })
+                                                                                 <b><label class="col-md-12 label-text" for="Politics_Business3"> Engineering </label> </b>
+                                                                             </div>
+                                                                         </td>
+                                                                     </tr>
+                                                                     <tr>
+                                                                         <td>
+                                                                             <div class="col-md-8 row">
+                                                                                 @Html.EditorFor(model => model.Politics_Business4, new { htmlAttributes = new { @class = "new" } })
+                                                                                 <b><label class="col-md-12 label-text" for="Politics_Business4"> News articles </label> </b>
+                                                                             </div>
+                                                                         </td>
+
+                                                                         <td>
+                                                                             <div class="col-md-8 row">
+                                                                                 @Html.EditorFor(model => model.Politics_Business5, new { htmlAttributes = new { @class = "new" } })
+                                                                                 <b><label class="col-md-12 label-text" for="Politics_Business5">Politics </label> </b>
+                                                                             </div>
+                                                                         </td>
+
+                                                                         <td>
+                                                                             <div class="col-md-12 row">
+
+                                                                                 @Html.EditorFor(model => model.Politics_Business6, new { htmlAttributes = new { @class = "new" } })
+                                                                                 <b><label class="col-md-12 label-text" for="Politics_Business6"> US elections </label> </b>
+                                                                             </div>
+                                                                         </td>
+                                                                     </tr>
+                                                                     <tr>
+                                                                         <td>
+                                                                             <div class="col-md-8 row">
+
+                                                                                 @Html.EditorFor(model => model.Politics_Business7, new { htmlAttributes = new { @class = "new" } })
+                                                                                 <b><label class="col-md-12 label-text" for="Politics_Business7"> Real Estate Vocabulary </label></b>
+                                                                             </div>
+                                                                         </td>
+                                                                     </tr>
+
+                                                                 </table>
+
+                                                             </div>
+                                                         </div>
+
+                                                     </div>
+                                                 </div>
+                                             </li>
+                                             <li class="col-md-10 col-xs-12  ml-5 border-1" ng-if="">
+                                                 <div class="card_outter">
+                                                     <div class="card horizontal">
+                                                         <div class="card-stacked">
+                                                             <div class="card-content card_info_signaletique">
+
+
+                                                                 <p>Parenting et Family Relationships</p>
+                                                                 <table class="table info-signaletique">
+                                                                     <tr>
+
+                                                                         <td>
+                                                                             <div class="col-md-8 row">
+                                                                                 @Html.EditorFor(model => model.Parenting_Family1)
+                                                                                 <b> <label class="col-md-12 label-text" for="Parenting_Family1">Family - for beginners</label> </b>
+                                                                             </div>
+                                                                         </td>
+                                                                         <td>
+                                                                             <div class="col-md-8 row">
+                                                                                 @Html.EditorFor(model => model.Parenting_Family2)
+                                                                                 <b> <label class="col-md-12 label-text" for="Parenting_Family2">Welcoming A New Baby</label> </b>
+                                                                             </div>
+                                                                         </td>
+                                                                         <td>
+                                                                             <div class="col-md-12 row">
+                                                                                 @Html.EditorFor(model => model.Parenting_Family3, new { htmlAttributes = new { @class = "new" } })
+                                                                                 <b><label class="col-md-12 label-text" for="Parenting_Family3"> School and Education </label> </b>
+                                                                             </div>
+                                                                         </td>
+                                                                     </tr>
+
+
+                                                                 </table>
+
+                                                             </div>
+                                                         </div>
+
+                                                     </div>
+                                                 </div>
+                                             </li>
+                                             <li class="col-md-10 col-xs-12  ml-5 border-1" ng-if="">
+                                                 <div class="card_outter">
+                                                     <div class="card horizontal">
+                                                         <div class="card-stacked">
+                                                             <div class="card-content card_info_signaletique">
+
+
+                                                                 <p>Science & Technology</p>
+                                                                 <table class="table info-signaletique">
+                                                                     <tr>
+
+                                                                         <td>
+                                                                             <div class="col-md-8 row">
+                                                                                 @Html.EditorFor(model => model.Science_Technology1)
+                                                                                 <b> <label class="col-md-12 label-text" for="Science_Technology1">Computer Science </label> </b>
+                                                                             </div>
+                                                                         </td>
+                                                                         <td>
+                                                                             <div class="col-md-8 row">
+                                                                                 @Html.EditorFor(model => model.Science_Technology2)
+                                                                                 <b> <label class="col-md-12 label-text" for="Science_Technology2">Science </label> </b>
+                                                                             </div>
+                                                                         </td>
+                                                                     </tr>
+
+
+                                                                 </table>
+
+                                                             </div>
+                                                         </div>
+
+                                                     </div>
+                                                 </div>
+                                             </li>
+
+                                             <li class="col-md-10 col-xs-12  ml-5 border-1" ng-if="">
+                                                 <div class="card_outter">
+                                                     <div class="card horizontal">
+                                                         <div class="card-stacked">
+                                                             <div class="card-content card_info_signaletique">
+
+                                                                 <input type="submit" value="Enregistrer la Modification" class="btn btn-default" />
+                                                </div>
+                                                      </div>
+                                                    </div>
+                                                    </div>
+                                                 </li>
+                                                </ul>
+
+                                     </div>
+                                 </div>
+                             </section>
+                         </div>
+
+                     </div>
+                 </div>
+
+                 </div>
+             </div> 
+         
+      }
+    <!-- jQuery Version 1.11.1 -->
+    <script src="js/jquery.js"></script> <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+</body>
+
+</html>

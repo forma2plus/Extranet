@@ -1,0 +1,873 @@
+@model WebApplication1.Models.StagiaireModel
+
+@{
+    Layout = "~/Views/Shared/_editstyle.cshtml";
+  }
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="container-fluid">
+
+        <div class="row">
+            <div class="col-2">
+                <div class="logologin">
+                </div>
+                <div class="menumargin">
+                    <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                        <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab"
+                           aria-controls="v-pills-home" aria-selected="true">Signal&eacute;tique</a>
+                     
+                        <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab"
+                           aria-controls="v-pills-messages" aria-selected="false">Disponibilt&eacute;s</a>
+                        <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab"
+                           aria-controls="v-pills-settings" aria-selected="false">Linguistique</a>
+                        <a class="nav-link" id="v-pills-personnal-tab" data-toggle="pill" href="#v-pills-personnal" role="tab"
+                           aria-controls="v-pills-personnal" aria-selected="false">Centres d'Int&eacute;r&ecirc;ts </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-10">
+                <div class="tab-content" id="v-pills-tabContent" style="font-size: 18px; color: white;margin-top:100px;">
+                    <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+                        <table><tr><td class="stytexte">Votre profil </td></tr><tr><td width="850px"><DIV><hr class="hrheure"></DIV></td></tr></table>
+                        <div class="form-row marge">
+                            <div class="form-group col-md-3">
+                                <label for="inputEmail4">Civilit&eacute;</label><br>
+                                @if (Model.Civilite == "M.")
+                                {
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1" checked="checked">
+                                        <label class="form-check-label" for="inlineRadio3">M.</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                                        <label class="form-check-label" for="inlineRadio3">Mme</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                                        <label class="form-check-label" for="inlineRadio3">Mlle</label>
+                                    </div>
+                                }
+                                else if (Model.Civilite == "Mme")
+                                {
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                                        <label class="form-check-label" for="inlineRadio2">M.</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1" checked="checked">
+                                        <label class="form-check-label" for="inlineRadio3">Mme</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                                        <label class="form-check-label" for="inlineRadio3">Mlle</label>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3">
+                                        <label class="form-check-label" for="inlineRadio1">Mr</label>
+
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                                        <label class="form-check-label" for="inlineRadio3">Mme</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1" checked="checked">
+
+                                        <label class="form-check-label" for="inlineRadio3">Mlle</label>
+                                    </div>
+
+                                }
+
+
+                            </div>
+                            <p class="card-text" hidden>
+                                <b> @Html.EditorFor(model => model.Numero, new { htmlAttributes = new { @class = "form-label" } })</b>
+                            </p>
+                            <div class="form-group col-md-4">
+                                <label for="inputEmail4">Nom</label>
+                                @Html.EditorFor(model => model.Nom, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Nom, "", new { @class = "text-danger" })
+
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="inputEmail4">Pr&eacute;nom</label>
+                                @Html.EditorFor(model => model.Prenom, new { htmlAttributes = new { @class = "form-control" } })
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="inputAddress">Fonction</label>
+                                @Html.EditorFor(model => model.Fonction, new { htmlAttributes = new { @class = "form-control" } })
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="inputAddress">D&eacute;partement / Service </label>
+                                @Html.EditorFor(model => model.Departement, new { htmlAttributes = new { @class = "form-control" } })
+                            </div>
+
+                            <div class="form-group col-md-3">
+                                <label for="inputAddress2">Soci&eacute;t&eacute;</label>
+                                @Html.EditorFor(model => model.Societe, new { htmlAttributes = new { @class = "form-control" } })
+
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="inputEmail4">Email</label>
+                                @Html.EditorFor(model => model.Mail, new { htmlAttributes = new { @class = "form-control" } })
+                            </div>
+
+
+                            <div class="form-group col-md-4">
+                                <label for="inputAddress">T&eacute;l&eacute;phone</label>
+                                @Html.EditorFor(model => model.Telephone, new { htmlAttributes = new { @class = "form-control" } })
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label for="inputAddress2">Portable</label>
+                                @Html.EditorFor(model => model.Portable, new { htmlAttributes = new { @class = "form-control" } })
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-4">
+                                <label for="inputAddress">Adresse</label>
+                                @Html.EditorFor(model => model.RueDuStage, new { htmlAttributes = new { @class = "form-control" } })
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="inputAddress">Ville</label>
+                                @Html.EditorFor(model => model.VilleDuStage, new { htmlAttributes = new { @class = "form-control" } })
+                            </div>
+
+                            <div class="form-group col-md-3">
+                                <label for="inputAddress2">Code postal</label>
+                                @Html.EditorFor(model => model.CPDuStage, new { htmlAttributes = new { @class = "form-control" } })
+                            </div>
+
+
+
+                        </div>
+
+
+                        <div class="card-margin"></div>
+                        <div class="button">
+                            <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                                <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab"
+                                   aria-controls="v-pills-messages" aria-selected="false" style=" text-align: center; margin-left: 350px; background: #ED217C 0% 0% no-repeat padding-box; border-radius: 50px; width: 325px; border-color: #ed217c; height: 47px; font: normal normal medium 16px/25px Poppins; letter-spacing: 0px; color: #FFFFFF; text-transform: uppercase;">Suivant</a>
+                            </div>
+                           
+                        </div>
+                    </div>
+
+
+
+                    <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
+                        <table><tr><td class="stytexte">Disponibilités hebdomadaire pour votre formation </td></tr><tr><td width="850px"><DIV><hr class="hrheure"></DIV></td></tr></table>
+                        <div class="row">
+
+                            <div class="col-4">
+                                <label for="inputAddress">Temps professionnel (heures)</label>
+                                @Html.EditorFor(model => model.Tempsprof, new { htmlAttributes = new { @class = "form-control" } })
+                            </div>
+                            <div class="col-4">
+                                <label for="inputAddress">Temps personnel (heures)</label>
+                                @Html.EditorFor(model => model.Tempsperso, new { htmlAttributes = new { @class = "form-control" } })
+                            </div>
+                            <div class="col-4">
+                                <label for="inputAddress">Horaires souhait&eacute;s :</label>
+                                @Html.EditorFor(model => model.horaisouhait, new { htmlAttributes = new { @class = "form-control" } })
+                            </div>
+
+                            <div class="col-4">
+                                <label for="inputAddress2">Jours souhait&eacute;s</label>
+                                @Html.EditorFor(model => model.Joursouhait, new { htmlAttributes = new { @class = "form-control" } })
+                            </div>
+                            <div class="col-8">
+                                <label for="inputAddress">Absences pr&eacute;vues pour les 6 mois &aacute; venir</label>
+                                @Html.EditorFor(model => model.nbabscprevue, new { htmlAttributes = new { @class = "form-control" } });
+                            </div>
+
+                        </div>
+                        <div class="card-margin"></div>
+                        <table><tr><td class="stytexte">Outils internet </td></tr><tr><td width="850px"><DIV><hr class="hrheure"></DIV></td></tr></table>
+                        <div class="row">
+                            <div class="col-3">
+                                <label for="inputEmail4">Personnel</label><br>
+                                <div class="form-group">
+
+
+                                    @Html.CheckBoxFor(model => model.Accesnetperso, new { id = Html.NameFor(x => x.Accesnetperso) })
+                                    <label for="Accesnetperso"></label>
+
+                                </div>
+
+                            </div>
+                            <div class="col-3">
+                                <label for="inputEmail4">Professionnel</label><br>
+                                <div class="form-group">
+
+
+                                    @Html.CheckBoxFor(model => model.Accesnetpro, new { id = Html.NameFor(x => x.Accesnetpro) })
+                                    <label for="Accesnetpro"></label>
+
+                                </div>
+
+                            </div>
+
+                            <div class="col-9">
+                                <br>
+                                @Html.CheckBoxFor(model => model.E_learning)
+                                <label for="E_learning">Je souhaite faire du E-learning en compl&eacute;ment de mes cours</label>
+                            </div>
+
+                        </div>
+
+
+                        <div class="card-margin"></div>
+                        
+
+                        <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                            <div class="row">
+                               
+                                <div class="col-3">
+                                    <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab"
+                                       aria-controls="v-pills-settings" aria-selected="false" style=" text-align: center; margin-left: 350px; background: #ED217C 0% 0% no-repeat padding-box; border-radius: 50px; width: 325px; border-color: #ed217c; height: 47px; font: normal normal medium 16px/25px Poppins; letter-spacing: 0px; color: #FFFFFF; text-transform: uppercase;">Suivant</a>
+
+                                </div>
+
+                            </div>
+
+                            </div>
+
+
+
+                    </div>
+
+                    <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
+
+                        <table><tr><td class="stytexte">Votre niveau</td></tr><tr><td width="1200px"><DIV><hr class="hrheure"></DIV></td></tr></table>
+                        <div class="row">
+                            <div class="col-2">
+                                <label for="inputEmail4">Niveau scolaire</label><br>
+
+
+                                @Html.CheckBoxFor(model => model.NiveauSco, new { id = Html.NameFor(x => x.NiveauSco) })
+                                <label for="NiveauSco"></label>
+
+
+                            </div>
+                            <div class="col-3">
+                                <label for="inputAddress">Nombres d'années apr&egrave;s Bac </label>
+                                @Html.EditorFor(model => model.nbansbac, new { htmlAttributes = new { @class = "form-control" } }) <label for="Nbansbac"></label>
+                            </div>
+
+                            <div class="col-4">
+                                <label for="inputAddress2">Langue maternelle</label>
+                                @Html.EditorFor(model => model.Languemat, new { htmlAttributes = new { @class = "form-control" } })
+                            </div>
+                            <div class="col-4">
+                                <label for="inputAddress">Premi&egrave;re langue</label>
+                                @Html.EditorFor(model => model.premlang, new { htmlAttributes = new { @class = "form-control" } })
+                            </div>
+                            <div class="col-4">
+                                <label for="inputAddress">Formation ant&eacute;rieur</label>
+                                @Html.EditorFor(model => model.FormatAnt, new { htmlAttributes = new { @class = "form-control" } })
+                            </div>
+                        </div>
+                        <div class="card-margin"></div>
+                        <table><tr><td class="stytexte">Utilisation de la langue sur le plan </td></tr><tr><td width="1200px"><DIV><hr class="hrheure"></DIV></td></tr></table>
+                        <div class="row">
+                            <div class="col-2">
+                                <label for="inputEmail4">Niveau G&eacute;n&eacute;ral</label><br>
+                                <div class="form-group">
+
+
+                                    @Html.CheckBoxFor(model => model.LangGen, new { id = Html.NameFor(x => x.LangGen) })
+                                    <label for="LangGen"></label>
+
+                                </div>
+
+                            </div>
+                            <div class="col-3">
+                                <label for="inputEmail4">Niveau Professionnel</label><br>
+                                <div class="form-group">
+
+
+                                    @Html.CheckBoxFor(model => model.LangPro, new { id = Html.NameFor(x => x.LangPro) })
+                                    <label for="LangPro"></label>
+
+                                </div>
+                            </div>
+
+                            <div class="col-6">
+                                <label for="inputAddress">S&eacute;jour dans les pays anglophones</label>
+                                @Html.EditorFor(model => model.paysanglo, new { htmlAttributes = new { @class = "form-control" } })
+                            </div>
+
+
+
+
+
+
+                        </div>
+                        <div class="card-margin"></div>
+                        <table><tr><td class="stytexte">Votre interlocuteur </td></tr><tr><td width="1200px"><DIV><hr class="hrheure"></DIV></td></tr></table>
+
+                        <div class="form-row marge">
+
+
+
+                            <div class="form-group col-md-4">
+                                <label for="inputAddress2">Leur nationalit&eacute;</label>
+                                @Html.EditorFor(model => model.NationInterloc, new { htmlAttributes = new { @class = "form-control" } })
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="inputAddress2">Leur fonction </label>
+                                @Html.EditorFor(model => model.FonctInterloc, new { htmlAttributes = new { @class = "form-control" } })
+                            </div>
+                        </div>
+                        <div class="card-margin"></div>
+                        <table><tr><td class="stytexte">Autres </td></tr><tr><td width="1200px"><DIV><hr class="hrheure"></DIV></td></tr></table>
+
+                        <div class="row">
+                            <div class="col-5">
+                                <div class="form-group">
+                                    <label for="exampleFormControlTextarea1">Domaines sp&eacute;cifiques</label>
+                                    @Html.TextAreaFor(model => model.AttentesSpec, new { cols = 15, @rows = 3, @class = "form-control" })
+                                </div>
+                            </div>
+                            <div class="col-5">
+                                <div class="form-group">
+                                    <label for="exampleFormControlTextarea1">Vos besoins linguistiques</label>
+                                    @Html.TextAreaFor(model => model.BesoinsSpecif, new { cols = 15, @rows = 3, @class = "form-control" })
+                                </div>
+                            </div>
+
+
+                        </div>
+                        <div class="row">
+                           
+                            <div class="col-3">
+                                <div class="boutonsave">
+                                    <input type="submit" value="Enregistrer la Modification" class="btn btn-primary boutonsave" style=" text-align: center; margin-left: 300px; background: #ED217C 0% 0% no-repeat padding-box; border-radius: 50px; width: 325px; border-color: #ed217c; height: 47px; font: normal normal medium 16px/25px Poppins; letter-spacing: 0px; color: #FFFFFF; text-transform: uppercase;" />
+
+
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                    <div class="tab-pane fade" id="v-pills-personnal" role="tabpanel" aria-labelledby="v-pills-personnal-tab">
+                            <div class="row">
+
+                                <div class="col-md-3">
+                                    @Html.CheckBoxFor(model => model.Cinema_Arts1, new { id = Html.NameFor(x => x.Cinema_Arts1) })
+                                    <label for="Cinema_Arts1"><img src="~/Content/images/Rectangle_3.png" for="Cinema_Arts1" /><span class="texts">Arts</span></label>
+                                </div>
+                                <div class="col-md-3">
+                                    @Html.CheckBoxFor(model => model.Cinema_Arts2)
+                                    <label for="Cinema_Arts2"><img src="~/Content/images/Rectangle_2.png" for="Cinema_Arts2" /><span class="texts">Music</span></label>
+                                </div>
+
+                                <div class="col-md-3">
+                                    @Html.CheckBoxFor(model => model.Cinema_Arts3)
+                                    <label for="Cinema_Arts3"><img src="~/Content/images/Rectangle_4.png" for="Cinema_Arts3" /><span class="texts">Cinema / Movies</span></label>
+                                </div>
+
+                                <div class="col-md-3">
+                                    @Html.CheckBoxFor(model => model.Cinema_Arts4)
+                                    <label for="Cinema_Arts4"><img src="~/Content/images/Rectangle_5.png" for="Cinema_Arts4" /><span class="texts">Comedy Movies</span></label>
+                                </div>
+
+                                <div class="col-md-3">
+                                    @Html.CheckBoxFor(model => model.Cinema_Arts5)
+                                    <label for="Cinema_Arts5"><img src="~/Content/images/Rectangle_2.png" for="Cinema_Arts5" /><span class="texts">Action Movies</span></label>
+                                </div>
+
+
+
+                                <div class="col-md-3">
+
+                                    @Html.CheckBoxFor(model => model.Cinema_Arts7)
+                                    <label for="Cinema_Arts7"><img src="~/Content/images/Rectangle 24.png" for="Cinema_Arts7" /><span class="texts">Horror Movies</span></label>
+                                </div>
+
+                                <div class="col-md-3">
+
+                                    @Html.CheckBoxFor(model => model.Cinema_Arts8)
+                                    <label for="Cinema_Arts8"><img src="~/Content/images/Rectangle 24.png" for="Cinema_Arts8" /><span class="texts">Documentaries</span></label>
+                                </div>
+
+                                <div class="col-md-3">
+
+                                    @Html.CheckBoxFor(model => model.Cinema_Arts9)
+                                    <label for="Cinema_Arts9"><img src="~/Content/images/Rectangle_5.png" for="Cinema_Arts9" /><span class="texts">Science Fiction</span></label>
+                                </div>
+
+                                <div class="col-md-3">
+
+                                    @Html.CheckBoxFor(model => model.Cinema_Arts10)
+                                    <label for="Cinema_Arts10"><img src="~/Content/images/Rectangle_4.png" for="Cinema_Arts10" /><span class="texts">Humour</span></label>
+                                </div>
+
+                                <div class="col-md-3">
+
+                                    @Html.CheckBoxFor(model => model.Cinema_Arts12)
+                                    <label for="Cinema_Arts12"><img src="~/Content/images/Rectangle_5.png" for="Cinema_Arts12" /><span class="texts">Theater</span></label>
+                                </div>
+
+                                <div class="col-md-3">
+
+                                    @Html.CheckBoxFor(model => model.Cinema_Arts11)
+                                    <label for="Cinema_Arts11"><img src="~/Content/images/Rectangle_3.png" for="Cinema_Arts11" /><span class="texts">Dance</span></label>
+                                </div>
+
+                                <div class="col-md-3">
+
+                                    @Html.CheckBoxFor(model => model.Cinema_Arts13)
+                                    <label for="Cinema_Arts13"><img src="~/Content/images/Rectangle_2.png" for="Cinema_Arts13" /><span class="texts">Drama Movies</span></label>
+                                </div>
+                                <div class="col-md-3">
+
+                                    @Html.CheckBoxFor(model => model.Cinema_Arts6)
+                                    <label for="Cinema_Arts6"><img src="~/Content/images/Rectangle_3.png" for="Cinema_Arts6" /><span class="texts">Historical Drama Movies</span></label>
+                                </div>
+
+
+                        </div>
+
+                        <div id="carouselExampleControlsNoTouching" class="carousel slide" data-bs-touch="true" data-bs-interval="false">
+                            <div class="carousel-inner">
+                                <div class="carousel-item active">
+                                    <div class="card-body textcolor">
+                                        <div class="container-fluid">
+                                            <h5 class="card-title " id="fondrose">Cinema Art et Entertainement</h5>
+                                            <div class="row">
+
+                                                <div class="col-md-3">
+                                                    @Html.CheckBoxFor(model => model.Cinema_Arts1, new { id = Html.NameFor(x => x.Cinema_Arts1) })
+                                                    <label for="Cinema_Arts1"><img src="~/Content/images/Rectangle_3.png" for="Cinema_Arts1" /><span class="texts">Arts</span></label>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    @Html.CheckBoxFor(model => model.Cinema_Arts2)
+                                                    <label for="Cinema_Arts2"><img src="~/Content/images/Rectangle_2.png" for="Cinema_Arts2" /><span class="texts">Music</span></label>
+                                                </div>
+
+                                                <div class="col-md-3">
+                                                    @Html.CheckBoxFor(model => model.Cinema_Arts3)
+                                                    <label for="Cinema_Arts3"><img src="~/Content/images/Rectangle_4.png" for="Cinema_Arts3" /><span class="texts">Cinema / Movies</span></label>
+                                                </div>
+
+                                                <div class="col-md-3">
+                                                    @Html.CheckBoxFor(model => model.Cinema_Arts4)
+                                                    <label for="Cinema_Arts4"><img src="~/Content/images/Rectangle_5.png" for="Cinema_Arts4" /><span class="texts">Comedy Movies</span></label>
+                                                </div>
+
+                                                <div class="col-md-3">
+                                                    @Html.CheckBoxFor(model => model.Cinema_Arts5)
+                                                    <label for="Cinema_Arts5"><img src="~/Content/images/Rectangle_2.png" for="Cinema_Arts5" /><span class="texts">Action Movies</span></label>
+                                                </div>
+
+
+
+                                                <div class="col-md-3">
+
+                                                    @Html.CheckBoxFor(model => model.Cinema_Arts7)
+                                                    <label for="Cinema_Arts7"><img src="~/Content/images/Rectangle 24.png" for="Cinema_Arts7" /><span class="texts">Horror Movies</span></label>
+                                                </div>
+
+                                                <div class="col-md-3">
+
+                                                    @Html.CheckBoxFor(model => model.Cinema_Arts8)
+                                                    <label for="Cinema_Arts8"><img src="~/Content/images/Rectangle 24.png" for="Cinema_Arts8" /><span class="texts">Documentaries</span></label>
+                                                </div>
+
+                                                <div class="col-md-3">
+
+                                                    @Html.CheckBoxFor(model => model.Cinema_Arts9)
+                                                    <label for="Cinema_Arts9"><img src="~/Content/images/Rectangle_5.png" for="Cinema_Arts9" /><span class="texts">Science Fiction</span></label>
+                                                </div>
+
+                                                <div class="col-md-3">
+
+                                                    @Html.CheckBoxFor(model => model.Cinema_Arts10)
+                                                    <label for="Cinema_Arts10"><img src="~/Content/images/Rectangle_4.png" for="Cinema_Arts10" /><span class="texts">Humour</span></label>
+                                                </div>
+
+                                                <div class="col-md-3">
+
+                                                    @Html.CheckBoxFor(model => model.Cinema_Arts12)
+                                                    <label for="Cinema_Arts12"><img src="~/Content/images/Rectangle_5.png" for="Cinema_Arts12" /><span class="texts">Theater</span></label>
+                                                </div>
+
+                                                <div class="col-md-3">
+
+                                                    @Html.CheckBoxFor(model => model.Cinema_Arts11)
+                                                    <label for="Cinema_Arts11"><img src="~/Content/images/Rectangle_3.png" for="Cinema_Arts11" /><span class="texts">Dance</span></label>
+                                                </div>
+
+                                                <div class="col-md-3">
+
+                                                    @Html.CheckBoxFor(model => model.Cinema_Arts13)
+                                                    <label for="Cinema_Arts13"><img src="~/Content/images/Rectangle_2.png" for="Cinema_Arts13" /><span class="texts">Drama Movies</span></label>
+                                                </div>
+                                                <div class="col-md-3">
+
+                                                    @Html.CheckBoxFor(model => model.Cinema_Arts6)
+                                                    <label for="Cinema_Arts6"><img src="~/Content/images/Rectangle_3.png" for="Cinema_Arts6" /><span class="texts">Historical Drama Movies</span></label>
+                                                </div>
+
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <!-- div class="carousel-item">
+                                    <div class="card-body textcolor">
+
+                                        <div class="container-fluid">
+                                            <h5 class="card-title " id="fondrose">Travelling, Lifestyle Culture</h5>
+                                            <div class="row">
+
+                                                <div class="col-md-4">
+                                                    Html.EditorFor(model => model.Travelling_Lifestyle1)
+                                                    <b><label class="form-label" for="Travelling_Lifestyle1">Cooking</label> </b>
+                                                </div>
+
+                                                <div class="col-md-4">
+                                                    Html.EditorFor(model => model.Travelling_Lifestyle2)
+                                                    <b> <label class="form-label" for="Travelling_Lifestyle2">Eating Out</label> </b>
+                                                </div>
+
+
+                                                <div class="col-md-4">
+                                                    Html.EditorFor(model => model.Travelling_Lifestyle4)
+                                                    <b><label class="form-label" for="Travelling_Lifestyle4">Lifestyle</label> </b>
+                                                </div>
+
+                                                <div class="col-md-4">
+                                                    Html.EditorFor(model => model.Travelling_Lifestyle5)
+                                                    <b><label class="form-label" for="Travelling_Lifestyle5">Architecture</label> </b>
+                                                </div>
+
+                                                <div class="col-md-4">
+
+                                                    Html.EditorFor(model => model.Travelling_Lifestyle6)
+                                                    <b><label class="form-label" for="Travelling_Lifestyle6">Business Trips</label> </b>
+                                                </div>
+
+                                                <div class="col-md-4">
+
+                                                   Html.EditorFor(model => model.Travelling_Lifestyle7)
+                                                    <b><label class="form-label" for="Travelling_Lifestyle7">In a Shop</label></b>
+                                                </div>
+                                                <div class="col-md-4">
+
+                                                   Html.EditorFor(model => model.Travelling_Lifestyle8)
+                                                    <b><label class="form-label" for="Travelling_Lifestyle8">U.S. States</label></b>
+                                                </div>
+
+                                                <div class="col-md-4">
+
+                                                    Html.EditorFor(model => model.Travelling_Lifestyle9)
+                                                    <b><label class="form-label" for="Travelling_Lifestyle9">Women's Interest Magazine</label></b>
+                                                </div>
+
+                                                <div class="col-md-4">
+
+                                                    Html.EditorFor(model => model.Travelling_Lifestyle10)
+                                                    <b><label class="form-label" for="Travelling_Lifestyle10">Travelling</label></b>
+                                                </div>
+                                                <div class="col-md-8">
+                                                    Html.EditorFor(model => model.Travelling_Lifestyle3)
+                                                    <b><label class="form-label" for="Travelling_Lifestyle3">Christmas and New Year's traditions</label> </b>
+                                                </div>
+
+
+
+                                            </div>
+                                        </div>
+                                    </div> 
+                                </§--div !-->
+                                <div class="carousel-item">
+                                    <div class="card-body textcolor">
+
+                                        <div class="container-fluid">
+                                            <h5 class="card-title " id="fondrose">Health , Fitness et Sports</h5>
+                                            <div class="row">
+
+                                                <div class="col-md-4">
+                                                    @Html.EditorFor(model => model.Health_Fitness_Sport1)
+                                                    <b> <label class="form-label" for="Health_Fitness_Sport1">Health / Medicine</label> </b>
+                                                </div>
+
+                                                <div class="col-md-4">
+                                                    @Html.EditorFor(model => model.Health_Fitness_Sport2)
+                                                    <b> <label class="form-label" for="Health_Fitness_Sport2">Health News</label> </b>
+
+                                                </div>
+
+                                                <div class="col-md-4">
+                                                    @Html.EditorFor(model => model.Health_Fitness_Sport3)
+                                                    <b><label class="form-label" for="Health_Fitness_Sport3">Olympic Games</label> </b>
+                                                </div>
+
+                                                <div class="col-md-4">
+                                                    @Html.EditorFor(model => model.Health_Fitness_Sport4)
+                                                    <b><label class="form-label" for="Health_Fitness_Sport4">Sports</label> </b>
+                                                </div>
+
+                                                <div class="col-md-4">
+                                                    @Html.EditorFor(model => model.Health_Fitness_Sport5)
+                                                    <b><label class="form-label" for="Health_Fitness_Sport5">Fruits</label> </b>
+                                                </div>
+
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card-body textcolor">
+
+                                        <div class="container-fluid">
+                                            <h5 class="card-title " id="fondrose">Parenting et Family Relationships</h5>
+                                            <div class="row">
+
+                                                <div class="col-md-4">
+                                                    @Html.EditorFor(model => model.Parenting_Family1)
+                                                    <b> <label class="form-label" for="Parenting_Family1">Family - for beginners</label> </b>
+
+                                                </div>
+
+                                                <div class="col-md-4">
+                                                    @Html.EditorFor(model => model.Parenting_Family2)
+                                                    <b> <label class="form-label" for="Parenting_Family2">Welcoming A New Baby</label> </b>
+
+                                                </div>
+                                                <div class="col-md-4">
+                                                    @Html.EditorFor(model => model.Parenting_Family3, new { htmlAttributes = new { @class = "new" } })
+                                                    <b><label class="form-label" for="Parenting_Family3">School and Education</label> </b>
+
+                                                </div>
+
+
+
+
+
+
+
+
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                                <div class="carousel-item">
+                                    <div class="card-body textcolor">
+
+                                        <div class="container-fluid">
+                                            <h5 class="card-title " id="fondrose">Crafts , Hobbies & Home</h5>
+                                            <div class="row">
+
+                                                <div class="col-md-4">
+                                                    @Html.EditorFor(model => model.Crafts_Hobbies1)
+                                                    <b> <label class="form-label" for="Crafts_Hobbies1">Gardening</label> </b>
+
+                                                </div>
+
+                                                <div class="col-md-4">
+                                                    @Html.EditorFor(model => model.Crafts_Hobbies2)
+                                                    <b> <label class="form-label" for="Crafts_Hobbies2">Fashion Design</label> </b>
+
+                                                </div>
+
+                                                <div class="col-md-4">
+                                                    @Html.EditorFor(model => model.Crafts_Hobbies3)
+                                                    <b><label class="form-label" for="Crafts_Hobbies3">Cosmetics vocabulary</label> </b>
+
+                                                </div>
+
+
+
+                                                <div class="col-md-4">
+                                                    @Html.EditorFor(model => model.Crafts_Hobbies5)
+                                                    <b><label class="form-label" for="Crafts_Hobbies5">DIY</label> </b>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    @Html.EditorFor(model => model.Crafts_Hobbies6)
+                                                    <b><label class="form-label" for="Crafts_Hobbies6">Stamp collecting</label> </b>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    @Html.EditorFor(model => model.Crafts_Hobbies4)
+                                                    <b><label class="form-label" for="Crafts_Hobbies4">Rooms, Furniture and Objects in the House</label> </b>
+                                                </div>
+
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+
+                                <div class="carousel-item">
+                                    <div class="card-body textcolor">
+
+                                        <div class="container-fluid">
+                                            <h5 class="card-title " id="fondrose">Nature et Outdoors</h5>
+
+                                            <div class="row">
+
+                                                <div class="col-md-4">
+                                                    @Html.EditorFor(model => model.Nature_Outdoors1)
+                                                    <b> <label class="form-label" for="Nature_Outdoors1">Nature</label> </b>
+
+                                                </div>
+
+                                                <div class="col-md-4">
+                                                    @Html.EditorFor(model => model.Nature_Outdoors2)
+                                                    <b> <label class="form-label" for="Nature_Outdoors2">Fishing</label> </b>
+
+                                                </div>
+
+                                                <div class="col-md-4">
+                                                    @Html.EditorFor(model => model.Nature_Outdoors3)
+                                                    <b><label class="form-label" for="Nature_Outdoors3">Gardening</label> </b>
+
+                                                </div>
+
+
+
+
+
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card-body textcolor">
+
+                                        <div class="container-fluid">
+                                            <h5 class="card-title " id="fondrose">Science & Technology</h5>
+                                            <div class="row">
+
+                                                <div class="col-md-4">
+                                                    @Html.EditorFor(model => model.Science_Technology1)
+                                                    <b> <label class="form-label" for="Science_Technology1">Computer Science</label> </b>
+
+                                                </div>
+
+                                                <div class="col-md-4">
+                                                    @Html.EditorFor(model => model.Science_Technology2)
+                                                    <b> <label class="form-label" for="Science_Technology2">Science</label> </b>
+
+                                                </div>
+
+
+
+
+
+
+
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                                <div class="carousel-item">
+
+                                    <div class="card-body textcolor">
+
+                                        <div class="container-fluid">
+                                            <h5 class="card-title " id="fondrose">Politics & Business & Industry Engineering</h5>
+                                            <div class="row">
+
+                                                <div class="col-md-4">
+                                                    @Html.EditorFor(model => model.Politics_Business1)
+                                                    <b> <label class="form-label" for="Politics_Business1">Banking</label> </b>
+
+                                                </div>
+
+                                                <div class="col-md-4">
+                                                    @Html.EditorFor(model => model.Politics_Business2)
+                                                    <b> <label class="form-label" for="Politics_Business2">Business and Industry News</label> </b>
+
+                                                </div>
+
+                                                <div class="col-md-4">
+                                                    @Html.EditorFor(model => model.Politics_Business3)
+                                                    <b><label class="form-label" for="Politics_Business3">Engineering</label> </b>
+
+                                                </div>
+
+
+
+                                                <div class="col-md-4">
+                                                    @Html.EditorFor(model => model.Politics_Business4)
+                                                    <b><label class="form-label" for="Politics_Business4">News articles</label> </b>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    @Html.EditorFor(model => model.Politics_Business5)
+                                                    <b><label class="form-label" for="Politics_Business5">Politics</label> </b>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    @Html.EditorFor(model => model.Politics_Business6)
+                                                    <b><label class="form-label" for="Politics_Business6">US elections</label> </b>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    @Html.EditorFor(model => model.Politics_Business7)
+                                                    <b><label class="form-label" for="Politics_Business7">Real Estate Vocabulary</label></b>
+                                                </div>
+
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+
+
+                            </div>
+
+
+                            <div>
+
+                                <button class="btn btn-primary" style="float:left;" type="button" data-bs-target="#carouselExampleControlsNoTouching" data-bs-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Previous</span>
+                                </button>
+                                <button class="btn btn-primary" style="float: right;" type="button" data-bs-target="#carouselExampleControlsNoTouching" data-bs-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Next</span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="boutonsave">
+                            <input type="submit" value="Enregistrer la Modification" class="btn btn-primary boutonsave" style="margin-left:250px; background: #ED217C 0% 0% no-repeat padding-box; border-radius: 50px; width: 325px; border-color: #ed217c; height: 47px; font: normal normal medium 16px/25px Poppins; letter-spacing: 0px; color: #FFFFFF; text-transform: uppercase;" />
+
+
+                        </div>
+
+                    </div>
+                   
+                </div>
+                <div class="card-margin" style="margin-top:50px;">
+                </div>                            
+            </div>
+            
+
+        </div>
+            </div>
+   
+
+  
+
+
+
+}
+
+
+

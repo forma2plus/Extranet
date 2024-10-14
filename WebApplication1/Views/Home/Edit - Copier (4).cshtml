@@ -1,0 +1,437 @@
+﻿@{ Layout = "~/Views/Shared/_editstyle.cshtml"; }
+@{ ViewBag.Title = "Visualisez le profil"; }
+
+<nav class="navbar navbar-dark bg-menu">
+
+    <a class="navbar-brand" href="#">
+        <div class="logologin">
+        </div>
+    </a>
+    <div class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <table style="color:white;"> <tr><td><h5><i class="material-icons">account_circle</i></h5></td><td><h5><b>  @Session["civilite"] @Session["nom"]  @Session["prenom"]</b></h5></td> </tr></table>
+        </a>
+
+      
+        <div class="dropdown-menu">
+            <a class="dropdown-item" href="#">  @Html.ActionLink("⟵ Accueil", "Plogon", new { id = @Session["numero"] })</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">
+                @Html.ActionLink("⟵ Déconnexion", "Index")
+            </a>
+        </div>
+    </div>
+
+
+    
+</nav>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-3">
+
+            <table style="color:white;">
+                <tr>
+                    <td>
+                        <i class="material-icons">
+                            keyboard_backspace
+                        </i>
+                    </td>
+                    <td>
+                        @Html.ActionLink("⟵ Retour", "Plogon", new { id = @Session["numero"] })
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="col-9">
+
+            <div class="menugauche">
+                <table style="color:white;"><tr><td> <i class="material-icons">phone</i></td><td class="mb">@Session["telephone"]</td><td> <i class="material-icons">phone_iphone</i></td><td class="mb">@Session["portable"] </td><td> <i class="material-icons">email</i></td><td classs="mb">@Session["mail"]</td></tr></table>
+
+                <table style="color:white;">
+                    <tr><td>><b>Soci&eacute;t&eacute; :</b></td><td> @Session["societe"]</td></tr>
+                    <tr><td>><b>Fonction : </b></td><td>@Session["fonction"]</td></tr>
+                    <tr><td>><b>D&eacute;partement / Service   : </b></><td> @Session["departement"] </td></tr>
+                    <tr>
+                        <td>><b>Adresse : </b></td>
+                        <td>@Session["RueDuStage"]</td>
+                    </tr>
+                    <tr>
+                        <td>><b>Ville : </b></td>
+                        <td>@Session["VilleDuStage"]</td>
+                    </tr>
+                    <tr>
+                        <td>><b>Code Postal :</b></td>
+                        <td>@Session["CPDuStage"]</td>
+                    </tr>
+
+                </table>
+            </div>
+            <div style="float: right; ">
+                <P class="boutonrond">@Html.ActionLink("Modifier / Compléter votre fiche", "Editprofil", new { id = @Session["numero"] })</P>
+            </div>
+
+        </div>
+        <p>&nbsp;</p>
+    </div>
+    <div class="row">
+        <div class="col-3">
+            <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+
+
+                <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab"
+                   aria-controls="v-pills-home" aria-selected="true">Profil</a>
+
+
+                <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab"
+                   aria-controls="v-pills-settings" aria-selected="false">Centres d'Int&eacute;r&ecirc;ts</a>
+
+            </div>
+        </div>
+        <div class="col-9">
+            <div class="tab-content" id="v-pills-tabContent">
+                <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+
+                    <hr class="hrs">
+                    <p>&nbsp;</p>
+                    <div class="card-header bg-info">
+                        <table style="color:white;"><tr><td><i class="material-icons">access_time</i></td><td style="float: right; margin-top: 0px;padding-right: 5px">VOS DISPONIBILTES</td></tr></table>
+                        <table class="table">
+                            <tr><td><b>Jour(s) souhaité :</b></td><td>@Session["joursouhait"]</td></tr>
+                            <tr><td><b>Horaires souhaités : </b></td><td>@Session["horaisouhait"]</td></tr>
+                            <tr><td><b>Temps personnel : </b></td><td>@Session["tempsperso"]</td></tr>
+                            <tr><td><b>Temps professionnel : </b></td><td>@Session["tempsprof"] </td></tr>
+                            <tr><td><b>Absences pr&eacute;vus pour les 6 mois &agrave; venir :</b></td><td>@Session["nbansbac"] </td></tr>
+
+                        </table>
+
+                    </div>
+
+                    <p>&nbsp;</p>
+
+                    <hr class="hrs">
+                    <div class="card-header bg-info">
+                        <table style="color: var(--bs-pink);"><tr><td><i class='material-icons'>laptop_windows</i></td><td style="float: right; margin-top: 0px;padding-right: 5px"><b>ACCESS INTERNET</b> </td></tr></table>
+                        <table class=" table">
+                            <tr>
+                                <td><b>Personnel :</b></td>
+                                <td>
+                                    @if ((bool)Session["accesnetperso"] == true)
+                                    {
+                        <p>Oui</p>}
+                    else
+                    {
+        <p>Non</p>}
+                                </td>
+
+                                <td><b>Professionnel :</b></td>
+                                <td>
+                                    @if ((bool)Session["accesnetpro"] == true)
+                                    {
+                        <p>Oui</p>}
+                    else
+                    {
+        <p>Non</p>}
+                                </td>
+
+                                <td><b>E-learning : </b>  </td>
+                                <td>
+                                    @if ((bool)Session["e_learning"] == true)
+                                    {
+                        <p>Oui</p>}
+                    else
+                    {
+        <p>Non</p>}
+
+
+                                </td>
+                            </tr>
+                        </table>
+
+                    </div>
+                    <hr class="hrs">
+                    <p>&nbsp;</p>
+                    <div class="card-header bg-info">
+                        <table><tr><td style="float: left;"></td><td style="float: right; margin-top: 0px;padding-right: 5px">VOS NIVEAUX</td></tr></table>
+
+
+
+
+                        <table class="table">
+                            <tr>
+                                <td><b>Niveau scolaire : </b></td>
+                                <td>
+                                    @if ((bool)Session["niveauSco"] == true)
+                                    {
+                        <p>Oui</p>}
+                    else
+                    {
+        <p>Non</p>}
+                                </td>
+
+                                <td><b>Bac + : </b></td>
+                                <td>@Session["nbansbac"]</td>
+                            </tr>
+                            <tr>
+                                <td><b>Langue maternelle :</b></td>
+                                <td>@Session["languemat"]</td>
+
+                                <td><b>Premi&egrave;re Langue :</b></td>
+                                <td>@Session["premlang"]</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <b>
+                                        Formation ant&eacute;rieur :
+                                    </b>
+                                </td>
+                                <td>@Session["FormatAnt"]</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <b>
+                                        S&eacute;jour dans les pays anglophones :
+                                    </b>
+                                </td>
+                                <td style=" word-break: break-word; ">@Session["paysanglo"]</td>
+                            </tr>
+
+
+
+                        </table>
+
+                    </div>
+                    <hr class="hrs">
+                    <p>&nbsp;</p>
+                    <div class="card-header bg-info">
+
+                        <table style="color:darkgreen;"><tr><td style="float: left;"><i class='material-icons'></i></td><td style="float: right; margin-top: 0px;padding-right: 5px">UTILISATION LANGUES </td></tr></table>
+                        <table class=" table">
+                            <tr>
+                                <td><b>Géneral :</b></td>
+                                <td>
+                                    @if ((bool)Session["LangGen"] == true)
+                                    {
+                        <p>Oui</p>}
+                    else
+                    {
+        <p>Non</p>}
+
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <td><b>Professionnel :</b></td>
+                                <td>
+                                    @if ((bool)Session["LangPro"] == true)
+                                    {
+                        <p>Oui</p>}
+                    else
+                    {
+        <p>Non</p>}
+                                </td>
+                            <tr>
+                            <tr>
+                                &nbsp;
+                            </tr>
+                            <tr>
+                                &nbsp;
+                            </tr>
+                        </table>
+                    </div>
+                    <hr class="hrs">
+                    <p>&nbsp;</p>
+                    <div class="card-header bg-info">
+                        <table style="color:var(--bs-purple);">
+                            <tr><td style="float: left;"><i class="material-icons"></i></td><td style="float: right; margin-top: 0px;padding-right: 5px">VOS INTERLOCUTEURS</td></tr>
+                        </table>
+                        <table class="table info-signaletique">
+                            <tr><td><b>Leur nationalit&eacute; :</b></td><td>@Session["NationInterloc"]</td></tr>
+                            <tr><td><b>Leur fonction : </b></td><td>@Session["FonctInterloc"]</td></tr>
+                            <tr>
+                                &nbsp;
+                            </tr>
+                            <tr>
+                                &nbsp;
+                            </tr>
+                        </table>
+                    </div>
+                    <hr class="hrs">
+                    <p>&nbsp;</p>
+                    <div class="card-header bg-info">
+                        <table style="color:darkgreen;">
+                            <tr>
+                                <td style="float: left;"><i class='material-icons'></i></td>
+                                <td style="float: right; margin-top: 0px;padding-right: 5px">
+                                    <label for="exampleFormControlTextarea1">Domaines sp&eacute;cifiques</label>
+                                </td>
+                            </tr>
+                        </table>
+                        <textarea cols="15" rows="3" class="form-control-plaintext" disabled>  @Session["AttentesSpec"]</textarea>
+
+
+                    </div>
+                    <hr class="hrs">
+                    <p>&nbsp;</p>
+                    <div class="card-header bg-info">
+                        <table style="color:darkgreen;">
+                            <tr>
+                                <td style="float: left;"><i class='material-icons'></i></td>
+                                <td style="float: right; margin-top: 0px;padding-right: 5px">
+                                    <label for="exampleFormControlTextarea1">Vos besoins linguistiques</label>
+                                </td>
+                            </tr>
+                        </table>
+                        <textarea cols="15" rows="3" class="form-control-plaintext" disabled>
+                                                @Session["BesoinsSpecif"]</textarea>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
+                <table><tr><td class="stytexte">Vos centres d'int&eacute;r&ecirc;ts </td></tr><tr><td width="850px"><DIV><hr class="hrheure"></DIV></td></tr></table>
+
+                <div class="row">
+
+                    <div class="col-md-3">
+                        @if ((bool)Session["arts"] == true)
+                        {
+            <input type="checkbox" id="arts" checked="checked" /> }
+        else
+        {
+    <input type="checkbox" id="arts" />}
+
+                        <label for=""><img src="~/Content/images/arts.jpg" for="" /><span class="texts">Arts</span></label>
+                    </div>
+                    <div class="col-3">
+                        @if ((bool)Session["litterature"] == true)
+                        {
+            <input type="checkbox" id="litterature" checked="checked" /> }
+        else
+        {
+    <input type="checkbox" id="litterature" />}
+                        <label for=""><img src="~/Content/images/litterature.jpg" for="" /><span class="texts">Litterature</span></label>
+                    </div>
+
+                    <div class="col-3">
+                        @if ((bool)Session["sport"] == true)
+                        {
+            <input type="checkbox" id="sport" checked="checked" /> }
+        else
+        {
+    <input type="checkbox" id="sport" />}
+
+                        <label for=""><img src="~/Content/images/sport.jpg" for="" /><span class="texts">Sport</span></label>
+                    </div>
+
+                    <div class="col-3">
+                        @if ((bool)Session["jardin"] == true)
+                        {
+            <input type="checkbox" id="jardin" checked="checked" /> }
+        else
+        {
+    <input type="checkbox" id="jardin" />}
+                        <label for=""><img src="~/Content/images/garden.jpg" for="" /><span class="texts">Jardin</span></label>
+                    </div>
+
+                    <div class="col-3">
+                        @if ((bool)Session["musique"] == true)
+                        {
+            <input type="checkbox" id="musique" checked="checked" /> }
+        else
+        {
+    <input type="checkbox" id="musique" />}
+                        <label for=""><img src="~/Content/images/music.jpg" for="" /><span class="texts">Musique</span></label>
+                    </div>
+
+
+
+                    <div class="col-3">
+
+                        @if ((bool)Session["theatre"] == true)
+                        {
+            <input type="checkbox" id="theatre" checked="checked" /> }
+        else
+        {
+    <input type="checkbox" id="theatre" />}
+                        <label for=""><img src="~/Content/images/theater.jpg" for="" /><span class="texts">Theatre</span></label>
+                    </div>
+
+                    <div class="col-3">
+
+
+                        @if ((bool)Session["ConfrLecture"] == true)
+                        {
+            <input type="checkbox" id="ConfrLecture" checked="checked" /> }
+        else
+        {
+    <input type="checkbox" id="ConfrLecture" />}
+
+                        <label for=""><img src="~/Content/images/reading.jpg" for="" /><span class="texts">Lecture</span></label>
+                    </div>
+
+                    <div class="col-3">
+
+
+                        @if ((bool)Session["bricolage"] == true)
+                        {
+            <input type="checkbox" id="bricolage" checked="checked" /> }
+        else
+        {
+    <input type="checkbox" id="bricolage" />}
+                        <label for=""><img src="~/Content/images/bricolage.jpg" for="" /><span class="texts">Bricolage</span></label>
+                    </div>
+
+                    <div class="col-3">
+
+
+                        @if ((bool)Session["sciences"] == true)
+                        {
+            <input type="checkbox" id="sciences" checked="checked" /> }
+        else
+        {
+    <input type="checkbox" id="sciences" />}
+                        <label for=""><img src="~/Content/images/sciences.jpg" for="" /><span class="texts">Sciences</span></label>
+                    </div>
+
+                    <div class="col-3">
+
+
+                        @if ((bool)Session["cuisine"] == true)
+                        {
+            <input type="checkbox" id="cuisine" checked="checked" /> }
+        else
+        {
+    <input type="checkbox" id="cuisine" />}
+                        <label for=""><img src="~/Content/images/kitchen.jpg" for="" /><span class="texts">Cuisine</span></label>
+                    </div>
+
+
+
+
+                </div>
+                <div class="card-margin"></div>
+                <div class="row">
+                    <table><tr><td class="stytexte">Autres centres d'int&eacute;r&ecirc;ts </td></tr><tr><td width="850px"><DIV><hr class="hrheure"></DIV></td></tr></table>
+
+                    <div class="col-9">
+
+                        <textarea cols="15" rows="3" class="form-control-plaintext" style="color:white" disabled> @Session["Autres_interets"]</textarea>
+                    </div>
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+        </div>
+
+
+
+
+
+
+
+

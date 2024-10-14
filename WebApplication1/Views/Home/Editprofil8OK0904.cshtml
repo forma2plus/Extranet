@@ -1,0 +1,450 @@
+@model WebApplication1.Models.StagiaireModel
+
+@{
+    Layout = "~/Views/Shared/_editstyle.cshtml";
+}
+@{
+    ViewBag.Title = "Modifier profil";
+}
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+
+        @Html.ValidationSummary(true, "Veuillez remplir les champs obligatoire (*)", new { @class = "text-danger" })
+
+        <div class="container-fluid">
+            <center>
+                <div class="logologin">
+                </div>
+            </center>
+            @ViewBag.Champ
+
+
+
+            <div>
+                @ViewBag.ResMessege
+            </div>
+            @{
+                string nom = Model.nom;
+                string origin = "https://extranet.forma2plus.com/Profils/Editprofil/" + Model.Numero;
+                string mail = Model.mail;
+            }
+
+            @if (!string.IsNullOrEmpty(origin) && !string.IsNullOrEmpty(mail))
+            {
+
+                <a href="@($"https://incident.forma2plus.com/?nom={nom}&origin={origin}&mail={mail}")" class="inc-btn" style="float:right;">
+                    <i class="inc-icon"></i>
+                    <span>Signaler un incident</span>
+                </a>
+            }
+            else
+            {
+
+                <a href="@($"https://incident.forma2plus.com/?nom=&origin=&mail=")" class="inc-btn" style="float:right;">
+                    <i class="inc-icon"></i>
+                    <span>Signaler un incident</span>
+                </a>
+            }
+            @{ 
+                string deuxPremieresLettres = Model.nom.Substring(0, 2);
+
+            }
+            <div class="row">
+                <div class="col-2" id="menugauche">
+                    <input type="hidden" name="numeroprofil" id="numeroprofil" value="@Model.Numero" />
+                    <input type="hidden" name="numindividu" id="numindivdu" value="@Model.numindividu" />
+                    <input type="hidden" name="nomchang" id="nomchang" value="@Model.nom_change" />
+
+                    <div class="button">
+                        <span> <a href="@Url.Action("Plogon", new { id = Model.Numero, datecrea =deuxPremieresLettres })">  	&#10229; Retour au menu stagiaire </a></span>
+                    </div>
+
+                    <div class="menumargin">
+                        <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                            <a class="nav-link active" id="1" data-toggle="pill" href="#v-pills-home" role="tab"
+                               aria-controls="v-pills-home" aria-selected="true" onclick="document.getElementById('v-pills-home-tab').click();">Signal&eacute;tique</a>
+
+                            <a class="nav-link" id="2" data-toggle="pill" href="#v-pills-messages" role="tab"
+                               aria-controls="v-pills-messages" aria-selected="false">Disponibilt&eacute;s</a>
+                            <a class="nav-link" id="3" data-toggle="pill" href="#v-pills-settings" role="tab"
+                               aria-controls="v-pills-settings" aria-selected="false">Linguistique</a>
+                            <a class="nav-link" id="4" data-toggle="pill" href="#v-pills-personnal" role="tab"
+                               aria-controls="v-pills-personnal" aria-selected="false">Centres d'Int&eacute;r&ecirc;ts </a>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="col-md-10" id="marge-haut">
+
+                    <div class="tab-content" id="v-pills-tabContent" style="font-size: 18px; color: white;margin-top:0px;">
+                        <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+                            <table><tr><td class="stytexte" style="color: white;"><span style="color:white;">Votre profil </span></td></tr><tr><td width="850px"><DIV><hr class="hrheure"></DIV></td></tr></table>
+                            <div class="form-row marge">
+                                <div class="form-group col-md-3">
+                                    <label for="inputEmail4">Civilit&eacute;</label><br>
+                                    @Html.RadioButtonFor(model => model.Civilite, "M.")  <label for="inputEmail4">M.</label>
+                                    @Html.RadioButtonFor(model => model.Civilite, "Mme")  <label for="inputEmail4">Mme</label>
+                                    @Html.RadioButtonFor(model => model.Civilite, "Mlle")  <label for="inputEmail4">Mlle</label>
+
+
+
+                                </div>
+                                <p class="card-text" hidden>
+                                    <b> @Html.EditorFor(model => model.Numero, new { htmlAttributes = new { @class = "form-label" } })</b>
+                                </p>
+                                <div class="form-group col-md-4">
+                                    <label for="inputEmail4">Nom <span style="color:red;">*</span></label>
+                                    @Html.EditorFor(model => model.nom, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.nom, "", new { @class = "text-danger" })
+
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label for="inputEmail4">Pr&eacute;nom <span style="color:red;">*</span></label>
+                                    @Html.EditorFor(model => model.prenom, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.prenom, "", new { @class = "text-danger" })
+
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label for="inputAddress">Fonction </label>
+                                    @Html.EditorFor(model => model.fonction, new { htmlAttributes = new { @class = "form-control", @id = "fonction" } })
+
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label for="inputAddress">D&eacute;partement / Service </label>
+                                    @Html.EditorFor(model => model.Departement, new { htmlAttributes = new { @class = "form-control" } })
+                                </div>
+
+                                <div class="form-group col-md-3">
+                                    <label for="inputAddress2">Soci&eacute;t&eacute;<span style="color:red;">*</span></label>
+                                    @Html.EditorFor(model => model.societe, new { htmlAttributes = new { @class = "form-control", @id = "societe" } })
+                                    @Html.DropDownListFor(model => model.societe, new SelectList(Model.ListeDesSocietes, "CodeTiers", "Dénomination"), "Sélectionnez une société", new { @class = "en-form custom-dropdown", @id = "societe" })
+
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label for="inputEmail4">Email <span style="color:red;">*</span></label>
+                                    @Html.EditorFor(model => model.mail, new
+                               {
+                                   htmlAttributes = new
+                                   {
+                                       @class = "form-control",
+                                       @id = "mail",
+                                       @type = "mail",
+                                       required = "required"
+                                   }
+                               })
+                                    @Html.ValidationMessageFor(model => model.mail, "", new { @class = "text-danger" })
+
+
+                                </div>
+                                <div class="form-group col-md-3">
+                                    <label for="inputAddress2">Portable/GSM<span style="color:red;">*</span></label>
+                                    @Html.EditorFor(model => model.Portable, new { htmlAttributes = new { @class = "form-control", @id = "portable", required = "required" } })
+                                    @Html.ValidationMessageFor(model => model.Portable, "", new { @class = "text-danger" })
+
+                                </div>
+
+                                <div class="form-group col-md-4">
+                                    <label for="inputAddress">Autre t&eacute;l&eacute;phone</label>
+                                    @Html.EditorFor(model => model.Telephone, new
+                               {
+                                   htmlAttributes = new
+                                   {
+                                       @class = "form-control",
+                                       @id = "telephone"
+                                   }
+                               })
+
+                                </div>
+
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-4">
+                                    <label for="inputAddress">Adresse du domicile</label>
+                                    @Html.EditorFor(model => model.RueDuStage, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.RueDuStage, "", new { @class = "text-danger", @id = "RueDustageErreur" })
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label for="inputAddress">Ville</label>
+                                    @Html.EditorFor(model => model.VilleDuStage, new { htmlAttributes = new { @class = "form-control" } })
+                                </div>
+
+                                <div class="form-group col-md-3">
+                                    <label for="inputAddress2">Code postal</label>
+                                    @Html.EditorFor(model => model.CPDuStage, new
+                               {
+                                   htmlAttributes = new { @class = "form-control" }
+                               })
+                                </div>
+
+
+
+                            </div>
+
+
+                            <div class="card-margin">
+                                <p id="infos" style="display:none;color:red;font-size:20px;">Veuillez bien remplir tous les champs "*" svp!</p>
+                            </div>
+
+                            <div>
+                                <center>
+                                    <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#" role="tab"
+                                       aria-controls="v-pills-messages" aria-selected="false" style=" text-align: center;
+                  margin-left:0px; background: #ED217C 0% 0% no-repeat padding-box; border-radius: 50px;
+                  width: 325px; border-color: #ed217c; height: 47px; font: normal normal medium 16px/25px Poppins;
+                  letter-spacing: 0px; color: #FFFFFF;
+                  text-transform: uppercase;" onclick="check_somes();  ">Suivant</a>
+
+                                </center>
+                            </div>
+
+
+                        </div>
+
+
+
+                        <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
+                            <table><tr><td class="stytexte">Disponibilités hebdomadaire pour votre formation </td></tr><tr><td width="850px"><DIV><hr class="hrheure"></DIV></td></tr></table>
+                            <div class="row">
+
+                                <div class="col-md-4">
+                                    <label for="inputAddress">Temps professionnel (heures)</label>
+                                    @Html.EditorFor(model => model.tempsprof, new { htmlAttributes = new { @class = "form-control" } })
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="inputAddress">Temps personnel (heures)</label>
+                                    @Html.EditorFor(model => model.tempsperso, new { htmlAttributes = new { @class = "form-control" } })
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="inputAddress">Horaires souhait&eacute;s <span style="color:red;">*</span></label>
+                                    @Html.EditorFor(model => model.horaisouhait, new { htmlAttributes = new { @class = "form-control", @id = "horaisouhait" } })
+                                </div>
+
+                                <div class="col-md-4">
+                                    <label for="inputAddress2">Jours souhait&eacute;s <span style="color:red;">*</span></label>
+                                    @Html.EditorFor(model => model.joursouhait, new { htmlAttributes = new { @class = "form-control", @id = "Joursouhait" } })
+                                </div>
+                                <div class="col-md-8">
+                                    <label for="inputAddress">Absences pr&egrave;vues pour les 6 mois a venir</label>
+                                    @Html.EditorFor(model => model.nbabscprevue, new { htmlAttributes = new { @class = "form-control" } })
+                                </div>
+
+                            </div>
+                            <div class="card-margin"></div>
+
+
+
+                            <div class="card-margin">
+                                <p id="infos2" style="display:none;color:red;font-size:20px;">Veuillez bien remplir tous les champs "*" svp!</p>
+                            </div>
+
+
+                            <div>
+
+                                <center>
+                                    <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#" role="tab"
+                                       aria-controls="v-pills-settings" aria-selected="false" style=" text-align: center; margin-left:0px; background: #ED217C 0% 0% no-repeat padding-box; border-radius: 50px; width: 325px; border-color: #ed217c; height: 47px; font: normal normal medium 16px/25px Poppins; letter-spacing: 0px; color: #FFFFFF; text-transform: uppercase; " onclick="check_dispo();">Suivant</a>
+                                </center>
+                            </div>
+
+
+
+
+
+
+
+                        </div>
+
+                        <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
+
+                            <table><tr><td class="stytexte">Votre niveau</td></tr><tr><td width="1200px"><DIV><hr class="hrheure"></DIV></td></tr></table>
+                            <div class="row">
+
+                                <div class="col-md-2">
+                                    <label for="inputAddress" style="font-size:10">Nombres d'années apr&egrave;s BAC </label>
+
+                                    @Html.EditorFor(model => model.nbansbac, new { htmlAttributes = new { @class = "form-control", @onkeypress = "return event.charCode >= 48 && event.charCode <= 57", @onpast = "return false" } }) <label for="Nbansbac"></label>
+                                </div>
+
+                                <div class="col-md-3">
+                                    <label for="inputAddress2" style="font-size:13">Langue maternelle <span style="color:red;">*</span></label>
+                                    @Html.EditorFor(model => model.languemat, new { htmlAttributes = new { @class = "form-control", @id = "languemat" } })
+
+                                </div>
+
+                                <div class="col-md-3">
+                                    <label for="inputAddress" style="font-size:13">Premi&egrave;re langue <span style="color:red;">*</span></label>
+                                    @Html.EditorFor(model => model.premlang, new { htmlAttributes = new { @class = "form-control" } })
+                                </div>
+                                <div class="col-md-3">
+                                    <label for="inputAddress" style="font-size:13">S&eacute;jour dans les pays anglophones</label>
+                                    @Html.EditorFor(model => model.paysanglo, new { htmlAttributes = new { @class = "form-control" } })
+                                </div>
+
+
+                            </div>
+
+                            <div class="card-margin"></div>
+                            <table><tr><td class="stytexte">Votre interlocuteur </td></tr><tr><td width="1200px"><DIV><hr class="hrheure"></DIV></td></tr></table>
+
+                            <div class="form-row marge">
+
+
+
+                                <div class="form-group col-md-4">
+                                    <label for="inputAddress2">Leur nationalit&eacute;</label>
+                                    @Html.EditorFor(model => model.NationInterloc, new { htmlAttributes = new { @class = "form-control" } })
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="inputAddress2">Leur fonction </label>
+                                    @Html.EditorFor(model => model.FonctInterloc, new { htmlAttributes = new { @class = "form-control" } })
+                                </div>
+                            </div>
+                            <div class="card-margin"></div>
+                            <table><tr><td class="stytexte"> <span style="color:white;">Autres </span> </td></tr><tr><td width="1200px"><DIV><hr class="hrheure"></DIV></td></tr></table>
+
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <div class="form-group">
+                                        <label for="exampleFormControlTextarea1">Domaines sp&eacute;cifiques (métiers, fonctions)<span style="color:red;">*</span></label>
+                                        @Html.TextAreaFor(model => model.AttentesSpec, new { cols = 15, @rows = 3, @class = "form-control" })
+                                    </div>
+                                </div>
+                                <div class="col-md-5">
+                                    <div class="form-group">
+                                        <label for="exampleFormControlTextarea1">Vos besoins linguistiques (objectifs)</label>
+                                        @Html.TextAreaFor(model => model.BesoinsSpecif, new { cols = 15, @rows = 3, @class = "form-control" })
+                                    </div>
+                                </div>
+
+
+                            </div>
+
+                            <div class="card-margin">
+                                <p id="infos3" style="display:none;color:red;font-size:20px;">Veuillez bien remplir tous les champs "*" svp!</p>
+                            </div>
+
+
+                            <div>
+
+
+                                <center>
+                                    <a class="nav-link" id="v-pills-personnal-tab" data-toggle="pill" href="#" role="tab"
+                                       aria-controls="v-pills-personnal" aria-selected="false" style=" text-align: center; margin-left: 0px; background: #ED217C 0% 0% no-repeat padding-box; border-radius: 50px; width: 325px; border-color: #ed217c; height: 47px; font: normal normal medium 16px/25px Poppins; letter-spacing: 0px; color: #FFFFFF; text-transform: uppercase;" onclick="check_lingustique(); ">Suivant</a>
+
+                                </center>
+
+
+
+                            </div>
+                            <!--<div class="col-3">
+                                <div class="boutonsave">
+                                    <input type="submit" value="Enregistrer la Modification" class="btn btn-primary boutonsave" style=" text-align: center; margin-left: 300px; background: #ED217C 0% 0% no-repeat padding-box; border-radius: 50px; width: 325px; border-color: #ed217c; height: 47px; font: normal normal medium 16px/25px Poppins; letter-spacing: 0px; color: #FFFFFF; text-transform: uppercase;" />
+
+
+                                </div>
+                            </div>-->
+
+                        </div>
+                        <div class="tab-pane fade" id="v-pills-personnal" role="tabpanel" aria-labelledby="v-pills-personnal-tab">
+                            <table><tr><td class="stytexte">Vos centres d'int&eacute;r&ecirc;ts </td></tr><tr><td width="850px"><DIV><hr class="hrheure"></DIV></td></tr></table>
+
+                            <div class="row">
+
+                                <div class="col-md-3">
+                                    @Html.CheckBoxFor(model => model.arts, new { id = Html.NameFor(x => x.arts) })
+                                    <label for="arts"><img src="~/Content/images/arts.jpg" for="arts" /><span class="texts">Arts</span></label>
+                                </div>
+                                <div class="col-md-3">
+                                    @Html.CheckBoxFor(model => model.litterature, new { id = Html.NameFor(x => x.litterature) })
+                                    <label for="litterature"><img src="~/Content/images/litterature.jpg" for="litterature" /><span class="texts">Litterature</span></label>
+                                </div>
+
+                                <div class="col-md-3">
+                                    @Html.CheckBoxFor(model => model.sport, new { id = Html.NameFor(x => x.sport) })
+                                    <label for="sport"><img src="~/Content/images/sport.jpg" for="sport" /><span class="texts">Sport</span></label>
+                                </div>
+
+                                <div class="col-md-3">
+                                    @Html.CheckBoxFor(model => model.jardin, new { id = Html.NameFor(x => x.jardin) })
+                                    <label for="jardin"><img src="~/Content/images/garden.jpg" for="jardin" /><span class="texts">Jardin</span></label>
+                                </div>
+
+                                <div class="col-md-3">
+                                    @Html.CheckBoxFor(model => model.musique, new { id = Html.NameFor(x => x.musique) })
+                                    <label for="musique"><img src="~/Content/images/music.jpg" for="musique" /><span class="texts">Musique</span></label>
+                                </div>
+
+
+
+                                <div class="col-md-3">
+
+                                    @Html.CheckBoxFor(model => model.theatre, new { id = Html.NameFor(x => x.theatre) })
+                                    <label for="theatre"><img src="~/Content/images/theater.jpg" for="theatre" /><span class="texts">Theatre</span></label>
+                                </div>
+
+
+
+                                <div class="col-md-3">
+
+                                    @Html.CheckBoxFor(model => model.bricolage, new { id = Html.NameFor(x => x.bricolage) })
+                                    <label for="bricolage"><img src="~/Content/images/bricolage.jpg" for="bricolage" /><span class="texts">Bricolage</span></label>
+                                </div>
+
+                                <div class="col-md-3">
+
+                                    @Html.CheckBoxFor(model => model.sciences, new { id = Html.NameFor(x => x.sciences) })
+                                    <label for="sciences"><img src="~/Content/images/sciences.jpg" for="sciences" /><span class="texts">Sciences</span></label>
+                                </div>
+
+                                <div class="col-md-3">
+
+                                    @Html.CheckBoxFor(model => model.cuisine, new { id = Html.NameFor(x => x.cuisine) })
+                                    <label for="cuisine"><img src="~/Content/images/kitchen.jpg" for="cuisine" /><span class="texts">Cuisine</span></label>
+                                </div>
+                            </div>
+                            <div class="card-margin"></div>
+                            <div class="row">
+                                <table><tr><td class="stytexte">Autres </td></tr><tr><td width="850px"><DIV><hr class="hrheure"></DIV></td></tr></table>
+
+                                <div class="col-md-9">
+                                    @Html.TextAreaFor(model => model.autres_interets, new { cols = 15, @rows = 3, @class = "form-control" })
+
+                                </div>
+
+
+
+                            </div>
+                            <div class="card-margin">
+                                <div>   @ViewBag.ResMessege </div>
+                                <p id="info" style="display:none; color:red; font-size:20px;">"Veuillez bien remplir tous les champs "*" svp!"</p>
+                            </div>
+                            <div class="card-margin"></div>
+                            <center>
+                                <input type="submit" value="Enregistrer la Modification" class="btn btn-primary boutonsave" style="margin-left:0px; background: #ED217C 0% 0% no-repeat padding-box; border-radius: 50px; width: 325px; border-color: #ed217c; height: 47px; font: normal normal medium 16px/25px Poppins; letter-spacing: 0px; color: #FFFFFF; text-transform: uppercase;" onclick="check_some();" />
+
+                            </center>
+
+
+                        </div>
+
+                    </div>
+                    <div class="card-margin" style="margin-top:50px;">
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+
+
+
+
+}
+
+
+

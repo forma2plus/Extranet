@@ -1,0 +1,116 @@
+﻿<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profil - F2+</title>
+    <link rel='stylesheet' href='~/Content/stagiaire_profil/css/boxicons.min.css'>
+    <link rel="stylesheet" href="~/Content/stagiaire_profil/css/bootstrap.rtl.min.css">
+    <link rel="stylesheet" href="~/Content/stagiaire_profil/css/components.css">
+    <link rel="stylesheet" href="~/Content/stagiaire_profil/css/style.css">
+</head>
+<body style="background-color:#003D82">
+    <div class="en-page-inner">
+        <div class="en-container-inner">
+
+
+            @RenderBody()
+
+            <div class="footer">
+
+                <span>© 2024 Extranet by forma2plus.com</span>
+            </div>
+        </div>
+    </div>
+    <script>
+        function suivantes() {
+            let links = document.querySelectorAll('.nav-link');
+            for (let i = 0; i < links.length; i++) {
+                links[i].addEventListener('click', function () {
+                    /* for (let j = 0; j < links.length; j++)
+                    links[j].classList.remove('active');
+                    this.classList.add('active');
+                    /* var current = document.getElementsByClassName("active");
+
+                    // If there's no active class
+                    if (current.length > 0) {
+                    current[0].className = current[0].className.replace(" active", "");
+                    }
+
+                    // Add the active class to the current/clicked button
+                    this.className += " active";*/
+                    links[i].classList.add('active');
+                    alert(links[i]);
+                });
+            }
+    </script>
+    <script type="text/javascript">
+        document.addEventListener("DOMContentLoaded", function () {
+            var originalValue = document.getElementById('nomEditor').value;
+
+            document.getElementById('nomEditor').addEventListener('change', function () {
+                var currentValue = this.value;
+
+                // Si la valeur change, mettre à jour le champ caché nom_change
+                if (originalValue !== currentValue) {
+                    document.getElementById('nomChange').value = true;
+                } else {
+                    document.getElementById('nomChange').value = false;
+                }
+            });
+        });
+    </script>
+    <script>
+        // Fonction pour afficher/masquer la liste déroulante
+        function toggleDropdown() {
+            var dropdown = document.getElementById("joursDropdown");
+            if (dropdown.style.display === "none") {
+                dropdown.style.display = "block";
+            } else {
+                dropdown.style.display = "none";
+            }
+        }
+
+        // Fonction pour mettre à jour le champ caché 'joursouhait' avec les jours sélectionnés
+        function updateSelectedDays() {
+            var checkboxes = document.querySelectorAll('#joursDropdown input[type="checkbox"]');
+            var selectedDays = [];
+
+            checkboxes.forEach(function (checkbox) {
+                if (checkbox.checked) {
+                    selectedDays.push(checkbox.value);
+                }
+            });
+
+            // Mettre à jour le champ caché avec les jours sélectionnés
+            document.getElementById('Joursouhait').value = selectedDays.join(', ');
+
+            // Mettre à jour le texte affiché dans le div selectBox
+            if (selectedDays.length > 0) {
+                document.getElementById('selectedText').textContent = selectedDays.join(', ');
+            } else {
+                document.getElementById('selectedText').textContent = 'Cliquez pour choisir des jours';
+            }
+        }
+
+        // Cacher la liste déroulante si l'utilisateur clique à l'extérieur
+        window.onclick = function (event) {
+            if (!event.target.matches('.select-box')) {
+                var dropdown = document.getElementById("joursDropdown");
+                if (dropdown.style.display === "block") {
+                    dropdown.style.display = "none";
+                }
+            }
+        }
+    </script>
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+
+    <script src="~/Content/stagiaire_profil/js/popper.min.js"></script>
+    <script src="~/Content/stagiaire_profil/js/bootstrap.min.js"></script>
+    <script src="~/Content/stagiaire_profil/js/en-assets.js"></script>
+    <script src="~/Content/stagiaire_profil/js/edit-profil.js"></script>
+    <script src="~/Scripts/Editprofil.js"></script>
+
+
+</body>
+</html>

@@ -1,0 +1,99 @@
+﻿@media screen and  (max-width:2000px){
+    body {
+        background: transparent linear-gradient(245deg, #003D82 0%, #0B3058 100%) 0% 0% no-repeat padding-box;
+        opacity: 1;
+    }
+
+
+
+    .fondsite {
+        opacity: 1;
+    }
+
+    .block {
+        margin-top: auto;
+        margin-left: auto;
+        width: auto;
+    }
+    td{
+margin-bottom:0px;
+padding-right:5px;
+    }
+    textes {
+        overflow-wrap: break-word;
+    }
+  
+    text-danger {
+        color: #f93154 !important;
+    }
+        .block {
+        margin-top: 10%;
+        margin-left: 40%;
+        width: 447px;
+        height: 474px;
+        background: #033771 0% 0% no-repeat padding-box;
+        box-shadow: 0px 0px 6px #0000002E;
+        border: 1px solid #255A95;
+        opacity: 1;
+    }
+
+    .logologin {
+        background: transparent url('images/logo_Blanc_-_pour_fond_sombre.png') 0% 0% no-repeat padding-box;
+        margin-top: 25px;
+        margin-left: 150px;
+        width: 150px;
+        height: 37px;
+    }
+
+    .form-control.text {
+        padding: 0px 0px 0px;
+    }
+    .form-control#Numero{ font-size:32px;}
+
+    .logs {
+        margin-top: 100px;
+        margin-left: 30px;
+        margin-right: 30px;
+    }
+
+    .form-label.textnumero {
+        text-align: left;
+        font: normal normal normal 16px/25px Poppins;
+        letter-spacing: 0px;
+        color: white;
+        opacity: 1;
+        background-color: transparent;
+        border: 0px;
+    }
+
+    .contenutext {
+        background: #F5F5F5 0% 0% no-repeat padding-box;
+        border-radius: 4px;
+    }
+
+    .btnlogin {
+        margin-top: 30px;
+        margin-left: 90px;
+        width: 251px;
+        height: 47px;
+        background: #FF98C6 0% 0% no-repeat padding-box;
+        border-radius: 50px;
+        opacity: 1;
+    }
+
+    .form-label.inscrit {
+        text-decoration: underline;
+    }
+
+    .inscrit {
+        margin-top: 25px;
+        margin-left: 168px;
+    }
+
+    .btnlogin .textnumero {
+        margin-left: 70px;
+        margin-top: 12px;
+        color: white;
+    }
+}
+

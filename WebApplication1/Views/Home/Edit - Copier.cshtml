@@ -1,0 +1,1162 @@
+﻿@{
+ Layout = "~/Views/Shared/_Layoutstule.cshtml";
+}
+<html lang="fr">
+
+<body class="bg-bleu">
+  <nav class="navbar navbar-dark bg-menu">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">FORMA2+</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarText">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+      
+        <li class="nav-item">
+            @Html.ActionLink("Quitter", "Index", "Home")
+        </li>
+    
+      </ul>
+    
+    </div>
+  </div>
+    </nav>
+    <div class="container-fluid">
+
+        
+                       
+                      <div class="row">
+                             <div class="col-md-4">
+
+                                    <div class="textcolor"> 
+
+                                    <div> <h4><i class="material-icons">account_circle</i></h4> </div>
+                                    
+                                          <h5>   @Session["civilite"] @Session["nom"]  @Session["prenom"]</h5>
+                                      
+                                     <table class="table" style="color:white"> 
+
+                                        <tr ng-if="User.signaletique.Telephone"><td> <b>Telephone</b></td><td>@Session["telephone"]</td> </tr>
+                                        <tr ng-if="User.signaletique.Portable"><td><b>Portable :</b></td><td>@Session["portable"]  </td></tr>
+                                        <tr ng-if="User.signaletique.mail"><td><b>Email :</b></td><td>@Session["mail"]</td></tr>
+
+                                        <tr ng-if="User.signaletique.societe"><td><b>Société :</b></td><td>@Session["societe"] </td>  </tr>
+                                        <tr ng-if="User.signaletique.fonction"><td><b>Fonction :</b></td><td>@Session["fonction"]</td></tr>
+                                        <tr ng-if="User.signaletique.Departement"><td><b> Département / Service  :</b></td><td>@Session["departement"] </td> </tr>
+                                        <tr ng-if="User.signaletique.numero"><td><b>Numéro dossier :</b></td><td>@Session["numero"]</td></tr>
+
+                                    </table>
+      
+       
+                                    </div>
+                                     
+                                  </div>
+                              
+                       
+                             <div class="col-sm-8">
+                             <div class="alert alert-primary card-margin" role="alert">
+  Votre fiche stagiaire doit être complétée pour pouvoir enchaîner avec les tests d’évaluation
+  <button type="button" class="btn btn-warning">@Html.ActionLink("Compléter votre fiche", "Editprofil", new { id = @Session["numero"] })</button>
+
+</div>
+                                      <ul class="nav nav-pills nav-fill card-margin" id="pills-tab" role="tablist">
+  <li class="nav-item" role="presentation">
+    <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">Profil</button>
+  </li>
+  <li class="nav-item" role="presentation">
+    <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Linguistique</button>
+  </li>
+  <li class="nav-item" role="presentation">
+    <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact" aria-selected="false">Personnal interest</button>
+  </li>
+</ul>
+<div class="tab-content" id="pills-tabContent">
+                     
+  <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+
+                <div class="card-margin">
+
+                      <div class="row">
+                      <div class="col-md-4">
+                          <div class="card card-chart">
+                             <div class="card-header card-header-danger">
+                      <table style="color: #866915;"><tr><td style="float: left;"><i class='material-icons'>location_on</i></td><td style="float: right; margin-top: 0px;padding-right: 5px">Lieu du stage</td></tr></table>
+
+                             </div>
+                         <div class="card-body">
+                 
+                         <table class="table">
+                        <tr>
+                        <td><b>Adresse : </b></td>
+                        <td>@Session["RueDuStage"]</td>
+                    </tr>
+                     <tr>
+                 <td><b>Ville : </b></td>
+                      <td>@Session["VilleDuStage"]</td>
+                   </tr>
+                 <tr>
+                    <td><b>Code Postal :</b></td>
+                    <td>@Session["CPDuStage"]</td>
+                  </tr>
+                        </table>                                                               
+                       </div>
+                   </div>
+
+                </div>
+                   <div class="col-md-4">
+              <div class="card card-chart">
+                <div class="card-header card-header-danger">
+            <table  style="color: var(--bs-pink);"><tr><td style="float: left;"><i class='material-icons'>laptop_windows</i></td><td style="float: right; margin-top: 0px;padding-right: 5px"><b>Access internet</b> </td></tr></table>
+
+          
+                </div>
+                <div class="card-body">
+                 
+                  <table class=" table">
+                                                                <tr>
+                                                                    <td><b>Personnel :</b></td>
+                                                                    <td>
+                                                                        @if ((bool)Session["accesnetperso"] == true)
+                                                                        {
+                                                                            <p>Oui</p>
+                                                                        }
+                                                                        <!--   else
+     {
+         <p>Non</p>
+     }-->
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td><b>Professionnel :</b></td>
+                                                                    <td>
+                                                                        @if ((bool)Session["accesnetpro"] == true)
+                                                                        {
+                                                                            <p>Oui</p>
+                                                                        }
+                                                                        <!--   else
+     {
+         <p>Non</p>
+     }-->
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td><b>E-learning : </b>  </td>
+                                                                    <td>
+                                                                        @if ((bool)Session["e_learning"] == true)
+                                                                        {
+                                                                            <p>Oui</p>
+                                                                        }
+                                                                        <!--   else
+    {
+        <p>Non</p>
+    }-->
+
+
+                                                                    </td>
+                                                                </tr>
+                                                            </table>                                                              
+              </div>
+             </div>
+
+            </div>
+                   <div class="col-md-4">
+              <div class="card card-chart">
+                <div class="card-header card-header-danger">
+                   <table style="color:var(--bs-purple);"><tr><td style="float: left;"><i class="material-icons">access_time</i></td><td style="float: right; margin-top: 0px;padding-right: 5px">Vos disponibilités </td></tr></table>
+                  
+                </div>
+                <div class="card-body">
+                 
+                   <table class="table">
+                          <tr><td><b>Jour(s) souhaité :</b></td><td>@Session["joursouhait"]</td></tr>
+                                                                <tr><td><b>Horaires souhaités : </b></td><td>@Session["horaisouhait"]</td></tr>
+                                                                <tr><td><b>Temps personnel : </b></td><td>@Session["tempsperso"]</td></tr>
+                                                                <tr><td><b>Temps professionnel : </b></td><td>@Session["tempsprof"] </td></tr>
+                                                            </table>                                                        
+              </div>
+             </div>
+
+            </div>
+          </div>
+        </div>
+        </div>
+   
+  <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+     <div class="card-margin">
+
+                      <div class="row">
+                      <div class="col-md-4">
+                          <div class="card card-chart">
+                             <div class="card-header card-header-danger">
+                <table><tr><td style="float: left;"><i class='material-icons'>location_on</i></td><td style="float: right; margin-top: 0px;padding-right: 5px">Vos niveaux </td></tr></table>
+
+                            
+                             </div>
+                         <div class="card-body">
+                 
+                         <table class="table">
+                                                                <tr>
+                                                                    <td><b>Niveau scolaire : </b></td>
+                                                                    <td>
+                                                                        @if ((bool)Session["niveauSco"] == true)
+                                                                        {
+                                                                            <p>Oui</p>
+                                                                        }
+                                                                     <!--   else
+                                                                        {
+                                                                            <p>Non</p>
+                                                                        }-->
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td><b>Bac + : </b></td>
+                                                                    <td>@Session["nbansbac"]</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td><b>Langue maternelle :</b></td>
+                                                                    <td>@Session["languemat"]</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td><b>1ere Langue :</b></td>
+                                                                    <td>@Session["premlang"]</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>
+                                                                        <b>Sejour dans les pays anglophones :
+                                                                        </b>
+                                                                    </td>
+                                                                    <td>@Session["paysanglo"]</td>
+                                                                </tr>
+
+                                                            </table>                                              
+                       </div>
+                   </div>
+
+                </div>    
+                   <div class="col-md-4">
+              <div class="card card-chart">
+                <div class="card-header card-header-danger">
+           
+                   <table style="color:darkgreen;"><tr><td style="float: left;"><i class='material-icons'>laptop_windows</i></td><td style="float: right; margin-top: 0px;padding-right: 5px">Utilisation langues </td></tr></table>
+
+                </div>
+                <div class="card-body">
+                 
+                  <table class=" table">
+                                                                <tr>
+                                                                    <td><b>Géneral :</b></td>
+                                                                    <td>
+                                                                        @if ((bool)Session["LangGen"] == true)
+                                                                        {
+                                                                            <p>Oui</p>
+                                                                        }
+                                                                   <!--     else
+                                                                        {
+                                                                            <p>Non</p>
+                                                                        }-->
+
+                                                                    </td>
+
+                                                                </tr>
+                                                                <tr>
+                                                                    <td><b>Professionnel :</b></td>
+                                                                    <td>
+                                                                        @if ((bool)Session["LangPro"] == true)
+                                                                        {
+                                                                            <p>Oui</p>
+                                                                        }
+                                                                  <!--      else
+                                                                        {
+                                                                            <p>Non</p>
+                                                                        }-->
+                                                                    </td>
+                                                                <tr>
+                                                                <tr>
+                                                                &nbsp;
+                                                                </tr>
+                                                                 <tr>
+                                                                &nbsp;
+                                                                </tr>
+                                                            </table>                                                              
+              </div>
+             </div>
+
+            </div>
+                   <div class="col-md-4">
+              <div class="card card-chart">
+                <div class="card-header card-header-danger">
+                <table style="color:var(--bs-purple);"><tr><td style="float: left;"><i class="material-icons">access_time</i></td><td style="float: right; margin-top: 0px;padding-right: 5px">Vos interlocuteurs</td></tr>
+                 </table>
+                </div>
+                <div class="card-body">
+                 
+                   <table class="table info-signaletique">
+                                                                <tr><td><b>Leur nationalite :</b></td><td>@Session["NationInterloc"]</td></tr>
+                                                                <tr><td><b>Leur fonction : </b></td><td>@Session["FonctInterloc"]</td></tr>
+ <tr>
+                                                                &nbsp;
+                                                                </tr>
+                                                                 <tr>
+                                                                &nbsp;
+                                                                </tr>
+                                                            </table>                                                    
+              </div>
+             </div>
+
+            </div>
+          </div>
+          <div class="card-margin"></div>
+          <div class="col-md-16">
+              <div class="card card-chart">
+                <div class="card-header card-header-danger">
+             <table style="color:rebeccapurple;"><tr><td style="float: left;"><i class='material-icons'>laptop_windows</i></td><td style="float: right; margin-top: 0px;padding-right: 5px">Vos attentes et besoins</td></tr></table>
+
+                </div>
+                <div class="card-body">
+                   <div class="accordion card-margin" id="accordionPanelsStayOpenExample">
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+<b>Domaines spécifique :</b>      </button>
+    </h2>
+    <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
+      <div class="accordion-body">
+@Session["AttentesSpec"]
+        </div>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
+Besoins linguistiques :      </button>
+    </h2>
+    <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingTwo">
+      <div class="accordion-body">
+      @Session["BesoinsSpecif"]
+          </div>
+    </div>
+  </div>
+</div>                                                            
+              </div>
+             </div>
+
+            </div>
+        </div>
+        </div>
+  
+  <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
+<div class="accordion card-margin" id="accordionPanelsStayOpenExample">
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+      <button class="accordion-button" id="fondroseS" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+         Cinema, Arts & Entertainement 
+      </button>
+    </h2>
+    <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
+      <div class="accordion-body">
+                                     <table class="table info-signaletique">
+
+                                                                @{
+                                                                    int a = 0;
+                                                                    }
+                                                                   @{
+                                                                       if ((bool)Session["Cinema_Arts1"] == true)
+                                                                       {
+                                                                           a = 1;
+                                                            <tr>
+                                                                <td><b>Arts </b></td>
+
+                                                                <!-- <p>Oui</p>-->
+
+                                                            </tr>
+                                                                       }
+                                                                }
+                                                                <!--       else
+    {
+        <p>Non</p>
+    }-->
+
+
+                                                                @if ((bool)Session["Cinema_Arts2"] == true)
+                                                                {
+                                                                    a = a + 1;
+                                                            <tr>
+                                                                <td><b>Musics </b></td>
+
+                                                            </tr>
+
+                                                                }
+                                                                <!--       else
+    {
+        <p>Non</p>
+    }-->
+
+
+                                                                @if ((bool)Session["Cinema_Arts3"] == true)
+                                                                {
+                                                                    a = a + 1;
+                                                            <tr>
+                                                                <td><b>Cinéma / Movies</b></td>
+                                                            </tr>
+                                                                }
+                                                                <!--          else
+    {
+        <p>Non</p>
+    }-->
+
+
+
+                                                                @if ((bool)Session["Cinema_Arts4"] == true)
+                                                                {
+                                                                    a = a + 1;
+                                                            <tr>
+                                                                <td><b>Comedy Movies </b></td>
+                                                            </tr>
+                                                                }
+                                                                <!--   else
+    {
+        <p>Non</p>
+    }-->
+
+
+                                                                @if ((bool)Session["Cinema_Arts6"] == true)
+                                                                {
+                                                                    a = a + 1;
+                                                            <tr>
+                                                                <td><b>Historical Drama Movies </b></td>
+                                                            </tr>
+                                                                }
+                                                                <!--  else
+    {
+        <p>Non</p>
+    }-->
+
+
+
+                                                                @if ((bool)Session["Cinema_Arts7"] == true)
+                                                                {
+                                                                    a = a + 1;
+                                                            <tr>
+                                                                <td>
+                                                                    <b>Horror Movie  </b>
+                                                                </td>
+                                                            </tr>
+                                                                }
+                                                                <!--    else
+    {
+        <p>Non</p>
+    }-->
+
+
+                                                                @if ((bool)Session["Cinema_Arts9"] == true)
+                                                                {
+                                                                    a = a + 1;
+                                                            <tr>
+                                                                <td><b>Science Fiction </b></td>
+                                                            </tr>
+                                                                }
+                                                                <!--   else
+    {
+        <p>Non</p>
+    }-->
+
+
+                                                                @if ((bool)Session["Cinema_Arts10"] == true)
+                                                                {
+                                                                    a = a + 1;
+                                                            <tr>
+                                                                <td><b>Humour  </b></td>
+                                                            </tr>
+                                                                }
+                                                                <!--     else
+    {
+        <p>Non</p>
+    }-->
+
+
+                                                                @if ((bool)Session["Cinema_Arts13"] == true)
+                                                                {
+                                                                    a = a + 1;
+                                                            <tr>
+                                                                <td><b>Drama Movies </b></td>
+                                                            </tr>
+                                                                }
+                                                                <!--  else
+    {
+        <p>Non</p>
+    }-->
+
+                                                                @if ((bool)Session["Cinema_Arts8"] == true)
+                                                                {
+                                                                    a = a + 1;
+                                                            <tr>
+                                                                <td><b>Documentaries </b></td>
+                                                            </tr>
+                                                                }
+                                                                <!--      else
+    {
+        <p>Non</p>
+    }-->
+
+
+                                                                @if ((bool)Session["Cinema_Arts12"] == true)
+                                                                {
+                                                                    a = a + 1;
+                                                            <tr>
+                                                                <td><b>Theater </b></td>
+                                                            </tr>
+                                                                }
+                                                                <!--    else
+    {
+        <p>Non</p>
+    }-->
+
+
+                                                                @if ((bool)Session["Cinema_Arts11"] == true)
+                                                                {
+                                                                    a = a + 1;
+                                                            <tr>
+                                                                <td><b>Dance </b></td>
+                                                            </tr>
+                                                                }
+                                                                <!--      else
+    {
+        <p>Non</p>
+    }-->
+
+
+                                                                @if ((bool)Session["Cinema_Arts5"] == true)
+                                                                {
+                                                                    a = a + 1;
+                                                            <tr>
+                                                                <td><b>Action Movies  </b></td>
+                                                            </tr>
+                                                                }
+                                                                <!--     else
+    {
+        <p>Non</p>
+    }-->
+
+                                                                @if (a == 0)
+                                                                {
+                                                                    <tr>
+                                                                        <td>none  </td>
+                                                                    </tr>
+                                                                }
+                                                               
+                                                            </table>
+
+        </div>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
+      <button class="accordion-button collapsed" id="fondroseS" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
+    Travelling, Lifestyle & Culture
+      </button>
+    </h2>
+    <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingTwo">
+      <div class="accordion-body">
+       <table class="table info-signaletique">
+
+                                                                @{ int b = 0;
+
+                                                                }
+                                                                @if ((bool)Session["Travelling_Lifestyle1"] == true)
+                                                                {
+                                                                    b = 1;
+                                                                    <tr>
+                                                                        <td><b>Cooking </b></td>
+                                                                    </tr>
+                                                                }
+
+                                                                <!--        else
+    {
+        <p>Non</p>
+    }-->
+
+                                                                @if ((bool)Session["Travelling_Lifestyle2"] == true)
+                                                                {
+                                                                    b = b + 1;
+                                                                    <tr>
+                                                                        <td><b>Eating Out </b></td>
+                                                                    </tr>
+                                                                }
+                                                                <!--    else
+    {
+        <p>Non</p>
+    }-->
+
+
+                                                                @if ((bool)Session["Travelling_Lifestyle3"] == true)
+                                                                {
+                                                                    b = b + 1;
+                                                                    <tr>
+                                                                        <td><b>Christmas and New Year's traditions</b></td>
+                                                                    </tr>
+                                                                }
+                                                                <!--     else
+    {
+        <p>Non</p>
+    }-->
+
+
+                                                                @if ((bool)Session["Travelling_Lifestyle4"] == true)
+                                                                {
+                                                                    b = b + 1;
+                                                                    <tr>
+                                                                        <td><b>Lifestyle </b></td>
+                                                                    </tr>
+                                                                }
+                                                                <!--   else
+    {
+        <p>Non</p>
+    }-->
+
+
+                                                                @if ((bool)Session["Travelling_Lifestyle5"] == true)
+                                                                {
+                                                                    b = b + 1;
+                                                                    <tr>
+                                                                        <td><b>Architecture </b></td>
+                                                                    </tr>
+                                                                }
+                                                                <!--          else
+    {
+        <p>Non</p>
+    }-->
+
+                                                                @if ((bool)Session["Travelling_Lifestyle6"] == true)
+                                                                {
+                                                                    b = b + 1;
+                                                                    <tr>
+                                                                        <td><b>Business Trips </b></td>
+                                                                    </tr>
+                                                                }
+                                                                <!--    else
+    {
+        <p>Non</p>
+    }-->
+
+                                                                @if ((bool)Session["Travelling_Lifestyle7"] == true)
+                                                                {
+                                                                    b = b + 1;
+                                                                    <tr>
+                                                                        <td><b>In a Shop </b></td>
+                                                                    </tr>
+                                                                }
+                                                                <!--       else
+    {
+        <p>Non</p>
+    }-->
+
+
+                                                                @if ((bool)Session["Travelling_Lifestyle10"] == true)
+                                                                {
+                                                                    b = b + 1;
+                                                                    <tr>
+                                                                        <td><b>Travelling </b></td>
+                                                                    </tr>
+                                                                }
+                                                                <!--   else
+    {
+        <p>Non</p>
+    }-->
+
+
+                                                                @if ((bool)Session["Travelling_Lifestyle8"] == true)
+                                                                {
+                                                                    b = b + 1;
+                                                                    <tr>
+                                                                        <td><b>U.S. States </b></td>
+                                                                    </tr>
+                                                                }
+                                                                <!---   else
+    {
+        <p>Non</p>
+    }-->
+
+
+                                                                @if ((bool)Session["Travelling_Lifestyle9"] == true)
+                                                                {
+                                                                    b = b + 1;
+                                                                    <tr>
+                                                                        <td><b>Women's Interest Magazine</b></td>
+                                                                    </tr>
+                                                                }
+                                                                <!--     else
+    {
+        <p>Non</p>
+    }-->
+                                                                @if (b == 0)
+                                                                {
+                                                                    <tr>
+                                                                        <td>none  </td>
+                                                                    </tr>
+                                                                }
+
+
+
+                                                            </table>      </div>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="panelsStayOpen-headingThree">
+      <button class="accordion-button collapsed" id="fondroseS" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
+       Health,Fitness & Sports / Crafts, Hobbies & Home
+      </button>
+    </h2>
+    <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingThree">
+      <div class="accordion-body">
+         <table class="info-signaletique table">
+                                                                @{int c = 0;
+                                                                }
+                                                                @if ((bool)Session["Health_Fitness_Sport1"] == true)
+                                                                {
+                                                                    c = 1;
+                                                                    <tr>
+                                                                        <td><b>Health / Medicine </b></td>
+                                                                    </tr>
+                                                                }
+                                                                <!--   else
+    {
+        <p>Non</p>
+    }-->
+
+
+                                                                @if ((bool)Session["Health_Fitness_Sport2"] == true)
+                                                                {
+                                                                    c = c + 1;
+                                                                    <tr>
+                                                                        <td><b>Health News </b></td>
+                                                                    </tr>
+                                                                }
+                                                                <!--   else
+    {
+        <p>Non</p>
+    }-->
+
+
+                                                                @if ((bool)Session["Health_Fitness_Sport3"] == true)
+                                                                {
+                                                                    c = c + 1;
+                                                                    <tr>
+                                                                        <td><b>Olympic Games </b></td>
+                                                                    </tr>
+                                                                }
+                                                                <!--   else
+    {
+        <p>Non</p>
+    }-->
+
+
+
+                                                                @if ((bool)Session["Health_Fitness_Sport4"] == true)
+                                                                {
+                                                                    <tr>
+                                                                        <td><b>Sports </b></td>
+                                                                    </tr>
+                                                                }
+                                                                <!--      else
+    {
+        <p>Non</p>
+    }-->
+
+
+                                                                @if ((bool)Session["Health_Fitness_Sport5"] == true)
+                                                                {
+                                                                    c = c + 1;
+                                                                    <tr>
+                                                                        <td><b>Fruits </b></td>
+                                                                    </tr>
+                                                                }
+                                                                <!--    else
+    {
+        <p>Non</p>
+    }-->
+                                                                @if (c== 0)
+                                                                {
+                                                                    <tr>
+                                                                        <td>none  </td>
+                                                                    </tr>
+                                                                }
+
+                                                            </table>
+                                                            <table class="info-signaletique table">
+                                                                @{
+                                                                    int craft = 0;
+                                                                }
+                                                                @if ((bool)Session["Crafts_Hobbies1"] == true)
+                                                                {
+                                                                    craft = 1;
+                                                                    <tr>
+                                                                        <td><b>Gardening </b></td>
+                                                                    </tr>
+                                                                }
+                                                                <!--   else
+    {
+        <p>Non</p>
+    }-->
+
+
+                                                                @if ((bool)Session["Crafts_Hobbies2"] == true)
+                                                                {
+                                                                    craft = craft + 1;
+                                                                    <tr>
+                                                                        <td><b>Fashion Design </b></td>
+                                                                    </tr>
+                                                                }
+                                                                <!--   else
+    {
+        <p>Non</p>
+    }-->
+
+
+                                                                @if ((bool)Session["Crafts_Hobbies3"] == true)
+                                                                {
+                                                                    craft = craft + 1;
+
+
+                                                                    <tr>
+                                                                        <td><b>Cosmetics Vocabulary </b></td>
+                                                                    </tr>
+                                                                }
+                                                                <!--   else
+    {
+        <p>Non</p>
+    }-->
+
+
+                                                                @if ((bool)Session["Crafts_Hobbies4"] == true)
+                                                                {
+                                                                    craft = craft + 1;
+                                                                    <tr>
+                                                                        <td><b>Rooms, Furniture and Objects in the House</b></td>
+                                                                    </tr>
+                                                                }
+                                                                <!--   else
+    {
+        <p>Non</p>
+    }-->
+
+                                                                @if ((bool)Session["Crafts_Hobbies6"] == true)
+                                                                {
+                                                                    craft = craft + 1;
+
+                                                                    <tr>
+                                                                        <td><b>Stamp Collecting</b></td>
+                                                                    </tr>
+                                                                }
+                                                                <!--   else
+    {
+        <p>Non</p>
+    }-->
+
+
+                                                                @if ((bool)Session["Crafts_Hobbies5"] == true)
+                                                                {
+                                                                    craft = craft + 1;
+                                                                    <tr>
+                                                                        <td><b>DIY</b></td>
+                                                                    </tr>
+                                                                }
+                                                                <!--   else
+    {
+        <p>Non</p>
+    }-->
+                                                                @if (craft == 0)
+                                                                {
+                                                                    <tr>
+                                                                        <td>none  </td>
+                                                                    </tr>
+                                                                }
+
+                                                            </table>
+
+
+                                                                 </div>
+    </div>
+     <div class="accordion-item">
+    <h2 class="accordion-header" id="panelsStayOpen-headingThree">
+      <button class="accordion-button collapsed" id="fondroseS" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
+    Nature & Outdoors /Politics, Business & Industry Engineering
+      </button>
+    </h2>
+    <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingThree">
+      <div class="accordion-body">
+         <table class="info-signaletique table">
+                                                                @{int nature = 0;}
+                                                                @if ((bool)Session["Nature_Outdoors1"] == true)
+                                                                {
+                                                                    nature = 1;
+                                                                    <tr>
+                                                                        <td><b>Nature </b></td>
+                                                                    </tr>
+                                                                }
+                                                                <!--   else
+    {
+        <p>Non</p>
+    }-->
+
+
+                                                                @if ((bool)Session["Nature_Outdoors2"] == true)
+                                                                {
+                                                                    nature = nature + 1;
+
+                                                                    <tr>
+                                                                        <td><b>Fishing </b></td>
+                                                                    </tr>
+                                                                }
+                                                                <!--   else
+    {
+        <p>Non</p>
+    }-->
+
+                                                                @if ((bool)Session["Nature_Outdoors3"] == true)
+                                                                {
+                                                                    nature = nature + 1;
+
+                                                                    <tr>
+                                                                        <td><b>Gardening </b></td>
+                                                                    </tr>
+                                                                }
+                                                                <!--   else
+    {
+        <p>Non</p>
+    }-->
+                                                                @if (nature == 0)
+                                                                {
+                                                                    <tr>
+                                                                        <td>none  </td>
+                                                                    </tr>
+                                                                }
+
+                                                            </table> 
+                                                              <table class="info-signaletique table">
+                                                                @{
+                                                                    int politic = 0;
+                                                                }
+                                                                @if ((bool)Session["Politics_Business1"] == true)
+                                                                {
+                                                                    politic = 1;
+
+                                                                    <tr>
+                                                                        <td><b>Banking </b></td>
+                                                                    </tr>
+                                                                }
+                                                                <!--   else
+    {
+        <p>Non</p>
+    }-->
+
+
+                                                                @if ((bool)Session["Politics_Business2"] == true)
+                                                                {
+                                                                    politic = politic + 1;
+                                                                    <tr>
+                                                                        <td><b>Business and Industry News </b></td>
+                                                                    </tr>
+                                                                }
+                                                                <!--   else
+    {
+        <p>Non</p>
+    }-->
+
+
+                                                                @if ((bool)Session["Politics_Business3"] == true)
+                                                                {
+                                                                    politic = politic + 1;
+                                                                    <tr>
+                                                                        <td><b>Engineering</b></td>
+                                                                    </tr>
+                                                                }
+                                                                <!--   else
+    {
+        <p>Non</p>
+    }-->
+
+
+                                                                @if ((bool)Session["Politics_Business4"] == true)
+                                                                {
+                                                                    politic = politic + 1;
+
+                                                                    <tr>
+                                                                        <td><b>News articles  </b></td>
+                                                                    </tr>
+                                                                }
+                                                                <!--   else
+    {
+        <p>Non</p>
+    }-->
+
+
+                                                                @if ((bool)Session["Politics_Business5"] == true)
+                                                                {
+                                                                    politic = politic + 1;
+                                                                    <tr>
+                                                                        <td><b>Politics  </b></td>
+                                                                    </tr>
+                                                                }
+                                                                <!--   else
+    {
+        <p>Non</p>
+    }-->
+
+
+                                                                @if ((bool)Session["Politics_Business6"] == true)
+                                                                {
+                                                                    politic = politic + 1;
+
+                                                                    <tr>
+                                                                        <td><b>US elections </b></td>
+                                                                    </tr>
+                                                                }
+                                                                <!--   else
+    {
+        <p>Non</p>
+    }-->
+
+
+                                                                @if ((bool)Session["Politics_Business7"] == true)
+                                                                {
+                                                                    politic = politic + 1;
+
+                                                                    <tr>
+                                                                        <td><b>Real Estate Vocabulary</b></td>
+                                                                    </tr>
+                                                                }
+                                                                <!--   else
+    {
+        <p>Non</p>
+    }-->
+                                                                @if (politic == 0)
+                                                                {
+                                                                    <tr>
+                                                                        <td>none  </td>
+                                                                    </tr>
+                                                                }
+
+                                                            </table>
+                                                                 </div>
+    </div>
+  </div>
+   <div class="accordion-item">
+    <h2 class="accordion-header" id="panelsStayOpen-headingThree">
+      <button class="accordion-button collapsed" id="fondroseS" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
+      Science & Technology /Parenting & Family Relationships
+      </button>
+    </h2>
+    <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingThree">
+      <div class="accordion-body">
+           <table class="info-signaletique table">
+                                                                @{
+                                                                    int science = 0;
+                                                                }
+                                                                @if ((bool)Session["Science_Technology1"] == true)
+                                                                {
+                                                                    science = 1;
+                                                                    <tr>
+                                                                        <td><b>Computer Science </b></td>
+                                                                    </tr>
+                                                                }
+                                                                <!--   else
+    {
+        <p>Non</p>
+    }-->
+
+
+                                                                @if ((bool)Session["Science_Technology2"] == true)
+                                                                {
+                                                                    science = science + 1;
+                                                                    <tr>
+                                                                        <td><b>Science </b></td>
+                                                                    </tr>
+                                                                }
+                                                                <!--   else
+    {
+        <p>Non</p>
+    }-->
+                                                                @if (science == 0)
+                                                                {
+                                                                    <tr>
+                                                                        <td>none  </td>
+                                                                    </tr>
+                                                                }
+
+                                                            </table>
+
+                                                                @{ 
+                                                                int parent = 0;
+                                                            }
+                                                        <table class="info-signaletique table">
+
+                                                            @if ((bool)Session["Parenting_Family1"] == true)
+                                                            {
+                                                                parent = 1;
+                                                                <tr>
+                                                                    <td><b>Family - for beginners </b></td>
+                                                                </tr>
+                                                            }
+                                                            <!--   else
+    {
+        <p>Non</p>
+    }-->
+
+
+                                                            @if ((bool)Session["Parenting_Family2"] == true)
+                                                            {
+                                                                parent = parent + 1;
+
+                                                                <tr>
+                                                                    <td><b>Welcoming A New Baby </b></td>
+                                                                </tr>
+                                                            }
+                                                            <!--   else
+    {
+        <p>Non</p>
+    }-->
+
+
+                                                            @if ((bool)Session["Parenting_Family3"] == true)
+                                                            {
+                                                                parent = parent + 1;
+
+                                                                <tr>
+                                                                    <td><b>School and Education  </b></td>
+                                                                </tr>
+                                                            }
+                                                            <!--   else
+    {
+        <p>Non</p>
+    }-->
+                                                            @if (parent== 0)
+                                                            {
+                                                                <tr>
+                                                                    <td>none  </td>
+                                                                </tr>
+                                                            }
+
+
+                                                        </table>      </div>
+    </div>
+  </div>
+  </div>
+</div>
+</div>
+  
+
+
+ </div>
+ <div class="card-margin">
+ </div>
+ <div class="d-grid gap-1 col-6 mx-auto">
+</div>
+                     </div>
+
+
+</div>
+
+
+    
+ </body>

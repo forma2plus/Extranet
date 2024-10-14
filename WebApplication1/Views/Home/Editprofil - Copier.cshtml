@@ -1,0 +1,848 @@
+@model WebApplication1.Models.StagiaireModel
+
+@{
+    Layout = "~/Views/Shared/_Layoutstule.cshtml";
+}
+
+
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
+    <link rel="icon" type="image/png" href="../assets/img/favicon.png">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+    <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
+
+</head>
+<body class="bg-bleu">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        <nav class="navbar navbar-dark bg-menu">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">FORMA2+</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarText">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                          <a href="https://www.forma2plus.com">Forma2plus</a>
+                        </li>
+                        <li class="nav-item">
+                            @Html.ActionLink("Visualiser profil", "Edit", "Home")
+                        </li>
+                        <li class="nav-item">
+                            @Html.ActionLink("Deconnexion", "Index", "Home")
+                        </li>
+                    </ul>
+
+                </div>
+            </div>
+        </nav>
+        <div class="card-margin">
+        </div>
+        <div class="container">
+
+            <ul class="nav nav-pills nav-fill card-margin" id="pills-tab" role="tablist">
+                <li class="nav-item icon-list-item" role="presentation">
+                    <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">Signal&eacute;tique</button>
+                </li>
+                <li class="nav-item icon-list-item" role="presentation">
+                    <button class="nav-link " id="pills-outils-tab" data-bs-toggle="pill" data-bs-target="#pills-outils" type="button" role="tab" aria-controls="pills-outils" aria-selected="false">Outils Internet</button>
+                </li>
+                <li class="nav-item icon-list-item" role="presentation">
+                    <button class="nav-link " id="pills-dispo-tab" data-bs-toggle="pill" data-bs-target="#pills-dispo" type="button" role="tab" aria-controls="pills-dispo" aria-selected="false">Disponibilit&eacute;s</button>
+                </li>
+                <li class="nav-item icon-list-item" role="presentation">
+                    <button class="nav-link " id="pills-linguistique-tab" data-bs-toggle="pill" data-bs-target="#pills-linguistique" type="button" role="tab" aria-controls="pills-linguistique" aria-selected="false">Linguistique</button>
+                </li>
+                <li class="nav-item icon-list-item" role="presentation">
+                    <button class="nav-link" id="pills-personnal-tab" data-bs-toggle="pill" data-bs-target="#pills-personnal" type="button" role="tab" aria-controls="pills-personnal" aria-selected="false">Personnal interest</button>
+                </li>
+            </ul>
+
+            <div class="tab-content" id="pills-tabContent">
+
+                <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+
+                    <div class="col-12">
+
+                        <div class="card-body textcolor">
+                            <div class="container-fluid">
+                                <h5 class="card-title" id="exemple1">Signal&eacute;tique</h5>
+                               
+                                <div class="row">
+                                    <div class="col-md-1">
+                                        <label for="civilite" class="form-label">Civilite</label>
+                                        <div class="form-control" style=" width: 89px;">
+                                            @Html.DropDownListFor(model => model.Civilite, new SelectList(new object[] { @Session["civilite"], "Mr", "Mme", "Mlle" }, Model.Civilite))
+
+                                        </div>
+                                        <div class="invalid-feedback">
+                                            Please select a valid state.
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label for="validationCustom01" class="form-label">Nom </label>
+                                        @Html.EditorFor(model => model.Nom, new { htmlAttributes = new { @class = "form-control" } })
+                                        <div class="valid-feedback">
+                                            Looks good!
+                                        </div>
+                                    </div>
+                                    <p class="card-text" hidden>
+                                        <b> @Html.EditorFor(model => model.Numero, new { htmlAttributes = new { @class = "form-label" } })</b>
+                                    </p>
+                                    <div class="col-md-4">
+                                        <label for="validationCustom02" class="form-label">Pr&eacute;nom</label>
+                                        @Html.EditorFor(model => model.Prenom, new { htmlAttributes = new { @class = "form-control" } })
+
+                                        <div class="valid-feedback">
+                                            Looks good!
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label for="validationCustomUsername" class="form-label">Soci&eacute;t&eacute; </label>
+                                        <div class="input-group has-validation">
+                                            <span class="input-group-text" id="inputGroupPrepend"></span>
+                                            @Html.EditorFor(model => model.Societe, new { htmlAttributes = new { @class = "form-control" } })
+                                            <div class="invalid-feedback">
+                                                Please choose a username.
+                                            </div>
+                                        </div>
+                                    </div><div class="col-md-4">
+                                        <label for="validationCustom03" class="form-label">D&eacute;partement /Service</label>
+                                        @Html.EditorFor(model => model.Departement, new { htmlAttributes = new { @class = "form-control" } })
+                                        <div class="invalid-feedback">
+                                            Please provide a valid city.
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label for="validationCustomUsername" class="form-label">E-mail</label>
+                                        <div class="input-group has-validation">
+                                            <span class="input-group-text" id="inputGroupPrepend">@@</span>
+                                            @Html.EditorFor(model => model.Mail, new { htmlAttributes = new { @class = "form-control" } })
+                                            <div class="invalid-feedback">
+                                                Please choose a username.
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="col-md-3">
+                                        <label for="validationCustom05" class="form-label">Fonction </label>
+                                        @Html.EditorFor(model => model.Fonction, new { htmlAttributes = new { @class = "form-control" } })
+                                        <div class="invalid-feedback">
+                                            Please provide a valid zip.
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label for="validationCustom05" class="form-label">Telephone </label>
+                                        @Html.EditorFor(model => model.Telephone, new { htmlAttributes = new { @class = "form-control" } })
+                                        <div class="invalid-feedback">
+                                            Please provide a valid .
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label for="validationCustom05" class="form-label">Portable </label>
+                                        @Html.EditorFor(model => model.Portable, new { htmlAttributes = new { @class = "form-control" } })
+                                        <div class="invalid-feedback">
+                                            Please provide a valid .
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="tab-pane fade " id="pills-outils" role="tabpanel" aria-labelledby="pills-outils-tab">
+
+                    <div class="col-16">
+                        <div class="card-body textcolor">
+                            <div class="container-fluid">
+                                <h5 class="card-title " id="exemple2">Outils internet </h5>
+                                <p class="card-text" id="fondrose">Modifier vos outils internet</p>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <p>Personnel :</p>
+                                        @if (Model.Accesnetperso == true)
+                                        {<div>
+
+                                                @Html.RadioButtonFor(expression: model => model.Accesnetperso, value: true, htmlAttributes: new { @checked = true }) Oui
+                                                @Html.RadioButtonFor(expression: model => model.Accesnetperso, value: false) Non
+                                            </div> }
+                                        else
+                                        {
+                                            <div>
+
+                                                @Html.RadioButtonFor(expression: model => model.Accesnetperso, value: true) Oui
+                                                @Html.RadioButtonFor(expression: model => model.Accesnetperso, value: false, htmlAttributes: new { @checked = true }) Non
+                                            </div>}
+
+                                    </div>
+                                    <div class="col-md-4">
+
+                                        <p><b>Professionnel :</b></p>
+                                        @if (Model.Accesnetpro == true)
+                                        {<div>
+
+                                                @Html.RadioButtonFor(expression: model => model.Accesnetpro, value: true, htmlAttributes: new { @checked = true })Oui
+                                                @Html.RadioButtonFor(expression: model => model.Accesnetpro, value: false) Non
+                                            </div> }
+                                        else
+                                        {
+                                            <div>
+
+                                                @Html.RadioButtonFor(expression: model => model.Accesnetpro, value: true) Oui
+                                                @Html.RadioButtonFor(expression: model => model.Accesnetpro, value: false, htmlAttributes: new { @checked = true }) Non
+                                            </div>}
+                                    </div>
+                                    <div class="col-md-4">
+                                        <b><label>Souhaitez vous faire du <b>"E-learning"</b>en complement de vos cours ?</label></b>
+                                        @if (Model.E_learning == true)
+                                        {<div>
+
+                                                @Html.RadioButtonFor(expression: model => model.E_learning, value: true, htmlAttributes: new { @checked = true }) Oui
+                                                @Html.RadioButtonFor(expression: model => model.E_learning, value: false) Non
+                                            </div> }
+                                        else
+                                        {
+                                            <div>
+
+                                                @Html.RadioButtonFor(expression: model => model.E_learning, value: true) Oui
+                                                @Html.RadioButtonFor(expression: model => model.E_learning, value: false, htmlAttributes: new { @checked = true }) Non
+                                            </div>}
+                                    </div>
+                                    <div class="col-md-16">
+                                        <div class="card-body textcolor">
+                                            <div class="container-fluid">
+                                                <h5 class="card-title " id="fondrose">Lieu </h5>
+                                                <p class="card-text">Votre lieu .</p>
+                                                <div class="row">
+                                                    <div class="col-md-4">
+                                                        <label for="validationCustom02" class="form-label">Adresse</label>
+
+                                                        @Html.EditorFor(model => model.RueDuStage, new { htmlAttributes = new { @class = "form-control" } })
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <label for="validationCustom02" class="form-label">Ville</label>
+
+                                                        @Html.EditorFor(model => model.VilleDuStage, new { htmlAttributes = new { @class = "form-control" } })
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <label for="validationCustom02" class="form-label">Code postal</label>
+
+                                                        @Html.EditorFor(model => model.CPDuStage, new { htmlAttributes = new { @class = "form-control" } })
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="tab-pane fade " id="pills-dispo" role="tabpanel" aria-labelledby="pills-dispo-tab">
+
+                    <div class="col-12">
+                        <div class="card-body textcolor">
+                            <div class="container-fluid">
+                                <h5 class="card-title " id="exemple3">Disponibilit&eacute;</h5>
+                                <p class="card-text" id="fondrose">Modifier vos disponibilit&eacute;s</p>
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <label for="validationCustom05" class="form-label">Temps personnel (heures) : </label>
+                                        @Html.EditorFor(model => model.Tempsperso, new { htmlAttributes = new { @class = "form-control" } })
+                                        <div class="invalid-feedback">
+                                            Please provide a valid .
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label for="validationCustom05" class="form-label">Temps professionnel (heures) : </label>
+                                        @Html.EditorFor(model => model.Tempsprof, new { htmlAttributes = new { @class = "form-control" } })
+                                        <div class="invalid-feedback">
+                                            Please provide a valid .
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label for="validationCustom05" class="form-label">Jours souhaites : </label>
+                                        @Html.EditorFor(model => model.Joursouhait, new { htmlAttributes = new { @class = "form-control" } })
+                                        <div class="invalid-feedback">
+                                            Please provide a valid .
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label for="validationCustom05" class="form-label">Absence prevues pour les 6 mois &agrave; venir : </label>
+                                        @Html.EditorFor(model => model.Nbabscprevue, new { htmlAttributes = new { @class = "form-control" } })
+                                        <div class="invalid-feedback">
+                                            Please provide a valid .
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade " id="pills-linguistique" role="tabpanel" aria-labelledby="pills-linguistique-tab">
+
+                    <div class="col-16">
+                        <div class="card-body textcolor">
+                            <div class="container-fluid">
+                                <h5 class="card-title " id="exemple4">Linguistiques </h5>
+                                <p class="card-text"  id="fondrose">Votre niveau </p>
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <label for="validationCustom09" class="form-label">Niveau scolaire : </label>
+                                        @Html.EditorFor(model => model.NiveauSco, new { htmlAttributes = new { @class = "new" } })
+                                        <div class="invalid-feedback">
+                                            Please provide a valid .
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label for="validationCustom09" class="form-label">Bac +  : </label>
+                                        @Html.EditorFor(model => model.Nbansbac, new { htmlAttributes = new { @class = "form-control" } })
+                                        <div class="invalid-feedback">
+                                            Please provide a valid .
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label for="validationCustom09" class="form-label">Langue maternelle : </label>
+                                        @Html.EditorFor(model => model.Languemat, new { htmlAttributes = new { @class = "form-control" } })
+                                        <div class="invalid-feedback">
+                                            Please provide a valid .
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label for="validationCustom09" class="form-label">1ere langue: </label>
+                                        @Html.EditorFor(model => model.Premlang, new { htmlAttributes = new { @class = "form-control" } })
+                                        <div class="invalid-feedback">
+                                            Please provide a valid .
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <label for="validationCustom09" class="form-label">Niveau General : </label>
+
+                                        @if (Model.LangGen == true)
+                                        {<div>
+
+                                                @Html.RadioButtonFor(expression: model => model.LangGen, value: true, htmlAttributes: new { @checked = true }) Oui
+                                                @Html.RadioButtonFor(expression: model => model.LangGen, value: false) Non
+                                            </div> }
+                                        else
+                                        {
+                                            <div>
+
+                                                @Html.RadioButtonFor(expression: model => model.LangGen, value: true) Oui
+                                                @Html.RadioButtonFor(expression: model => model.LangGen, value: false, htmlAttributes: new { @checked = true }) Non
+                                            </div>}
+                                    </div>
+                                    <div class="col-md-2">
+                                        <label for="validationCustom09" class="form-label">Niveau Profession : </label>
+                                        @if (Model.LangPro == true)
+                                        {<div>
+
+                                                @Html.RadioButtonFor(expression: model => model.LangPro, value: true, htmlAttributes: new { @checked = true }) Oui
+                                                @Html.RadioButtonFor(expression: model => model.LangPro, value: false) Non
+                                            </div> }
+                                        else
+                                        {
+                                            <div>
+
+                                                @Html.RadioButtonFor(expression: model => model.LangPro, value: true) Oui
+                                                @Html.RadioButtonFor(expression: model => model.LangPro, value: false, htmlAttributes: new { @checked = true }) Non
+                                            </div>}
+
+                                    </div>
+
+                                </div>
+                                <div class="card-margin"></div>
+                                <p class="card-text"  id="fondrose">Votre interlocuteur</p>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <label for="validationCustom09" class="form-label">Formation ant&eacute;rieur : </label>
+                                        @Html.EditorFor(model => model.FonctInterloc, new { htmlAttributes = new { @class = "form-control" } })
+                                        <div class="invalid-feedback">
+                                            Please provide a valid .
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label for="validationCustom09" class="form-label">Nationalit&eacute; : </label>
+                                        @Html.EditorFor(model => model.NationInterloc, new { htmlAttributes = new { @class = "form-control" } })
+                                        <div class="invalid-feedback">
+                                            Please provide a valid .
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label for="validationCustom09" class="form-label">S&eacute;jour dans les pays anglophones : </label>
+                                        @Html.EditorFor(model => model.paysanglo, new { htmlAttributes = new { @class = "form-control" } })
+                                        <div class="invalid-feedback">
+                                            Please provide a valid .
+                                        </div>
+                                    </div>
+                                  
+                                    
+
+                                    <div class="col-md-6">
+                                        <label for="validationCustom09" class="form-label"> Domaines sp&eacute;cifiques : </label>
+                                        @Html.TextAreaFor(model => model.AttentesSpec, new { cols = 15, @rows = 5, @class = "form-control" })
+                                        <div class="invalid-feedback">
+                                            Please provide a valid .
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="validationCustom09" class="form-label">Vos besoins linguistiques : </label>
+                                        @Html.TextAreaFor(model => model.BesoinsSpecif, new { cols = 15, @rows = 5, @class = "form-control" })
+                                        <div class="invalid-feedback">
+                                            Please provide a valid .
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade " id="pills-personnal" role="tabpanel" aria-labelledby="pills-personnal-tab">
+
+
+
+                    <div class="col-16">
+
+                        <div id="carouselExampleControlsNoTouching" class="carousel slide" data-bs-touch="true" data-bs-interval="false">
+                            <div class="carousel-inner">
+                                <div class="carousel-item active">
+                                    <div class="card-body textcolor">
+                                        <div class="container-fluid">
+                                            <h5 class="card-title " id="fondrose">Cinema Art et Entertainement</h5>
+                                            <div class="row">
+
+                                                <div class="col-md-4">
+                                                    @Html.EditorFor(model => model.Cinema_Arts1)
+                                                    <label class="form-label" for="Cinema_Arts1">Arts</label>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    @Html.EditorFor(model => model.Cinema_Arts2)
+                                                    <b><label class="form-label" for="Cinema_Arts2">Music</label> </b>
+                                                </div>
+
+                                                <div class="col-md-4">
+                                                    @Html.EditorFor(model => model.Cinema_Arts3)
+                                                    <b><label class="form-label" for="Cinema_Arts3">Cinema / Movies</label> </b>
+                                                </div>
+
+                                                <div class="col-md-4">
+                                                    @Html.EditorFor(model => model.Cinema_Arts4)
+                                                    <b><label class="form-label" for="Cinema_Arts4">Comedy Movies</label> </b>
+                                                </div>
+
+                                                <div class="col-md-4">
+                                                    @Html.EditorFor(model => model.Cinema_Arts5)
+                                                    <b><label class="form-label" for="Cinema_Arts5">Action Movies</label> </b>
+                                                </div>
+
+
+
+                                                <div class="col-md-4">
+
+                                                    @Html.EditorFor(model => model.Cinema_Arts7)
+                                                    <b><label class="form-label" for="Cinema_Arts7">Horror Movies</label></b>
+                                                </div>
+
+                                                <div class="col-md-4">
+
+                                                    @Html.EditorFor(model => model.Cinema_Arts8)
+                                                    <b><label class="form-label" for="Cinema_Arts8">Documentaries</label></b>
+                                                </div>
+
+                                                <div class="col-md-4">
+
+                                                    @Html.EditorFor(model => model.Cinema_Arts9)
+                                                    <b><label class="form-label" for="Cinema_Arts9">Science Fiction</label> </b>
+                                                </div>
+
+                                                <div class="col-md-4">
+
+                                                    @Html.EditorFor(model => model.Cinema_Arts10)
+                                                    <b><label class="form-label" for="Cinema_Arts10">Humour</label></b>
+                                                </div>
+
+                                                <div class="col-md-4">
+
+                                                    @Html.EditorFor(model => model.Cinema_Arts12)
+                                                    <b><label class="form-label" for="Cinema_Arts12">Theater</label></b>
+                                                </div>
+
+                                                <div class="col-md-4">
+
+                                                    @Html.EditorFor(model => model.Cinema_Arts11)
+                                                    <b><label class="form-label" for="Cinema_Arts11">Dance</label></b>
+                                                </div>
+
+                                                <div class="col-md-4">
+
+                                                    @Html.EditorFor(model => model.Cinema_Arts13)
+                                                    <b><label class="form-label" for="Cinema_Arts13">Drama Movies</label> </b>
+                                                </div>
+                                                <div class="col-md-6">
+
+                                                    @Html.EditorFor(model => model.Cinema_Arts6)
+                                                    <b><label class="form-label" for="Cinema_Arts6">Historical Drama Movies</label> </b>
+                                                </div>
+
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="carousel-item">
+                                    <div class="card-body textcolor">
+
+                                        <div class="container-fluid">
+                                            <h5 class="card-title " id="fondrose">Travelling, Lifestyle Culture</h5>
+                                            <div class="row">
+
+                                                <div class="col-md-4">
+                                                    @Html.EditorFor(model => model.Travelling_Lifestyle1)
+                                                    <b><label class="form-label" for="Travelling_Lifestyle1">Cooking</label> </b>
+                                                </div>
+
+                                                <div class="col-md-4">
+                                                    @Html.EditorFor(model => model.Travelling_Lifestyle2)
+                                                    <b> <label class="form-label" for="Travelling_Lifestyle2">Eating Out</label> </b>
+                                                </div>
+
+
+                                                <div class="col-md-4">
+                                                    @Html.EditorFor(model => model.Travelling_Lifestyle4)
+                                                    <b><label class="form-label" for="Travelling_Lifestyle4">Lifestyle</label> </b>
+                                                </div>
+
+                                                <div class="col-md-4">
+                                                    @Html.EditorFor(model => model.Travelling_Lifestyle5)
+                                                    <b><label class="form-label" for="Travelling_Lifestyle5">Architecture</label> </b>
+                                                </div>
+
+                                                <div class="col-md-4">
+
+                                                    @Html.EditorFor(model => model.Travelling_Lifestyle6)
+                                                    <b><label class="form-label" for="Travelling_Lifestyle6">Business Trips</label> </b>
+                                                </div>
+
+                                                <div class="col-md-4">
+
+                                                    @Html.EditorFor(model => model.Travelling_Lifestyle7)
+                                                    <b><label class="form-label" for="Travelling_Lifestyle7">In a Shop</label></b>
+                                                </div>
+                                                <div class="col-md-4">
+
+                                                    @Html.EditorFor(model => model.Travelling_Lifestyle8)
+                                                    <b><label class="form-label" for="Travelling_Lifestyle8">U.S. States</label></b>
+                                                </div>
+
+                                                <div class="col-md-4">
+
+                                                    @Html.EditorFor(model => model.Travelling_Lifestyle9)
+                                                    <b><label class="form-label" for="Travelling_Lifestyle9">Women's Interest Magazine</label></b>
+                                                </div>
+
+                                                <div class="col-md-4">
+
+                                                    @Html.EditorFor(model => model.Travelling_Lifestyle10)
+                                                    <b><label class="form-label" for="Travelling_Lifestyle10">Travelling</label></b>
+                                                </div>
+                                                <div class="col-md-8">
+                                                    @Html.EditorFor(model => model.Travelling_Lifestyle3)
+                                                    <b><label class="form-label" for="Travelling_Lifestyle3">Christmas and New Year's traditions</label> </b>
+                                                </div>
+
+
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="carousel-item">
+                                    <div class="card-body textcolor">
+
+                                        <div class="container-fluid">
+                                            <h5 class="card-title " id="fondrose">Health , Fitness et Sports</h5>
+                                            <div class="row">
+
+                                                <div class="col-md-4">
+                                                    @Html.EditorFor(model => model.Health_Fitness_Sport1)
+                                                    <b> <label class="form-label" for="Health_Fitness_Sport1">Health / Medicine</label> </b>
+                                                </div>
+
+                                                <div class="col-md-4">
+                                                    @Html.EditorFor(model => model.Health_Fitness_Sport2)
+                                                    <b> <label class="form-label" for="Health_Fitness_Sport2">Health News</label> </b>
+
+                                                </div>
+
+                                                <div class="col-md-4">
+                                                    @Html.EditorFor(model => model.Health_Fitness_Sport3)
+                                                    <b><label class="form-label" for="Health_Fitness_Sport3">Olympic Games</label> </b>
+                                                </div>
+
+                                                <div class="col-md-4">
+                                                    @Html.EditorFor(model => model.Health_Fitness_Sport4)
+                                                    <b><label class="form-label" for="Health_Fitness_Sport4">Sports</label> </b>
+                                                </div>
+
+                                                <div class="col-md-4">
+                                                    @Html.EditorFor(model => model.Health_Fitness_Sport5)
+                                                    <b><label class="form-label" for="Health_Fitness_Sport5">Fruits</label> </b>
+                                                </div>
+
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card-body textcolor">
+
+                                        <div class="container-fluid">
+                                            <h5 class="card-title " id="fondrose">Parenting et Family Relationships</h5>
+                                            <div class="row">
+
+                                                <div class="col-md-4">
+                                                    @Html.EditorFor(model => model.Parenting_Family1)
+                                                    <b> <label class="form-label" for="Parenting_Family1">Family - for beginners</label> </b>
+
+                                                </div>
+
+                                                <div class="col-md-4">
+                                                    @Html.EditorFor(model => model.Parenting_Family2)
+                                                    <b> <label class="form-label" for="Parenting_Family2">Welcoming A New Baby</label> </b>
+
+                                                </div>
+                                                <div class="col-md-4">
+                                                    @Html.EditorFor(model => model.Parenting_Family3, new { htmlAttributes = new { @class = "new" } })
+                                                    <b><label class="form-label" for="Parenting_Family3">School and Education</label> </b>
+
+                                                </div>
+
+
+
+
+
+
+
+
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                                <div class="carousel-item">
+                                    <div class="card-body textcolor">
+
+                                        <div class="container-fluid">
+                                            <h5 class="card-title " id="fondrose">Crafts , Hobbies & Home</h5>
+                                            <div class="row">
+
+                                                <div class="col-md-4">
+                                                    @Html.EditorFor(model => model.Crafts_Hobbies1)
+                                                    <b> <label class="form-label" for="Crafts_Hobbies1">Gardening</label> </b>
+
+                                                </div>
+
+                                                <div class="col-md-4">
+                                                    @Html.EditorFor(model => model.Crafts_Hobbies2)
+                                                    <b> <label class="form-label" for="Crafts_Hobbies2">Fashion Design</label> </b>
+
+                                                </div>
+
+                                                <div class="col-md-4">
+                                                    @Html.EditorFor(model => model.Crafts_Hobbies3)
+                                                    <b><label class="form-label" for="Crafts_Hobbies3">Cosmetics vocabulary</label> </b>
+
+                                                </div>
+
+
+
+                                                <div class="col-md-4">
+                                                    @Html.EditorFor(model => model.Crafts_Hobbies5)
+                                                    <b><label class="form-label" for="Crafts_Hobbies5">DIY</label> </b>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    @Html.EditorFor(model => model.Crafts_Hobbies6)
+                                                    <b><label class="form-label" for="Crafts_Hobbies6">Stamp collecting</label> </b>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    @Html.EditorFor(model => model.Crafts_Hobbies4)
+                                                    <b><label class="form-label" for="Crafts_Hobbies4">Rooms, Furniture and Objects in the House</label> </b>
+                                                </div>
+
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+
+                                <div class="carousel-item">
+                                    <div class="card-body textcolor">
+
+                                        <div class="container-fluid">
+                                            <h5 class="card-title " id="fondrose">Nature et Outdoors</h5>
+
+                                            <div class="row">
+
+                                                <div class="col-md-4">
+                                                    @Html.EditorFor(model => model.Nature_Outdoors1)
+                                                    <b> <label class="form-label" for="Nature_Outdoors1">Nature</label> </b>
+
+                                                </div>
+
+                                                <div class="col-md-4">
+                                                    @Html.EditorFor(model => model.Nature_Outdoors2)
+                                                    <b> <label class="form-label" for="Nature_Outdoors2">Fishing</label> </b>
+
+                                                </div>
+
+                                                <div class="col-md-4">
+                                                    @Html.EditorFor(model => model.Nature_Outdoors3)
+                                                    <b><label class="form-label" for="Nature_Outdoors3">Gardening</label> </b>
+
+                                                </div>
+
+
+
+
+
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card-body textcolor">
+
+                                        <div class="container-fluid">
+                                            <h5 class="card-title " id="fondrose">Science & Technology</h5>
+                                            <div class="row">
+
+                                                <div class="col-md-4">
+                                                    @Html.EditorFor(model => model.Science_Technology1)
+                                                    <b> <label class="form-label" for="Science_Technology1">Computer Science</label> </b>
+
+                                                </div>
+
+                                                <div class="col-md-4">
+                                                    @Html.EditorFor(model => model.Science_Technology2)
+                                                    <b> <label class="form-label" for="Science_Technology2">Science</label> </b>
+
+                                                </div>
+
+
+
+
+
+
+
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                                <div class="carousel-item">
+
+                                    <div class="card-body textcolor">
+
+                                        <div class="container-fluid">
+                                            <h5 class="card-title " id="fondrose">Politics & Business & Industry Engineering</h5>
+                                            <div class="row">
+
+                                                <div class="col-md-4">
+                                                    @Html.EditorFor(model => model.Politics_Business1)
+                                                    <b> <label class="form-label" for="Politics_Business1">Banking</label> </b>
+
+                                                </div>
+
+                                                <div class="col-md-4">
+                                                    @Html.EditorFor(model => model.Politics_Business2)
+                                                    <b> <label class="form-label" for="Politics_Business2">Business and Industry News</label> </b>
+
+                                                </div>
+
+                                                <div class="col-md-4">
+                                                    @Html.EditorFor(model => model.Politics_Business3)
+                                                    <b><label class="form-label" for="Politics_Business3">Engineering</label> </b>
+
+                                                </div>
+
+
+
+                                                <div class="col-md-4">
+                                                    @Html.EditorFor(model => model.Politics_Business4)
+                                                    <b><label class="form-label" for="Politics_Business4">News articles</label> </b>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    @Html.EditorFor(model => model.Politics_Business5)
+                                                    <b><label class="form-label" for="Politics_Business5">Politics</label> </b>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    @Html.EditorFor(model => model.Politics_Business6)
+                                                    <b><label class="form-label" for="Politics_Business6">US elections</label> </b>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    @Html.EditorFor(model => model.Politics_Business7)
+                                                    <b><label class="form-label" for="Politics_Business7">Real Estate Vocabulary</label></b>
+                                                </div>
+
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+
+
+                            </div>
+
+
+                            <div>
+
+                                <button class="btn btn-primary" style="float:left;" type="button" data-bs-target="#carouselExampleControlsNoTouching" data-bs-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Previous</span>
+                                </button>
+                                <button class="btn btn-primary" style="float: right;" type="button" data-bs-target="#carouselExampleControlsNoTouching" data-bs-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Next</span>
+                                </button>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+
+            </div>
+            <div class="card-margin">
+            </div>                                <div class="boutonsave">
+                <input type="submit" value="Enregistrer la Modification" class="btn btn-primary" />
+
+
+            </div>
+        </div>
+
+
+    }
+
+
+
+</body>

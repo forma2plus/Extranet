@@ -1,0 +1,260 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+:root {
+    --en-light: #EBF5FB;
+    --en-blue: #0065AD;
+    --en-blue-c: #4975FF;
+    --en-orange: #E29815;
+    --en-pink: #F24266;
+    --en-green: #18BD5A;
+    --en-dark: #151B37;
+    --en-border: #AFB1B8;
+    --main-text: 'Inter', sans-serif;
+    --en-blue-dark: #162256;
+    --en-bg-form: #313D6E;
+    --en-bg-thead-table: #253163;
+    --en-border-table: #162256;
+    --en-bg-card-c: #253163;
+    --en-bg-card-d: #0F1D58;
+}
+.wrap-login{
+    font-family: "Inter", sans-serif;
+}
+.wrap-login input {
+    outline: none;
+    border: none;
+}
+
+.wrap-login button {
+    outline: none !important;
+    border: none;
+}
+
+.wrap-login button:hover {
+    cursor: pointer;
+}
+
+.wrap-login iframe {
+    border: none !important;
+}
+
+.limiter {
+    width: 100%;
+    margin: 0 auto;
+}
+
+
+
+.wrap-login {
+    max-width: 360px;
+    width: 100%;
+    background: var(--en-blue-dark);
+    border-radius: 10px;
+    overflow: hidden;
+    padding: 30px;
+    margin: 0 auto;
+}
+
+.login-brand{
+    text-align: center;
+    margin-bottom: 20px;
+}
+.login-icon{
+    text-align: center;
+    color: var(--en-blue-c);
+    font-size: 50px;
+    line-height: 50px;
+}
+.login-form-title {
+    font-size: 18px;
+    color: var(--en-light);
+    text-align: center;
+    font-weight: 400;
+    width: 100%;
+    display: block;
+    padding-bottom: 30px;
+}
+
+
+
+
+
+
+
+/*---------------------------------------------*/
+.wrap-input {
+    position: relative;
+    width: 100%;
+    z-index: 1;
+    margin-bottom: 10px;
+}
+
+.wrap-input .input {
+    font-size: 15px;
+    line-height: 1.5;
+    color: var(--en-light);
+
+    display: block;
+    width: 100%;
+    background: var(--en-bg-card-c);
+    height: 50px;
+    border-radius: 25px;
+    padding: 0 30px 0 68px;
+    border: 1px solid var(--en-bg-form);
+}
+
+
+/*------------------------------------------------------------------*/
+.focus-input {
+    display: block;
+    position: absolute;
+    border-radius: 25px;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    box-shadow: 0px 0px 0px 0px;
+    color: var(--en-blue);
+}
+
+.input:focus+.focus-input {
+    -webkit-animation: anim-shadow 0.5s ease-in-out forwards;
+    animation: anim-shadow 0.5s ease-in-out forwards;
+}
+
+@-webkit-keyframes anim-shadow {
+    to {
+        box-shadow: 0px 0px 70px 25px;
+        opacity: 0;
+    }
+}
+
+@keyframes anim-shadow {
+    to {
+        box-shadow: 0px 0px 70px 25px;
+        opacity: 0;
+    }
+}
+
+.symbol-input {
+    font-size: 18px;
+
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    align-items: center;
+    position: absolute;
+    border-radius: 25px;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding-left: 35px;
+    pointer-events: none;
+    color: var(--en-light);
+
+    -webkit-transition: all 0.4s;
+    -o-transition: all 0.4s;
+    -moz-transition: all 0.4s;
+    transition: all 0.4s;
+}
+
+.input:focus+.focus-input+.symbol-input {
+    color: var(--en-pink);
+    padding-left: 28px;
+}
+
+/*------------------------------------------------------------------*/
+.container-login-form-btn {
+    width: 100%;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding-top: 20px;
+}
+
+.loginform-btn {
+    font-size: 15px;
+    line-height: 1.5;
+    color: #fff;
+    text-transform: uppercase;
+
+    width: 100%;
+    height: 50px;
+    border-radius: 25px;
+    background: var(--en-blue);
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 25px;
+
+    -webkit-transition: all 0.4s;
+    -o-transition: all 0.4s;
+    -moz-transition: all 0.4s;
+    transition: all 0.4s;
+}
+
+.loginform-btn:hover {
+    background: var(--en-blue-c);
+}
+.brand-home {
+    display: flex;
+    justify-content: center;
+}
+
+    .brand-home img {
+        max-width: 215px;
+    }
+
+.en-btn-container {
+    justify-content: center;
+}
+
+.en-btn-home {
+    min-height: 150px;
+    max-width: 220px;
+}
+
+    .en-btn-home:hover {
+        background: var(--en-bg-card-c);
+    }
+
+.en-btn-left, .en-btn-right {
+    align-items: center;
+}
+
+@media (min-width: 576px) {
+
+    .en-btn-left, .en-btn-right {
+        flex: none;
+    }
+}
+
+@media (min-width: 768px) {
+    .brand-home {
+        justify-content: start;
+    }
+
+        .brand-home img {
+            width: auto;
+        }
+
+    .en-btn-home {
+        padding: 15px;
+    }
+
+    .en-btn-left, .en-btn-right {
+        flex: 1;
+        align-items: end;
+    }
+}

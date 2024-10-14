@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <link rel="apple-touch-icon" sizes="76x76" href="~/Content/images/favicon.png">
+    <link rel="icon" type="image/png" href="~/Content/images/favicon.png">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+    <meta content='width=device-width, initial-scale=1' name='viewport' />
+    <link rel="stylesheet" href="~/Content/StyleSheet5.css">
+    <link rel="stylesheet" href="~/Content/StyleSheet4.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+
+
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+    <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css' rel='stylesheet'>
+
+    <title>Forma2+ - @ViewBag.Title </title>
+    @Styles.Render("~/Content/bootsrap")
+    @Scripts.Render("~/Content/script")
+</head>
+<body class="font">
+
+
+    @RenderBody()
+    <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(".flip").click(function () {
+                $(".panel").slideDown("slow");
+            });
+        });
+    </script>
+    <script src="~/Content/script/poppermin.js"></script>
+    <script src="~/Content/script/bootstrap.minbundle.js"></script>
+    <script src="~/Content/script/bootstrapmin.js"></script>
+
+</body>
+</html>

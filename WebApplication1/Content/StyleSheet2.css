@@ -1,0 +1,62 @@
+﻿td {
+    margin-bottom: 0px;
+    padding-right: 5px;
+}
+.mb {
+   
+    padding-bottom: 5px;
+}
+.textes {
+    overflow-wrap: break-word;
+    white-space:pre-wrap;
+}
+.btn.btn-warning{
+
+}
+.button {
+    display: inline-block;
+    background-color: #007bff;
+    border-radius: 10px;
+    /*border: 4px double #cccccc;*/
+    color:#ffffff;
+    text-align: center;
+    font-size: 15px;
+    padding: 5px;
+    width: auto;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 5px;
+}
+
+    .button span {
+        cursor: pointer;
+        display: inline-block;
+        position: relative;
+        transition: 0.5s;
+    }
+    .button span a {
+        color:white;
+        font-weight:bold;
+    }
+
+        .button span:after {
+          /* content: '\00ab';*/
+            position: absolute;
+            opacity: 0;
+            top: 0;
+            right: -20px;
+            transition: 0.5s;
+        }
+
+    .button:hover {
+        background-color: #f7c2f9;
+    }
+
+        .button:hover span {
+            padding-right: 25px;
+        }
+
+            .button:hover span:after {
+                opacity: 1;
+                right: 0;
+            }

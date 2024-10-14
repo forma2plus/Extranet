@@ -1,0 +1,71 @@
+﻿@model WebApplication1.Models.StagiaireModel
+
+@{
+    ViewBag.Title = "Form";
+}
+    <div class="card bg-transparent">
+        <div class="container">
+            <div class="login-wrap">
+                <div class="login-content">
+                 
+                    <div>
+                        @ViewBag.ResMessege
+                    </div>
+
+                    <div class="login-form">
+                        @using (Html.BeginForm())
+                        {
+                            @Html.AntiForgeryToken()
+
+                            <form method="post" ng-submit="postCtrl.signin()">
+                                <div class="form-group"hidden>
+                                    @Html.EditorFor(model => model.Result, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Result, "", new { @class = "text-danger" })
+
+                                </div>
+                                <div class="form-group ">
+                                    <p class="label-numero">Nom:</p>
+                                    @Html.EditorFor(model => model.nom, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.nom, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="form-group ">
+                                    <p class="label-numero">Prenom:</p>
+                                    @Html.EditorFor(model => model.prenom, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.prenom, "", new { @class = "text-danger" })
+                                </div>
+                                                               <div class="form-group ">
+                                    <p class="label-numero">Téléphone:</p>
+                                    @Html.EditorFor(model => model.Telephone, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Telephone, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="form-group ">
+                                    <p class="label-numero">Adresse mail:</p>
+                                    @Html.EditorFor(model => model.mail, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.mail, "", new { @class = "text-danger" })
+                                </div>
+
+                                <button class="btn btn-login" type="submit">Sign In</button>
+                            </form>
+                        }
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+<footer>
+    <div class="navbar-bottom">
+        <div class="row">
+            <div class="col-sm-6 col-xs-6">
+                <a href="./"><i class="material-icons">input</i>Sign in</a>
+            </div>
+            <div class="col-sm-6 col-xs-6">
+                <a href="" id="nav-menu"><i class="material-icons">info</i>Register</a>
+            </div>
+
+        </div>
+    </div>
+</footer>
+
+    
+

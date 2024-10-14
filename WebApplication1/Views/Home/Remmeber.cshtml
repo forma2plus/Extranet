@@ -1,0 +1,114 @@
+﻿@model WebApplication1.Models.LoginModels
+@{
+    Layout = "~/Views/Shared/_style_login.cshtml";
+}
+
+@{
+    ViewBag.Title = "Index";
+}
+<div>
+    @ViewBag.ResMessege
+
+</div>
+
+<div class="en-page">
+    <div class="login-brand">
+        @{
+            string origin = "https://extranet.forma2plus.com/Profil/index";
+        }
+        <a href="@($"https://incident.forma2plus.com/?nom=&origin={origin}&mail=")" class="inc-btn">
+            <span>Report online event</span>
+            <img src="~/Content/images/inc-icon.svg" alt="">
+        </a>
+    </div>
+    <div class="en-container">
+        <div class="container py-4">
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+                <div class="wrap-login">
+
+                    <form class="login-form validate-form" name="form" id="form">
+
+                        <div class="login-brand">
+                            <a href="" class="en-brand-inner">
+                                <img src="~/Content/login/images/forma2plus-logo-home.svg" alt="">
+                            </a>
+                        </div>
+
+                        <div class="login-icon">
+                            <i class='bx bxs-user-circle'></i>
+
+                        </div>
+
+                        <span class="login-form-title">
+                            Accès membre
+                        </span>
+
+
+
+                        <div class="wrap-input validate-input" data-validate="Valid email is required: ex@abc.xyz">
+                            @Html.TextBoxFor(model => model.mail, new { @class = "input", required = "required", placeholder = "votre mail", id = "email" })                            <span class="focus-input"></span>
+                            <span class="symbol-input">
+                                <i class='bx bxs-user'></i>
+                            </span>
+                            @Html.ValidationMessageFor(model => model.mail, "", new { @class = "text-danger" })
+
+                        </div>
+
+                       
+                        <input type="hidden" id="votreInput" name="votreInput" value="@ViewBag.ResMessege">
+
+                        <div id="message" style="display:none;">Votre identifiant a été envoyé à votre adresse e-mail ! </div>
+
+
+                        <div class="container-login-form-btn">
+                            <input type="submit" class="loginform-btn" id="submit" name="submit" value="Recevoir mes identifiant">
+                        </div>
+
+                    </form>
+
+                </div>
+
+            }
+            <div class="footer mt-auto">
+                <span>© 2024 Extranet by forma2plus.com</span>
+            </div>
+        </div>
+    </div>
+    <!-- Script JavaScript -->
+    <script type="text/javascript">
+        // Fonction pour afficher le message pendant un certain temps après la soumission du formulaire
+        function afficherMessage() {
+            var messageDiv = document.getElementById('message');
+            setTimeout(function () {
+                messageDiv.style.display = 'block';
+                // Rediriger vers une autre page après que le message ait été affiché pendant 1 seconde
+                setTimeout(function () {
+                    window.location.href = '@Url.Action("Index", "Home")'; // Remplacez par votre URL de redirection
+                }, 3000); // Délai de 1 seconde pour la redirection
+            }, 1000); // Délai de 1 seconde pour l'affichage du message
+        }
+
+        // Fonction pour vérifier si l'input text n'est pas vide et afficher le message si c'est le cas
+        function verifierInput() {
+            var inputText = document.getElementById('votreInput').value;
+            if (inputText.trim() !== '') { // Vérifier si l'input text n'est pas vide (après avoir supprimé les espaces vides)
+                afficherMessage();
+            }
+        }
+
+        // Ajouter un écouteur d'événement pour soumission du formulaire
+        window.onload = function () {
+           verifierInput();
+        };
+    </script>
+</div>
+
+
+
+
+
+
+
+

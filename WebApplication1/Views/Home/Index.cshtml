@@ -1,0 +1,127 @@
+﻿@model WebApplication1.Models.LoginModels
+@{
+    Layout = "~/Views/Shared/_style_login.cshtml";
+}
+
+@{
+    ViewBag.Title = "Index";
+}
+<div>
+    @ViewBag.ResMessege
+
+</div>
+
+<div class="en-page">
+    <div class="login-brand">
+        @{
+            string origin = "https://extranet.forma2plus.com/Profil/index";
+        }
+        <a href="@($"https://incident.forma2plus.com/?nom=&origin={origin}&mail=")" class="inc-btn">
+            <span>Report online event</span>
+            <img src="~/Content/images/inc-icon.svg" alt="">
+        </a>
+    </div>
+    <div class="en-container">
+        <div class="container py-4">
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+                <div class="wrap-login">
+
+                    <form class="login-form validate-form">
+
+                        <div class="login-brand">
+                            <a href="" class="en-brand-inner">
+                                <img src="~/Content/login/images/forma2plus-logo-home.svg" alt="">
+                            </a>
+                        </div>
+
+                        <div class="login-icon">
+                            <i class='bx bxs-user-circle'></i>
+
+                        </div>
+
+                        <span class="login-form-title">
+                            Accès membre
+                        </span>
+
+
+
+                        <div class="wrap-input validate-input" data-validate="Valid email is required: ex@abc.xyz">
+                            @Html.TextBoxFor(model => model.mail, new { @class = "input", required = "required", placeholder = "Identifiant", id = "email" })                            <span class="focus-input"></span>
+                            <span class="symbol-input">
+                                <i class='bx bxs-user'></i>
+                            </span>
+                            @Html.ValidationMessageFor(model => model.mail, "", new { @class = "text-danger" })
+
+                        </div>
+
+                        <div class="wrap-input validate-input" data-validate="Password is required">
+                            @Html.PasswordFor(model => model.Numero, new
+                            {
+                                @class = "input",
+                                placeholder = "Numero de dossier",
+                                id = "numero",
+                           maxlength = "6",
+                                oninput = "this.value=this.value.replace(/[^0-9]/g,'')"
+                            })
+                            <span class="focus-input"></span>
+                            <span class="symbol-input">
+                                <i class='bx bxs-folder'></i>
+
+                            </span>
+                            <span class="toggle-password" onclick="togglePassword()" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer; z-index: 10;">
+                                <i id="eyeIcon" class="bx bxs-show"></i> <!-- Icône d'œil initialement "afficher" -->
+                            </span>
+
+                            @Html.ValidationMessageFor(model => model.Numero, "", new { @class = "text-danger" })
+
+                        </div>
+
+                        <div class="container-login-form-btn">
+
+                            <label class="label-remember el-checkbox">
+                                
+                                <span class="checkmark">
+                                    <span>
+                                        <i class='bx bxs-info-circle bg-danger'></i>
+                                    </span>
+                                    <label for="remember">
+                                        <a href="@Url.Action("Remmeber","Home")">
+                                            Identifiant oublié 
+                                        </a>
+                                    </label>
+                                    @Html.HiddenFor(model => model.mail, new { @id = "Email" }) <!-- Champ caché pour l'adresse e-mail -->
+
+                                </span>
+                            </label>
+
+
+
+
+                        </div>
+
+                        <div class="container-login-form-btn">
+                            <button class="loginform-btn">
+                                Se connecter
+                            </button>
+                        </div>
+
+                    </form>
+
+                </div>
+            }
+            <div class="footer mt-auto">
+                <span>© 2024 Extranet by forma2plus.com</span>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+
+
+
+
+
